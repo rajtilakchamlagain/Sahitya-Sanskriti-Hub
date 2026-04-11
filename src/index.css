@@ -1,0 +1,794 @@
+:root {
+  /* =========================================
+     1. COLOR PALETTE (Royal Parchment)
+     ========================================= */
+  --bg-core: #FFFBF5;
+  /* Warm Cream */
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  --bg-glass-heavy: rgba(255, 255, 255, 0.9);
+  --bg-surface: #FFFFFF;
+
+  --primary-maroon: #9f1239;
+  /* Rose 800 */
+  --primary-glow: rgba(159, 18, 57, 0.1);
+  --accent-gold: #b45309;
+  /* Amber 700 */
+  --accent-gold-light: #d97706;
+  --accent-gold-glow: rgba(180, 83, 9, 0.15);
+
+  --text-main: #2a0a18;
+  /* Very Dark Maroon/Black */
+  --text-muted: #57534e;
+  /* Stone 600 */
+  --text-light: #78716c;
+  /* Stone 500 */
+
+  /* =========================================
+     2. TYPOGRAPHY SCALE (Major Third)
+     ========================================= */
+  --font-heading: 'Noto Serif Devanagari', serif;
+  --font-body: 'Outfit', sans-serif;
+
+  --text-xs: 0.75rem;
+  /* 12px */
+  --text-sm: 0.875rem;
+  /* 14px */
+  --text-base: 1rem;
+  /* 16px */
+  --text-lg: 1.125rem;
+  /* 18px */
+  --text-xl: 1.25rem;
+  /* 20px */
+  --text-2xl: 1.5rem;
+  /* 24px */
+  --text-3xl: 1.875rem;
+  /* 30px */
+  --text-4xl: 2.25rem;
+  /* 36px */
+
+  --leading-tight: 1.3;
+  --leading-normal: 1.7;
+  /* Increased for better readability */
+  --leading-relaxed: 1.9;
+  /* For long form reading */
+
+  /* =========================================
+     3. SPACING SYSTEM (8px Grid)
+     ========================================= */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* =========================================
+     4. BORDERS & RADIUS
+     ========================================= */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  /* Standard Card Radius */
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* =========================================
+     5. ELEVATION (Shadows - Refined/Softer)
+     ========================================= */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+
+  --shadow-glow: 0 0 20px rgba(159, 18, 57, 0.15);
+  --shadow-glass: 0 8px 32px rgba(42, 10, 24, 0.05);
+  /* Lighter glass shadow */
+  --shadow-paper: 0 25px 50px -12px rgba(42, 10, 24, 0.08);
+}
+
+/* =========================================
+   1b. DARK MODE PALETTE (Obsidian & Gold)
+   ========================================= */
+html.dark:root,
+body.dark:root,
+.dark {
+  --bg-core: #0a0508;
+  /* Deepest Obsidian Charcoal */
+  --bg-glass: rgba(20, 10, 15, 0.75);
+  --bg-glass-heavy: rgba(20, 10, 15, 0.95);
+  --bg-surface: #140a0f;
+  /* Slightly elevated Obsidian */
+
+  --primary-maroon: #e11d48;
+  /* Rose 600 - brighter relative to dark bg */
+  --primary-glow: rgba(225, 29, 72, 0.15);
+  --accent-gold: #f59e0b;
+  /* Amber 500 - brighter gold for contrast */
+  --accent-gold-light: #fbbf24;
+  --accent-gold-glow: rgba(245, 158, 11, 0.2);
+
+  --text-main: #fcf8f9;
+  /* Off-white reading text */
+  --text-muted: #a8a2a5;
+  /* Warm grey */
+  --text-light: #78716c;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+
+  --shadow-glow: 0 0 20px rgba(225, 29, 72, 0.2);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-paper: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+/* =========================================
+   RESET & BASE
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100vw;
+  /* Force constraint */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+  background-color: var(--bg-core);
+  font-family: var(--font-body);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* Force all containers to respect width */
+.site-layout-wrapper,
+.site-container,
+.content-paper,
+section,
+main {
+  max-width: 100vw;
+  box-sizing: border-box;
+  will-change: transform;
+  /* Hint to browser to promote to layer */
+}
+
+/* =========================================
+   LAYOUT ARCHITECTURE (Strict)
+   ========================================= */
+
+/* 1. The Global Fixed Background - "THE ROYAL AURORA" */
+.site-background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  /* Complex Gradient Mesh: Cream, Soft Rose, Pale Gold, Hint of Lavender */
+  background:
+    radial-gradient(at 0% 0%, rgba(255, 251, 245, 1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(255, 241, 242, 1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(254, 252, 232, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(253, 244, 255, 1) 0px, transparent 50%),
+    linear-gradient(125deg, #FFFBF5, #fff1f2, #fef3c7, #fdf4ff);
+
+  background-size: 400% 400%;
+}
+
+html.dark .site-background,
+body.dark .site-background,
+.dark .site-background {
+  background:
+    radial-gradient(at 0% 0%, #0a0508 0px, transparent 50%),
+    radial-gradient(at 100% 0%, #140a0f 0px, transparent 50%),
+    radial-gradient(at 100% 100%, #1a0f12 0px, transparent 50%),
+    radial-gradient(at 0% 100%, #0f070b 0px, transparent 50%),
+    linear-gradient(125deg, #0a0508, #140a0f, #1a0f12, #0f070b);
+}
+
+@media (min-width: 768px) {
+  .site-background {
+    animation: aurora-mesh 20s ease infinite;
+  }
+}
+
+/* Texture Layer: "Literary Dust" - OPTIMIZED: Only show on desktop */
+@media (min-width: 1024px) {
+  .site-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+}
+
+/* 2. The Layout Wrapper */
+.site-layout-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. The Constraint Container */
+.site-container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 4. The Content "Paper" */
+.content-paper {
+  width: 100%;
+  min-height: 100vh;
+
+  /* Lighter, Frosted Glass effect */
+  background: var(--bg-glass);
+  backdrop-filter: blur(24px);
+  /* Stronger blur for "Premium" feel */
+  -webkit-backdrop-filter: blur(24px);
+
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-paper);
+
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .content-paper {
+    min-height: calc(100vh - 48px);
+    border-radius: 24px;
+    /* More rounded */
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    /* More visible "Glass Edge" */
+  }
+}
+
+/* =========================================
+   GRID UTILITIES
+   ========================================= */
+.poetry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+/* Article Grid - Wider Cards, Single Column on Mobile */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .poetry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* Force 2 equal columns for Poems, rigidly bounding them to prevent 1 dominating */
+    gap: 16px;
+  }
+
+  .article-grid {
+    grid-template-columns: minmax(0, 1fr);
+    /* Force 1 column for Articles, strictly bounded */
+    gap: 16px;
+  }
+}
+
+/* =========================================
+   STRICT POETRY CARD STANDARD
+   ========================================= */
+/* =========================================
+   STRICT CARD COMPONENT SYSTEM
+   ========================================= */
+
+/* Base Card Styles */
+.card-base {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  /* 16px */
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.card-base:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* POETRY CARD - Specific Implementation */
+.poetry-card {
+  /* Inherits card-base concepts */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  /* CRITICAL FIX FOR SYMMETRY: Prevent flex items from overflowing grid cell bounds */
+  min-width: 0;
+  width: 100%;
+}
+
+.poetry-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.poetry-card-image-wrapper {
+  width: 100%;
+  height: 180px;
+  /* Fixed height for poetry */
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.poetry-card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.poetry-card:hover .poetry-card-image-wrapper img {
+  transform: scale(1.05);
+  /* Subtle zoom */
+}
+
+.poetry-card-content {
+  flex: 1;
+  padding: var(--space-4);
+  /* 16px */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+  /* CRITICAL FIX: allow flex child to shrink below intrinsic width */
+}
+
+.poetry-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  color: var(--primary-maroon);
+  line-height: var(--leading-tight);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  /* CRITICAL FIX: break long unbroken words instead of expanding container */
+  hyphens: auto;
+}
+
+.poetry-card-excerpt {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-style: italic;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: var(--leading-normal);
+  margin-bottom: var(--space-3);
+}
+
+.poetry-card-footer {
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-xs);
+  color: var(--primary-maroon);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ARTICLE CARD - Specific Implementation */
+.article-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.article-card-image-wrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+  /* Standard for articles */
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #f0f0f0;
+}
+
+.article-card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.article-card:hover .article-card-image-wrapper img {
+  transform: scale(1.05);
+}
+
+.article-card-content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-3);
+}
+
+.article-meta {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.article-tag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 8px;
+  background-color: rgba(159, 18, 57, 0.05);
+  color: var(--primary-maroon);
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.article-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  line-height: var(--leading-tight);
+  color: var(--text-main);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.article-card-excerpt {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: var(--leading-normal);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+  /* Pushes footer down */
+}
+
+.article-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: var(--text-xs);
+  color: #999;
+}
+
+.section-reset {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.grid-item-shradhanjali {
+  width: 100%;
+  margin: 16px 0;
+}
+
+/* 2-Column Home Layout */
+.home-split-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .home-split-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .main-content-feed {
+    flex: 2;
+    min-width: 0;
+  }
+
+  .sidebar-widgets {
+    flex: 1;
+    min-width: 300px;
+    position: sticky;
+    top: 24px;
+  }
+}
+
+/* =========================================
+   RESPONSIVE VISIBILITY
+   ========================================= */
+.desktop-sidebar-container {
+  display: none;
+}
+
+.mobile-header {
+  display: flex;
+}
+
+.desktop-only-widget {
+  display: none;
+}
+
+.mobile-only-widget {
+  display: block;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 1024px) {
+  .desktop-sidebar-container {
+    display: block;
+    width: 280px;
+    /* Fixed width for sidebar container */
+    flex-shrink: 0;
+  }
+
+  .mobile-header {
+    display: none;
+  }
+
+  .desktop-only-widget {
+    display: block;
+  }
+
+  .mobile-only-widget {
+    display: none !important;
+  }
+}
+
+.hide-on-mobile {
+  display: flex;
+  /* Default to flex as that's how it's used in Header */
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+/* =========================================
+   UTILITIES
+   ========================================= */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  color: var(--text-main);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+/* Scrollbar - "Gold Dust" Thumb */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(42, 10, 24, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #b45309, #9f1239);
+  /* Gold to Maroon gradient thumb */
+  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  /* Float effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #d97706, #be123c);
+}
+
+/* Auto-rotate animation for Kaal Chakra */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Glass Card Utility - Enhanced for "Tempting" Look */
+.glass-card,
+.grid-item-featured,
+.grid-item-quote {
+  background: var(--bg-glass) !important;
+  /* Force consistency */
+  border-radius: 16px;
+
+  /* The "Tempting" Border: BOLD GOLD according to user request */
+  border: 2px solid rgba(180, 83, 9, 0.5);
+  box-shadow: var(--shadow-glass);
+
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* HERO SECTION - REFINED */
+.hero-wrapper {
+  padding: var(--space-4);
+  margin-top: var(--space-4);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-card {
+  background: var(--bg-glass-heavy);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: var(--space-8) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-glass);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-logo {
+  height: 120px;
+  width: 120px;
+  margin-bottom: var(--space-6);
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  color: var(--primary-maroon);
+  margin-bottom: var(--space-2);
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  line-height: var(--leading-relaxed);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-cta-button {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--space-6);
+  padding: 12px 24px;
+  background-color: var(--primary-maroon);
+  color: white;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+}
+
+.hero-cta-button:hover {
+  background-color: #881337;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Premium Button Standard */
+.btn-premium {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--primary-maroon);
+  color: white;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-premium:hover {
+  background-color: #881337;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: var(--primary-maroon);
+  border: 1px solid rgba(159, 18, 57, 0.2);
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(159, 18, 57, 0.05);
+  border-color: var(--primary-maroon);
+}

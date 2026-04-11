@@ -1,0 +1,20 @@
+{
+    "name": "Sahitya Sanskriti Hub",
+    "short_name": "SahityaHub",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FFFBF5",
+    "theme_color": "#9f1239",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/logo.png?v=3",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
