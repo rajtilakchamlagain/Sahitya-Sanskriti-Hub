@@ -183,7 +183,7 @@ const ShradhanjaliHub = () => {
                 ))}
             </div>
 
-            <div style={{ textAlign: 'center', marginTop: '100px', opacity: 0.5, fontSize: '14px', position: 'relative', z-index: 2 }}>
+            <div style={{ textAlign: 'center', marginTop: '100px', opacity: 0.5, fontSize: '14px', position: 'relative', zIndex: 2 }}>
                 ॐ शान्तिः शान्तिः शान्तिः।
             </div>
         </div>
