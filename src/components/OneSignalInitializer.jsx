@@ -29,26 +29,20 @@ const OneSignalInitializer = () => {
                 // We only want to show the prompt if the user has NOT granted permission yet
                 // AND has not blocked it (though we can't force it if blocked, we can at least try to persuade if it's 'default')
 
-                // OneSignal v16 accessor for permission
-                const permission = OneSignal.Notifications.permission;
-                console.log("OneSignal Permission State:", permission);
-
-                if (permission === true || permission === 'granted') {
-                    console.log("User already subscribed. specific prompt will not be shown.");
-                    return; // EXIT: Do not show the prompt
+                // If permission is already granted, don't show the prompt
+                if (OneSignal.Notifications.permission === true || OneSignal.Notifications.permission === 'granted') {
+                    console.log("User already subscribed. Prompt will not be shown.");
+                    return;
                 }
 
-                // If we are here, permission is likely 'default' (not prompted yet) or 'denied' (which we can't fix easily but might want to re-ask if enough time passed)
-                // For now, we assume 'default' is the target.
-
                 const timer = setTimeout(() => {
-                    // Double check permission again before showing (in case they enabled it in another tab or quickly)
+                    // Double check permission again before showing
                     if (OneSignal.Notifications.permission === true || OneSignal.Notifications.permission === 'granted') {
                         return;
                     }
                     console.log("Showing Premium Opt-In Prompt");
                     setShowPrompt(true);
-                }, 30000); // 30 seconds delay
+                }, 15000); // 15 seconds delay
 
                 return () => clearTimeout(timer);
 
@@ -81,52 +75,50 @@ const OneSignalInitializer = () => {
     if (!showPrompt) return null;
 
     return (
+        // Notification Toast UI (Fixed bottom right or center bottom)
         <div style={{
             position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: 9999,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'rgba(0, 0, 0, 0.4)', // Dimmed backdrop
-            backdropFilter: 'blur(4px)', // Premium glass blur
-            animation: isExiting ? 'fadeOut 0.5s forwards' : 'fadeIn 0.5s ease-out'
-        }} className="premium-notification-overlay">
+            bottom: '24px',
+            right: '24px',
+            zIndex: 99999, // Ensure it's on top of everything
+            animation: isExiting ? 'slideOutRight 0.5s forwards' : 'slideInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+        }} className="premium-notification-toast">
 
             {/* Styles for animation */}
             <style>
                 {`
-                    @keyframes scaleUp {
-                        from { opacity: 0; transform: scale(0.9) translateY(20px); }
-                        to { opacity: 1; transform: scale(1) translateY(0); }
+                    @keyframes slideInUp {
+                        from { opacity: 0; transform: translateY(50px) scale(0.9); }
+                        to { opacity: 1; transform: translateY(0) scale(1); }
                     }
-                    @keyframes fadeIn {
-                        from { opacity: 0; }
-                        to { opacity: 1; }
+                    @keyframes slideOutRight {
+                        to { opacity: 0; transform: translateX(100px); }
                     }
-                    @keyframes fadeOut {
-                        to { opacity: 0; }
+                    @media (max-width: 768px) {
+                        .premium-notification-toast {
+                            right: 16px !important;
+                            left: 16px !important;
+                            bottom: 16px !important;
+                            width: calc(100% - 32px);
+                        }
                     }
                 `}
             </style>
 
             <div style={{
-                backgroundColor: '#FFFBF5', // Premium parchment paper color
-                border: '1px solid var(--accent-gold)',
+                backgroundColor: '#ffffff',
+                border: '1px solid rgba(212, 175, 55, 0.4)',
                 borderRadius: '16px',
-                padding: '32px', // Increased padding
-                width: '90%',
-                maxWidth: '400px', // Slightly wider
-                boxShadow: '0 20px 60px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.1)', // Deeper shadow
+                padding: '24px',
+                width: '100%',
+                maxWidth: '380px',
+                boxShadow: '0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05)',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '20px',
+                gap: '16px',
                 position: 'relative',
                 overflow: 'hidden',
-                animation: isExiting ? 'none' : 'scaleUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s backwards'
+                margin: '0 auto'
             }}>
 
                 {/* Decorative golden accent at top */}
@@ -136,59 +128,53 @@ const OneSignalInitializer = () => {
                     left: 0,
                     right: 0,
                     height: '4px',
-                    background: 'linear-gradient(90deg, #C5A028, #E5C560, #C5A028)'
+                    background: 'linear-gradient(90deg, #F9D423 0%, #D4AF37 100%)'
                 }}></div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '16px' }}>
-                    {/* Centered Large Icon */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                     <div style={{
-                        marginBottom: '4px'
+                        background: 'rgba(212, 175, 55, 0.1)',
+                        padding: '12px',
+                        borderRadius: '50%',
+                        color: 'var(--accent-gold)'
                     }}>
-                        {/* <img
-                            src="/logo.png"
-                            alt="Logo"
-                            style={{
-                                width: '120px',
-                                height: '120px',
-                                objectFit: 'contain',
-                                filter: 'drop-shadow(0 8px 24px rgba(139, 0, 0, 0.2))'
-                            }}
-                        /> */}
+                        <Bell size={24} />
                     </div>
-
                     <div>
                         <h3 style={{
                             margin: 0,
                             fontFamily: 'var(--font-heading)',
-                            color: 'var(--primary-maroon)',
-                            fontSize: '22px', // Larger Title
-                            fontWeight: 600,
-                            marginBottom: '8px'
+                            color: '#1a1a1a',
+                            fontSize: '18px',
+                            fontWeight: 700,
+                            marginBottom: '4px'
                         }}>
-                            Stay Inspired
+                            Never Miss an Update
                         </h3>
-                        <div style={{ fontSize: '15px', color: 'var(--text-charcoal)', lineHeight: '1.6' }}>
-                            Join our community of literature lovers to receive new works directly.
-                        </div>
+                        <p style={{ margin: 0, fontSize: '13.5px', color: 'var(--text-muted)', lineHeight: '1.5', fontFamily: 'var(--font-body)' }}>
+                            Get a quick notification whenever a new poem, story, or article is published.
+                        </p>
                     </div>
                 </div>
 
-                <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
+                <div style={{ display: 'flex', gap: '12px', marginTop: '4px' }}>
                     <button
                         onClick={handleDismiss}
                         style={{
                             flex: 1,
-                            padding: '12px',
-                            border: '1px solid rgba(0,0,0,0.1)',
-                            background: 'transparent',
+                            padding: '10px',
+                            background: '#f3f4f6',
+                            border: 'none',
                             borderRadius: '8px',
-                            fontSize: '15px',
-                            fontWeight: 500,
-                            color: 'var(--text-muted)',
+                            fontSize: '14px',
+                            fontWeight: 600,
+                            color: '#4b5563',
                             cursor: 'pointer',
                             fontFamily: 'var(--font-body)',
                             transition: 'background 0.2s'
                         }}
+                        onMouseOver={(e) => e.target.style.background = '#e5e7eb'}
+                        onMouseOut={(e) => e.target.style.background = '#f3f4f6'}
                     >
                         Maybe Later
                     </button>
@@ -196,24 +182,32 @@ const OneSignalInitializer = () => {
                         onClick={handleEnable}
                         style={{
                             flex: 1,
-                            padding: '12px',
-                            background: 'var(--primary-maroon)',
+                            padding: '10px',
+                            background: '#1a1a1a',
                             border: 'none',
                             borderRadius: '8px',
-                            fontSize: '15px',
-                            fontWeight: 500,
-                            color: 'white',
+                            fontSize: '14px',
+                            fontWeight: 600,
+                            color: 'var(--accent-gold)',
                             cursor: 'pointer',
-                            boxShadow: '0 4px 12px rgba(139, 0, 0, 0.2)',
+                            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                             fontFamily: 'var(--font-body)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            gap: '8px',
-                            transition: 'transform 0.2s'
+                            gap: '6px',
+                            transition: 'all 0.2s'
+                        }}
+                        onMouseOver={(e) => {
+                            e.target.style.transform = 'translateY(-1px)';
+                            e.target.style.boxShadow = '0 6px 16px rgba(0,0,0,0.15)';
+                        }}
+                        onMouseOut={(e) => {
+                            e.target.style.transform = 'translateY(0)';
+                            e.target.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
                         }}
                     >
-                        Enable Updates
+                        Enable
                         <ShieldCheck size={16} />
                     </button>
                 </div>

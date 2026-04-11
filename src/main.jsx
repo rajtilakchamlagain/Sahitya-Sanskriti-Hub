@@ -2,10 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async';
+import './i18n'; // Initialize i18n
 import App from './App.jsx'
 import './index.css'
+import { ThemeProvider } from './context/ThemeContext';
 
 import { Analytics } from '@vercel/analytics/react';
+
+// Vite specific: trigger a page reload when a dynamic import fails 
+// (usually happens when a new version is deployed and the old chunk is deleted).
+window.addEventListener('vite:preloadError', (event) => {
+  window.location.reload();
+});
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -19,6 +27,15 @@ class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, errorInfo) {
     console.error("Uncaught error:", error, errorInfo);
+    // Handle Vercel new deployment stale chunk errors
+    const errorMessage = error?.message || error?.toString() || '';
+    if (
+      errorMessage.includes('Failed to fetch dynamically imported module') ||
+      errorMessage.includes('Importing a module script failed')
+    ) {
+      window.location.reload();
+      return;
+    }
   }
 
   render() {
@@ -39,8 +56,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ErrorBoundary>
       <HelmetProvider>
         <BrowserRouter>
-          <App />
-          <Analytics />
+          <ThemeProvider>
+            <App />
+            <Analytics />
+          </ThemeProvider>
         </BrowserRouter>
       </HelmetProvider>
     </ErrorBoundary>

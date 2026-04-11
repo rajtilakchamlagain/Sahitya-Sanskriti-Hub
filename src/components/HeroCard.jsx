@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
 import { poems } from '../data/poems';
-import { RefreshCw, Feather } from 'lucide-react';
+import { RefreshCw, Feather, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import useContentTranslation from '../hooks/useContentTranslation'; // Import Hook
 
 const HeroCard = () => {
     const [currentPoem, setCurrentPoem] = useState(poems[0]);
     const [isAnimating, setIsAnimating] = useState(false);
+
+    // Translation Hooks
+    const { translatedText: translatedTitle, isTranslating } = useContentTranslation(currentPoem.title);
+    const { translatedText: translatedExcerpt } = useContentTranslation(currentPoem.excerpt);
+    const displayedTitle = isTranslating ? 'Translating...' : translatedTitle;
+    const displayedExcerpt = isTranslating ? '...' : translatedExcerpt;
 
     useEffect(() => {
         const randomIndex = Math.floor(Math.random() * poems.length);
@@ -57,29 +64,37 @@ const HeroCard = () => {
                 <span style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1.5px', color: 'var(--accent-gold)' }}>
                     Poem of the Day
                 </span>
-                <button
-                    onClick={handleRefresh}
-                    style={{
-                        background: 'rgba(255,255,255,0.1)',
-                        border: 'none',
-                        borderRadius: '50%',
-                        width: '28px',
-                        height: '28px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        cursor: 'pointer'
-                    }}
-                >
-                    <RefreshCw
-                        size={14}
-                        color="white"
+
+                <div style={{ display: 'flex', gap: '8px' }}>
+                    {/* Show indicator if translated (optional) */}
+                    {translatedTitle !== currentPoem.title && (
+                        <Globe size={14} color="var(--accent-gold)" style={{ opacity: 0.7 }} />
+                    )}
+
+                    <button
+                        onClick={handleRefresh}
                         style={{
-                            transform: isAnimating ? 'rotate(180deg)' : 'rotate(0deg)',
-                            transition: 'transform 0.5s ease'
+                            background: 'rgba(255,255,255,0.1)',
+                            border: 'none',
+                            borderRadius: '50%',
+                            width: '28px',
+                            height: '28px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            cursor: 'pointer'
                         }}
-                    />
-                </button>
+                    >
+                        <RefreshCw
+                            size={14}
+                            color="white"
+                            style={{
+                                transform: isAnimating ? 'rotate(180deg)' : 'rotate(0deg)',
+                                transition: 'transform 0.5s ease'
+                            }}
+                        />
+                    </button>
+                </div>
             </div>
 
             {/* Content */}
@@ -98,7 +113,7 @@ const HeroCard = () => {
                     color: 'var(--accent-gold)',
                     textShadow: '0 2px 4px rgba(0,0,0,0.2)'
                 }}>
-                    {currentPoem.title}
+                    {displayedTitle}
                 </h3>
 
                 <p style={{
@@ -113,7 +128,7 @@ const HeroCard = () => {
                     WebkitBoxOrient: 'vertical',
                     overflow: 'hidden'
                 }}>
-                    {currentPoem.excerpt}
+                    {displayedExcerpt}
                 </p>
 
                 <div style={{

@@ -22,7 +22,7 @@ export const poems = [
 कति पूर्ति भए  कति अधुरो
 लेख रचेको जीवन बाटोमा।`,
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=800&q=80", // Sunset/Nature (Life/Dust)
+        image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=800&auto=format&fit=crop", // Aestheic mist
         about: {
             writtenBy: "Dr. Tilak Sarmah",
             writtenWhen: "Late Night Reflection",
@@ -46,7 +46,7 @@ export const poems = [
 यो गन्थन होईन 
 यो आत्म मन्थन हो।`,
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1544377317-1f488688404a?w=800&q=80", // Goddess Saraswati / Statue (Inspiration)
+        image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop", // Majestic Mountains
         tags: ["Inspiration", "Philosophy", "Art"]
     },
     {
@@ -77,7 +77,7 @@ export const poems = [
 ब्रह्मपुत्र किनारको गोर्खाको 
 किस्सा शर्माले यहीं बिसाउछन।`,
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80", // Nature/River (Brahmaputra)
+        image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800&auto=format&fit=crop", // Nature/River/Boat
         tags: ["Nature", "Culture", "Assam"]
     },
     {
@@ -114,7 +114,7 @@ export const poems = [
 कति कठिन छ  !!
 कति कठिन हुन्छ!!`,
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&q=80", // Forest/Nature (Time/Nature)
+        image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop", // Starry Night Dark Forest
         tags: ["Society", "Life", "Philosophy"]
     },
     {
@@ -202,7 +202,7 @@ export const poems = [
 त्यसैले भन्छु,  मित्र---
  कविता लेख्न मलाई ढिपी नगर।---`,
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80", // Writing/Book (Poetry)
+        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop", // Writing Book Vintage
         tags: ["Inspiration", "Society", "Art"]
     },
     {
@@ -233,7 +233,7 @@ export const poems = [
 सगर माथा हौ प्रेमी छु तिम्रो मेरो अभिज्ञान लाई जगाउ
 तिमी अन्नपूर्णा हौ तिमी कान्चनजंघा । कान्चन् ० ।`,
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", // Mountains/Himalayas (Final Fix)
+        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop", // Snow Mountain
         tags: ["Nature", "Culture", "Patriotism"]
     },
     {
@@ -250,7 +250,7 @@ export const poems = [
 राजा र रङ्कको -
 जीन्दगी हाम्रो एक नाटक हो ... अभिनय गर्ने हाम्रो काम हो..।`,
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1514306191717-45224512c2d4?w=800&q=80", // Theater/Stage/Life (Updated)
+        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop", // Re-using Vintage Book, guaranteed to work
         tags: ["Life", "Philosophy", "Art"]
     },
     {
@@ -261,7 +261,7 @@ export const poems = [
 केही संघर्ष टुका टुका भए
 केही संगामी-यात्रा अझै बाँकी नै छ..`,
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80", // Nature Path (Struggle/Journey)
+        image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop", // Deep Forest Path
         tags: ["Society", "Life", "Inspiration"]
     }
 ];

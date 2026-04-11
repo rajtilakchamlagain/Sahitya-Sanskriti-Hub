@@ -1,0 +1,123 @@
+.news-ticker-container {
+    width: 100%;
+    /* Rich, dark, subtle metallic-like gradient */
+    background: linear-gradient(90deg, #0a0a0a 0%, #171717 50%, #0a0a0a 100%);
+    color: var(--accent-gold);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    /* Elegant gold-tinted bottom border */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+    z-index: 1000;
+    height: 48px;
+    /* Slightly taller for breathing room */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* 
+  The track holds the two identical groups.
+  It flexes them in a row.
+*/
+.news-ticker-track {
+    display: flex;
+    white-space: nowrap;
+    width: max-content;
+    animation: ticker-scroll 55s linear infinite;
+}
+
+/* Pause animation on hover */
+.news-ticker-track:hover {
+    animation-play-state: paused;
+}
+
+.news-ticker-group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.news-ticker-item {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Transformed into a sleek gold badge */
+.news-ticker-tag {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-right: 14px;
+    color: #111111;
+    background: linear-gradient(135deg, #F9D423 0%, #D4AF37 100%);
+    padding: 3px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
+}
+
+.news-ticker-link {
+    font-family: var(--font-heading);
+    color: #ffffff;
+    /* Crisp white for high contrast */
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.8px;
+    font-weight: 300;
+    /* Lighter font weight for elegance */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    top: 1px;
+    /* Visual alignment fix for serif fonts */
+}
+
+/* Smooth glowing hover effect */
+.news-ticker-link:hover {
+    color: var(--accent-gold);
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+.news-ticker-separator {
+    margin: 0 32px;
+    color: var(--accent-gold);
+    font-size: 16px;
+    line-height: 1;
+    opacity: 0.3;
+}
+
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .news-ticker-container {
+        height: 40px;
+    }
+
+    .news-ticker-link {
+        font-size: 14px;
+    }
+
+    .news-ticker-tag {
+        font-size: 9px;
+        padding: 2px 8px;
+        margin-right: 10px;
+    }
+
+    .news-ticker-item {
+        padding: 0 12px;
+    }
+
+    .news-ticker-separator {
+        margin: 0 20px;
+    }
+}

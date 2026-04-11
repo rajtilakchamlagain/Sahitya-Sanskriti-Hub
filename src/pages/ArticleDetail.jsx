@@ -5,12 +5,15 @@ import Header from '../components/Header';
 import BottomNav from '../components/BottomNav';
 import LikeButton from '../components/LikeButton';
 import CommentSection from '../components/CommentSection';
-import ReadingProgressBar from '../components/ReadingProgressBar'; // New Component
-import { useEffect } from 'react';
+import ReadingProgressBar from '../components/ReadingProgressBar';
+import ArticleShare from '../components/ArticleShare';
+import PremiumArticleShareCard from '../components/PremiumArticleShareCard'; // New Component
+import { useEffect, useRef } from 'react';
 
 const ArticleDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const shareCardRef = useRef(null);
     const article = articles.find(a => a.id === parseInt(id));
 
     useEffect(() => {
@@ -23,6 +26,28 @@ const ArticleDetail = () => {
 
     return (
         <div style={{ paddingBottom: '80px', minHeight: '100vh', backgroundColor: 'var(--bg-paper)' }}>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "Article",
+                    "headline": article.title,
+                    "author": {
+                        "@type": "Person",
+                        "name": article.author,
+                        "url": "https://sahityasanskriti.online/about"
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "SahityaSanskritiHub",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": "https://sahityasanskriti.online/logo.png"
+                        }
+                    },
+                    "datePublished": article.date,
+                    "mainEntityOfPage": `https://sahityasanskriti.online/article/${article.id}`
+                })
+            }} />
             <ReadingProgressBar /> {/* Reading Progress Bar */}
             <Header />
 
@@ -127,9 +152,22 @@ const ArticleDetail = () => {
                     dangerouslySetInnerHTML={{ __html: article.content }}
                 />
 
+                {/* Hidden Premium Card for Capture - Rendered Off-screen */}
+                <div style={{ position: 'absolute', top: '-9999px', left: '-9999px', pointerEvents: 'none' }}>
+                    <PremiumArticleShareCard
+                        ref={shareCardRef}
+                        title={article.title}
+                        excerpt={article.content.replace(/<[^>]*>?/gm, '').substring(0, 180) + "..."}
+                        author={article.author}
+                    />
+                </div>
+
+                {/* Premium Share Component */}
+                <ArticleShare title={article.title} elementRef={shareCardRef} />
+
                 {/* Author Bio / Footer */}
                 <div style={{
-                    marginTop: '64px',
+                    marginTop: '32px', // Reduced margin because Share is right above it
                     padding: '32px',
                     backgroundColor: 'rgba(139, 0, 0, 0.03)',
                     borderRadius: '16px',
