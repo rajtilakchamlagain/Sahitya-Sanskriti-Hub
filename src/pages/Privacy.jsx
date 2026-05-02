@@ -14,8 +14,9 @@ const Privacy = () => {
             title: "Information We Collect",
             content: "We believe in privacy by default. You do not need an account to read stories or poems. However, to enhance your experience, we may collect:",
             bullets: [
-                "Usage Analytics: Anonymous, aggregated data via Vercel Analytics to help us understand which literary pieces resonate most with our readers.",
-                "Interaction Data: When you choose to Comment or Like, this data is stored securely but is not permanently linked to a personal tracking profile unless you provide your name.",
+                "Usage Analytics: Anonymous, aggregated data via Vercel and Umami Analytics to help us understand which literary pieces and search topics resonate most with our readers.",
+                "Tribute Interactions: On special sections (e.g., Zubeen Garg Hub), we track 'Likes' and 'Shares' to display global engagement counters. This data is fully anonymized and not linked to individual identities.",
+                "Multilingual pSEO: Our reach expansion system utilizes non-tracking landing pages to serve content in regional languages (Assamese, Hindi) without capturing user-specific identifiers.",
                 "Push Notifications: Device tokens are securely managed by OneSignal if you explicitly opt-in to receive alerts for new releases."
             ]
         },
@@ -101,7 +102,7 @@ const Privacy = () => {
                     }}>
                         Transparency, Security, and Respect for the Reader.
                         <br />
-                        <span style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px', display: 'block' }}>Last Updated: March 2026</span>
+                        <span style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px', display: 'block' }}>Last Updated: April 19, 2026</span>
                     </p>
                 </div>
             </div>

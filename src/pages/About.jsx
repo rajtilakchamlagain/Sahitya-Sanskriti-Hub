@@ -65,7 +65,7 @@ const About = () => {
                             gap: '12px'
                         }}>
                             <BookOpen size={24} color="var(--accent-gold)" />
-                            Our Mission
+                            The Hub's Mission
                         </h3>
                         <p style={{ fontSize: '16px', lineHeight: '1.8', color: '#444', marginBottom: '16px' }}>
                             <strong>SahityaSanskritiHub</strong> is a digital sanctuary for literature, culture, and human values. In an era of fleeting digital noise, we strive to offer content that pauses time, provokes thought, and touches the soul.
@@ -74,7 +74,7 @@ const About = () => {
 
                     <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, var(--accent-gold), transparent)', opacity: 0.3, margin: '40px 0' }}></div>
 
-                    {/* Author Section */}
+                    {/* Community Section */}
                     <div>
                         <h3 style={{
                             fontFamily: 'var(--font-heading)',
@@ -86,43 +86,22 @@ const About = () => {
                             gap: '12px'
                         }}>
                             <Award size={24} color="var(--accent-gold)" />
-                            The Curator
+                            The Community
                         </h3>
 
                         <div style={{
                             display: 'flex',
-                            flexDirection: 'column', // Stack on mobile
+                            flexDirection: 'column',
                             gap: '24px',
                             alignItems: 'center',
                             textAlign: 'center'
                         }}>
-                            <div style={{
-                                width: '120px',
-                                height: '120px',
-                                borderRadius: '50%',
-                                padding: '4px',
-                                background: 'linear-gradient(45deg, var(--primary-maroon), var(--accent-gold))'
-                            }}>
-                                <img src="/profile.jpg" alt="Dr. Tilak Sarmah" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', border: '4px solid white' }} />
-                            </div>
-
                             <div>
-                                <h4 style={{ fontSize: '20px', marginBottom: '8px', color: 'var(--text-charcoal)' }}>Dr. Tilak Sarmah</h4>
-                                <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '16px', letterSpacing: '1px', textTransform: 'uppercase' }}>Distinguished Scholar & Writer</p>
+                                <h4 style={{ fontSize: '20px', marginBottom: '8px', color: 'var(--text-charcoal)' }}>A Collective Vision</h4>
+                                <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '16px', letterSpacing: '1px', textTransform: 'uppercase' }}>Identity through Literature</p>
                                 <p style={{ fontSize: '16px', lineHeight: '1.7', color: '#555' }}>
-                                    Passionate about Indian literature and social values. With a deep love for both Hindi and Nepali literature, his works explore themes of human resilience, nature, and the subtle emotions of daily life.
+                                    We are passionate about Indian literature and social values. Our platform explores themes of human resilience, nature, and the subtle emotions of daily life. Through the collective voice of our contributors, we aim to preserve and celebrate our shared cultural heritage.
                                 </p>
-
-                                {/* Signature Look */}
-                                <div style={{
-                                    marginTop: '24px',
-                                    fontFamily: 'cursive',
-                                    fontSize: '24px',
-                                    color: 'var(--primary-maroon)',
-                                    opacity: 0.8
-                                }}>
-                                    Tilak Sarmah
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -12,6 +12,8 @@ import HistoryWidget from '../components/HistoryWidget' // Added [NEW]
 import ResearchWidget from '../components/ResearchWidget' // Added [NEW]
 import SubscribeSection from '../components/SubscribeSection' // Added
 import ShradhanjaliBanner from '../components/ShradhanjaliBanner'
+import DiscoveryConsole from '../components/DiscoveryConsole'
+import ZubeenBanner from '../components/ZubeenBanner' // [NEW] Premium Section
 
 const Home = () => {
     return (
@@ -44,14 +46,9 @@ const Home = () => {
                                 </h2>
                                 <p className="hero-subtitle">
                                     "A curated space for poetry, culture, and reflections rooted in Himalayan heritage and modern thought."
-                                    <br />
-                                    <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-light)', marginTop: '8px', display: 'block' }}>
-                                        Explore the literary works of Dr. Tilak Sarmah.
-                                    </span>
                                 </p>
-                                <Link to="/nepali-sahitya" className="btn-premium">
-                                    सुरु गर्नुहोस् (Start Reading) <ArrowRight size={20} />
-                                </Link>
+                                
+                                <DiscoveryConsole />
                             </div>
                         </section>
 
@@ -75,6 +72,9 @@ const Home = () => {
                                 ))}
                             </div>
                         </div>
+
+                        {/* [NEW] Premium Zubeen Garg Feature */}
+                        <ZubeenBanner />
 
                         <div className="grid-item-shradhanjali">
                             <ShradhanjaliBanner />

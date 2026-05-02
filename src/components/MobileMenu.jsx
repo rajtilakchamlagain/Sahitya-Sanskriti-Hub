@@ -37,6 +37,7 @@ const MobileMenu = ({ isOpen, onClose }) => {
         { icon: PenTool, label: "Write For Us", path: "/write" }, // [NEW] SANSKRITI SANGAM
         { icon: BookOpen, label: "Study Materials", path: "/study" },
         { icon: Info, label: "About Dr. Sarmah", path: "/about" },
+        { icon: Star, label: "Zubeen Garg Tribute", path: "/zubeen-garg" }, // [NEW]
         { icon: Phone, label: "Contact & Feedback", path: "/contact" },
     ];
 

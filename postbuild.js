@@ -2,12 +2,18 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+// Import dynamic content for SEO generation
+import { articles } from './src/data/articles.js';
+import { poems } from './src/data/poems.js';
+import { stories } from './src/data/stories.js';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.join(__dirname, 'dist');
+const DOMAIN = 'https://sahityasanskriti.online';
 
-// Define the SEO configuration for each route
+// Define the SEO configuration for each static/pillar route
 const SEO_CONFIG = {
     '/nepali-sahitya': {
         title: 'नेपाली साहित्य | विस्तृत परिचय र विश्लेषण | Sahitya Sanskriti Hub',
@@ -23,27 +29,27 @@ const SEO_CONFIG = {
                 {
                     "@type": "Question",
                     "name": "नेपाली साहित्यका आदिकवि को हुन्?",
-                    "acceptedAnswer": { "@type": "Answer", "text": "नेपाली साहित्यका आदिकवि भानुभक्त आचार्य हुन्। उनले रामायणलाई नेपाली भाषामा अनुवाद गरेर ठूलो योगदान दिए。" }
+                    "acceptedAnswer": { "@type": "Answer", "text": "नेपाली साहित्यका आदिकवि भानुभक्त आचार्य हुन्। उनले रामायणलाई नेपाली भाषामा अनुवाद गरेर ठूलो योगदान दिए।" }
                 },
                 {
                     "@type": "Question",
                     "name": "'मुनामदन' कसको कृति हो?",
-                    "acceptedAnswer": { "@type": "Answer", "text": "'मुनामदन' महाकवि लक्ष्मीप्रसाद देवकोटा द्वारा रचित खण्डकाव्य हो, जुन नेपाली साहित्यको सबैभन्दा लोकप्रिय कृति मानिन्छ。" }
+                    "acceptedAnswer": { "@type": "Answer", "text": "'मुनामदन' महाकवि लक्ष्मीप्रसाद देवकोटा द्वारा रचित खण्डकाव्य हो, जुन नेपाली साहित्यको सबैभन्दा लोकप्रिय कृति मानिन्छ।" }
                 },
                 {
                     "@type": "Question",
                     "name": "गद्य र पद्य साहित्यमा के फरक छ?",
-                    "acceptedAnswer": { "@type": "Answer", "text": "लय र छन्दमा लेखिएको साहित्य 'पद्य' हो भने, व्याकरणिक संरचना र स्वतन्त्र प्रवाहमा लेखिएको साहित्य 'गद्य' हो。" }
+                    "acceptedAnswer": { "@type": "Answer", "text": "लय र छन्दमा लेखिएको साहित्य 'पद्य' हो भने, व्याकरणिक संरचना र स्वतन्त्र प्रवाहमा लेखिएको साहित्य 'गद्य' हो।" }
                 },
                 {
                     "@type": "Question",
                     "name": "आधुनिक नेपाली कथाका प्रवर्तक को हुन्?",
-                    "acceptedAnswer": { "@type": "Answer", "text": "आधुनिक नेपाली कथाका प्रवर्तक गुरुप्रसाद मैनाली हुन्। उनको 'नासो' कथासंग्रह अत्यन्त चर्चित छ。" }
+                    "acceptedAnswer": { "@type": "Answer", "text": "आधुनिक नेपाली कथाका प्रवर्तक गुरुप्रसाद मैनाली हुन्। उनको 'नासो' कथासंग्रह अत्यन्त चर्चित छ।" }
                 },
                 {
                     "@type": "Question",
                     "name": "नेपाली साहित्यको अध्ययन कसरी सुरु गर्ने?",
-                    "acceptedAnswer": { "@type": "Answer", "text": "सुरुवात गर्नका लागि मुनामदन, घुम्ने मेचमाथि अन्धो मान्छे, र नासो जस्ता सरल र उत्कृष्ट कृतिहरू पढ्नुहोस्。" }
+                    "acceptedAnswer": { "@type": "Answer", "text": "सुरुवात गर्नका लागि मुनामदन, घुम्ने मेचमाथि अन्धो मान्छे, र नासो जस्ता सरल र उत्कृष्ट कृतिहरू पढ्नुहोस्।" }
                 }
             ]
         }
@@ -215,27 +221,27 @@ const SEO_CONFIG = {
                 {
                     "@type": "Question",
                     "name": "क्या नेपाली और हिंदी साहित्य में समानता है?",
-                    "acceptedAnswer": { "@type": "Answer", "text": "जी हाँ, दोनों भाषाओं की लिपि देवनागरी है और व्याकरण में भी काफी समानता है। प्रेमचंद और समकालीन नेपाली साहित्यकारों के लेखन में सामाजिक यथार्थवाद का समान प्रभाव देखा जा सकता है。" }
+                    "acceptedAnswer": { "@type": "Answer", "text": "जी हाँ, दोनों भाषाओं की लिपि देवनागरी है और व्याकरण में भी काफी समानता है। प्रेमचंद और समकालीन नेपाली साहित्यकारों के लेखन में सामाजिक यथार्थवाद का समान प्रभाव देखा जा सकता है।" }
                 },
                 {
                     "@type": "Question",
                     "name": "हिंदी पाठकों के लिए सर्वश्रेष्ठ नेपाली पुस्तक कौन सी है?",
-                    "acceptedAnswer": { "@type": "Answer", "text": "महाकवि देवकोटा की 'मुनामदन' सबसे लोकप्रिय है। इसका हिंदी अनुवाद आसानी से उपलब्ध है और यह प्रेम और त्याग की एक अद्भुत गाथा है。" }
+                    "acceptedAnswer": { "@type": "Answer", "text": "महाकवि देवकोटा की 'मुनामदन' सबसे लोकप्रिय है। इसका हिंदी अनुवाद आसानी से उपलब्ध है और यह प्रेम और त्याग की एक अद्भुत गाथा है।" }
                 },
                 {
                     "@type": "Question",
                     "name": "नेपाली साहित्य के 'शेक्सपियर' किसे कहा जाता है?",
-                    "acceptedAnswer": { "@type": "Answer", "text": "लक्ष्मीप्रसाद देवकोटा को उनकी बहुमुखी प्रतिभा के कारण अक्सर यह उपाधि दी जाती है। उन्होंने महाकाव्य, खंडकाव्य, निबंध और नाटक सभी विधाओं में उत्कृष्ट रचनाएँ की हैं。" }
+                    "acceptedAnswer": { "@type": "Answer", "text": "लक्ष्मीप्रसाद देवकोटा को उनकी बहुमुखी प्रतिभा के कारण अक्सर यह उपाधि दी जाती है। उन्होंने महाकाव्य, खंडकाव्य, निबंध और नाटक सभी विधाओं में उत्कृष्ट रचनाएँ की हैं।" }
                 },
                 {
                     "@type": "Question",
                     "name": "भारत में नेपाली साहित्य की क्या स्थिति है?",
-                    "acceptedAnswer": { "@type": "Answer", "text": "नेपाली भारत की आठवीं अनुसूची में शामिल 22 भाषाओं में से एक है। दार्जिलिंग, सिक्किम और असम में नेपाली साहित्य का एक बहुत बड़ा और समृद्ध इतिहास रहा है。" }
+                    "acceptedAnswer": { "@type": "Answer", "text": "नेपाली भारत की आठवीं अनुसूची में शामिल 22 भाषाओं में से एक है। दार्जिलिंग, सिक्किम और असम में नेपाली साहित्य का एक बहुत बड़ा और समृद्ध इतिहास रहा है।" }
                 },
                 {
                     "@type": "Question",
                     "name": "डॉ. तिलक सरमाह का मुख्य शोध कार्य क्या है?",
-                    "acceptedAnswer": { "@type": "Answer", "text": "डॉ. सरमाह ने असमिया और नेपाली लोक-संस्कृति के तुलनात्मक अध्ययन पर काम किया है। उनकी कविताएँ पूर्वोत्तर भारत की साझी विरासत को दर्शाती हैं。" }
+                    "acceptedAnswer": { "@type": "Answer", "text": "डॉ. सरमाह ने असमिया और नेपाली लोक-संस्कृति के तुलनात्मक अध्ययन पर काम किया है। उनकी कविताएँ पूर्वोत्तर भारत की साझी विरासत को दर्शाती हैं।" }
                 }
             ]
         }
@@ -315,7 +321,29 @@ const SEO_CONFIG = {
                 }
             ]
         }
+    },
+    '/zubeen-garg': {
+        title: 'Zubeen Garg: The Life Journey of a Legend | Sahitya Sanskriti',
+        description: 'Explore the life, music, and epic legacy of the legendary Zubeen Garg. A cinematic journey through the soul of a Yug Purush.',
+        keywords: 'Zubeen Garg, Life History, Assamese Music, Zubeen Garg Biography, Yug Purush',
+        image: '/images/zubeen_epic.png',
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Zubeen Garg: The Life Journey of a Legend",
+            "description": "Explore the life, music, and epic legacy of Zubeen Garg.",
+            "author": { "@type": "Person", "name": "Sahitya Sanskriti Hub" }
+        }
     }
+};
+
+// Simple text cleaner to remove HTML tags and truncate for metadescriptions
+const cleanExcerpt = (html, maxLength = 160) => {
+    let text = html.replace(/<[^>]+>/g, '').trim().replace(/\\s+/g, ' ');
+    if (text.length > maxLength) {
+        text = text.substring(0, maxLength) + '...';
+    }
+    return text;
 };
 
 async function injectSEO() {
@@ -325,27 +353,33 @@ async function injectSEO() {
     }
 
     const template = fs.readFileSync(path.join(DIST_DIR, 'index.html'), 'utf-8');
+    const allUrlsForSitemap = [];
 
-    for (const [route, config] of Object.entries(SEO_CONFIG)) {
+    // Helper to write static files
+    const writeFile = (route, config) => {
         console.log(`Processing ${route}...`);
+        allUrlsForSitemap.push(route);
 
-        // Prepare Directory
-        const routeDir = path.join(DIST_DIR, route.substring(1)); // remove leading slash
-        // Handle nested paths (e.g. /hi/nepali-sahitya)
+        const routeDir = path.join(DIST_DIR, route.substring(1));
         fs.mkdirSync(routeDir, { recursive: true });
 
-        // Inject Metadata
         let html = template;
 
         // 1. Replace Title
         html = html.replace(/<title>.*?<\/title>/, `<title>${config.title}</title>`);
 
-        // 2. Replace Description (if exists, or inject)
+        // 2. Replace Description
+        const cleanDesc = config.description ? config.description.replace(/"/g, '&quot;') : '';
         if (html.includes('<meta name="description"')) {
-            html = html.replace(/<meta name="description" content=".*?"/, `<meta name="description" content="${config.description}"`);
+            html = html.replace(/<meta name="description" content=".*?"/, `<meta name="description" content="${cleanDesc}"`);
         } else {
-            html = html.replace('</head>', `<meta name="description" content="${config.description}">\n</head>`);
+            html = html.replace('</head>', `<meta name="description" content="${cleanDesc}">\n</head>`);
         }
+
+        // Add additional meta tags (og:title, og:image) for better reach
+        if(config.title) html = html.replace('</head>', `<meta property="og:title" content="${config.title}">\n</head>`);
+        if(config.description) html = html.replace('</head>', `<meta property="og:description" content="${cleanDesc}">\n</head>`);
+        if(config.image) html = html.replace('</head>', `<meta property="og:image" content="${config.image}">\n</head>`);
 
         // 3. Inject JSON-LD Schema
         if (config.schema) {
@@ -354,31 +388,224 @@ async function injectSEO() {
         }
 
         // 4. Inject Canonical
-        const canonicalTag = `<link rel="canonical" href="https://sahityasanskriti.online${route}" />`;
+        const canonicalTag = `<link rel="canonical" href="${DOMAIN}${route}" />`;
         html = html.replace('</head>', `${canonicalTag}\n</head>`);
 
-        // 5. Inject Hreflang Tags (Multilingual SEO)
-        // Set of alternates for the main literature pages
-        const alternates = [
-            { lang: "ne", href: "https://sahityasanskriti.online/nepali-sahitya" },
-            { lang: "hi", href: "https://sahityasanskriti.online/hi/nepali-sahitya" },
-            { lang: "as", href: "https://sahityasanskriti.online/as/nepali-sahitya" },
-            { lang: "en", href: "https://sahityasanskriti.online/en/nepali-literature" },
-            { lang: "x-default", href: "https://sahityasanskriti.online/nepali-sahitya" }
-        ];
-
-        // Only inject alternates for relevant pages (the main pillar group)
-        if (['/nepali-sahitya', '/hi/nepali-sahitya', '/as/nepali-sahitya', '/en/nepali-literature'].includes(route)) {
-            const hreflangTags = alternates.map(alt =>
-                `<link rel="alternate" hreflang="${alt.lang}" href="${alt.href}" />`
-            ).join('\n');
-            html = html.replace('</head>', `${hreflangTags}\n</head>`);
-        }
-
-        // Write index.html for this route
+        // Write index.html
         fs.writeFileSync(path.join(routeDir, 'index.html'), html);
-        console.log(`✅ Generated static HTML for ${route}`);
+    };
+
+    // 1. Process Static SEO Config
+    for (const [route, config] of Object.entries(SEO_CONFIG)) {
+        writeFile(route, config);
     }
+
+    // 2. Dynamic Articles Pre-rendering
+    articles.forEach(article => {
+        writeFile(`/article/${article.id}`, {
+            title: `${article.title} | Sahitya Sanskriti`,
+            description: article.excerpt || cleanExcerpt(article.content),
+            image: article.image,
+            schema: {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": article.title,
+                "description": article.excerpt,
+                "author": { "@type": "Person", "name": article.author }
+            }
+        });
+    });
+
+    // 3. Dynamic Poems Pre-rendering
+    poems.forEach(poem => {
+        writeFile(`/poem/${poem.id}`, {
+            title: `${poem.title} | Nepali Kavita`,
+            description: `नेपाली कविता - ${poem.title}. ${cleanExcerpt(poem.excerpt, 120)}`,
+            image: poem.image,
+            schema: {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": poem.title,
+                "author": { "@type": "Person", "name": poem.author }
+            }
+        });
+    });
+
+    // 4. Dynamic Stories Pre-rendering
+    stories.forEach(story => {
+        writeFile(`/story/${story.id}`, {
+            title: `${story.title} | Nepali Literature`,
+            description: story.excerpt || cleanExcerpt(story.content),
+            image: story.image,
+            schema: {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": story.title,
+                "author": { "@type": "Person", "name": story.author }
+            }
+        });
+    });
+
+    // 5. Build pSEO (Programmatic SEO) Engine for 1000+ Keywords
+    console.log("🚀 Initializing Programmatic SEO Engine...");
+    let generatedKeywords = [];
+    
+    const slugify = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    
+    // Extract all source data
+    const allItems = [...articles, ...poems, ...stories];
+    const allTags = new Set();
+    const allTitles = [];
+    
+    allItems.forEach(item => {
+        if(item.tags) item.tags.forEach(t => allTags.add(t));
+        if(item.title) allTitles.push(item.title.split(' (')[0].trim()); // E.g., Strip "(एक दिन)"
+    });
+
+    // Generate Tag-based permutations (e.g., "Life", "Philosophy" -> "poems-about-life")
+    allTags.forEach(tag => {
+        const slug = slugify(tag);
+        if(!slug) return;
+        generatedKeywords.push(`nepali-literature-about-${slug}`);
+        generatedKeywords.push(`poems-about-${slug}`);
+        generatedKeywords.push(`nepali-articles-on-${slug}`);
+        generatedKeywords.push(`dr-tilak-sarmah-${slug}-collection`);
+    });
+
+    // Generate Title-based permutations
+    allTitles.forEach(title => {
+        const slug = slugify(title);
+        if(!slug) return;
+        generatedKeywords.push(`meaning-of-${slug}`);
+        generatedKeywords.push(`${slug}-summary-in-nepali`);
+        generatedKeywords.push(`${slug}-by-dr-tilak-sarmah`);
+        generatedKeywords.push(`analysis-of-${slug}`);
+        generatedKeywords.push(`read-${slug}-poem`);
+    });
+    
+    // Generic high-volume long-tails (Combinatorial Matrix for massive reach)
+    const themes = [
+        'life', 'love', 'nature', 'society', 'philosophy', 'sadness', 'inspiration', 
+        'mother', 'father', 'youth', 'himalayas', 'struggle', 'peace', 'spirituality', 
+        'devotion', 'time', 'memories', 'courage', 'hope', 'destiny', 'karma',
+        'friendship', 'childhood', 'death', 'truth', 'humanity', 'dreams', 'reality',
+        'wisdom', 'solitude', 'patriotism', 'freedom', 'education', 'teachers', 'art'
+    ];
+    
+    const intents = [
+        'best-nepali-poems-about', 
+        'meaningful-nepali-kavita-on', 
+        'dr-tilak-sarmah-quotes-about', 
+        'heart-touching-nepali-sahitya-on', 
+        'short-nepali-poems-about', 
+        'famous-nepali-literature-regarding',
+        'read-nepali-poetry-about',
+        'inspirational-nepali-lines-on',
+        'nepali-essay-and-article-on',
+        'deep-meaning-nepali-poems-for',
+        'analysis-of-nepali-literature-about',
+        'nepali-scholarly-articles-on',
+        'classic-nepali-literature-on',
+        'beautiful-nepali-art-about',
+        'nepali-quotes-and-kavita-for'
+    ];
+    
+    themes.forEach(theme => {
+        intents.forEach(intent => {
+            generatedKeywords.push(`${intent}-${theme}`);
+        });
+    });
+    
+    const specificLongTails = [
+        'best-nepali-poems-of-all-time', 'dr-tilak-sarmah-biography', 'nepali-sahitya-itihas',
+        'famous-nepali-kavita', 'assam-nepali-literature-history', 'nepali-poems-for-recitation',
+        'modern-nepali-poetry-analysis', 'himalayan-literature-collection', 'nepali-culture-and-society',
+        'nepali-poems-with-meaning', 'how-to-write-nepali-poem'
+    ];
+    generatedKeywords.push(...specificLongTails);
+
+    // --- NEW: Zubeen Garg Hyper-Matrix (500+ Combinations) ---
+    const zubeenCategories = [
+        'lifestyle', 'biography', 'home', 'family', 'net-worth', 'cars', 
+        'best-songs', 'hindi-songs', 'assamese-songs', 'first-album', 'anamika', 
+        'mission-china', 'kanchanjangha', 'directed-movies', 'early-life', 
+        'quotes', 'philosophy', 'concerts', 'awards', 'social-work', 'politics',
+        'struggle', 'success-story', 'interview', 'real-name', 'age', 'height'
+    ];
+    
+    const zubeenIntents = [
+        'everything-about-zubeen-garg', 'zubeen-garg-life-history-of', 'facts-about', 
+        'the-legacy-of', 'how-rich-is', 'latest-news-on', 'full-biography-of', 
+        'musical-journey-of', 'career-timeline-of', 'best-lines-by', 'why-is-he-called-yug-purush',
+        'unseen-photos-and-life-of', 'personal-details-of', 'the-lifestyle-of'
+    ];
+
+    zubeenCategories.forEach(cat => {
+        zubeenIntents.forEach(intent => {
+            generatedKeywords.push(`${intent}-${cat}`);
+            generatedKeywords.push(`zubeen-garg-${cat}`);
+        });
+    });
+
+    // --- NEW: Multilingual Reach (Hindi & Assamese) ---
+    const localizedPermutations = [
+        // Hindi (pSEO)
+        'जीवन-की-कविता', 'नेपाली-साहित्य-इतिहास', 'तिलक-सरमाह-की-जीवनी', 'महान-नेपाली-लेखक',
+        'जुबिन-गर्ग-की-जीवनी', 'जुबिन-गर्ग-की-जीवन-कहानी', 'जुबिन-गर्ग-का-जीवन',
+        // Assamese (pSEO)
+        'জুবিন-গাৰ্গৰ-জীৱনী', 'জুবিন-গাৰ্গৰ-জীৱন-কাহিনী', 'নেপালী-কবিতা-সংগ্ৰহ', 'ব্ৰহ্মপুত্ৰৰ-পাৰৰ-সাহিত্য'
+    ];
+    generatedKeywords.push(...localizedPermutations);
+
+    // Make unique and ensure we don't exceed a safe Vercel single-build limit
+    generatedKeywords = [...new Set(generatedKeywords)];
+    // Cap at 2000 to hit the 20x growth target safely
+    if(generatedKeywords.length > 2000) generatedKeywords = generatedKeywords.slice(0, 2000);
+    
+    console.log(`🧠 Extrapolated ${generatedKeywords.length} long-tail search intents.`);
+
+    // Write physical Pre-rendered files for pSEO
+    generatedKeywords.forEach(keyword => {
+        const displayTitle = keyword.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        
+        writeFile(`/explore/${keyword}`, {
+            title: `${displayTitle} | Sahitya Sanskriti Search`,
+            description: `Explore the curated collection from Dr. Tilak Sarmah's scholarly archive related to ${displayTitle}. Discover deep meanings and literary analysis.`,
+            schema: {
+                "@context": "https://schema.org",
+                "@type": "CollectionPage",
+                "headline": displayTitle,
+                "description": `Search archive results and curated literature for ${displayTitle}`
+            }
+        });
+    });
+
+    // 6. Add Root and Other Static Paths to Sitemap
+    const staticBaseRoutes = ['/', '/poems', '/articles', '/stories', '/shradhanjali', '/shradhanjali/yadumani-sharma', '/shradhanjali/dev-sharma-chapagai', '/about', '/contact', '/study', '/write', '/research', '/zubeen-garg'];
+    staticBaseRoutes.forEach(r => allUrlsForSitemap.push(r));
+
+    // Remove duplicates
+    const uniqueUrls = [...new Set(allUrlsForSitemap)];
+
+    console.log(`📝 Generating sitemap.xml with ${uniqueUrls.length} URLs...`);
+    
+    // Create sitemap.xml
+    const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${uniqueUrls.map(url => `  <url>\n    <loc>${DOMAIN}${url}</loc>\n    <changefreq>${url === '/' ? 'daily' : 'weekly'}</changefreq>\n    <priority>${url === '/' ? '1.0' : '0.8'}</priority>\n  </url>`).join('\n')}
+</urlset>`;
+
+    fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemapContent);
+    console.log("✅ sitemap.xml generated successfully.");
+
+    // Create robots.txt
+    const robotsContent = `User-agent: *
+Allow: /
+
+Sitemap: ${DOMAIN}/sitemap.xml
+`;
+    fs.writeFileSync(path.join(DIST_DIR, 'robots.txt'), robotsContent);
+    console.log("✅ robots.txt generated successfully.");
 }
 
 injectSEO();

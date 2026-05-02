@@ -15,6 +15,7 @@ const DesktopSidebar = () => {
         { icon: BookOpen, label: 'Research', path: '/research' }, // [NEW]
         { icon: PenTool, label: 'Submit Work', path: '/write' }, // [NEW] SANSKRITI SANGAM
         { icon: Youtube, label: 'Videos', path: 'https://youtube.com/@purbanchalkiawaz9384?si=JRemSKAE4NqrJgNr', isExternal: true },
+        { icon: User, label: 'Zubeen Garg', path: '/zubeen-garg' }, // [PREMIUM]
         { icon: BookOpen, label: 'Study', path: '/study' },
     ];
 

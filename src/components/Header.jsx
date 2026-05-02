@@ -1,9 +1,10 @@
-import { Search, User, Menu } from 'lucide-react'; // Added Menu
+import { Search, Menu } from 'lucide-react'; 
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import MobileMenu from './MobileMenu'; // Import the drawer
+import MobileMenu from './MobileMenu';
 import LanguageSwitcher from './LanguageSwitcher';
-import ThemeToggle from './ThemeToggle'; // [NEW]
+import ThemeToggle from './ThemeToggle';
+import NexusCore from './NexusCore';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -110,10 +111,12 @@ const Header = () => {
                     </Link>
                     <LanguageSwitcher />
                     <ThemeToggle />
+                    <NexusCore />
                 </div>
 
-                <div className="mobile-only" style={{ width: '40px', display: 'flex', justifyContent: 'flex-end' }}>
+                <div className="mobile-only" style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '8px' }}>
                     <ThemeToggle />
+                    <NexusCore />
                 </div>
             </header>
         </>

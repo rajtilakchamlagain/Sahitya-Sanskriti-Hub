@@ -44,6 +44,8 @@ const ModernNepaliKavita = lazy(() => import('./pages/seo/ModernNepaliKavita'));
 const ClassicalNepaliSahitya = lazy(() => import('./pages/seo/ClassicalNepaliSahitya'));
 const NepaliPoetsOverview = lazy(() => import('./pages/seo/NepaliPoetsOverview'));
 const NepaliLiteraryMovements = lazy(() => import('./pages/seo/NepaliLiteraryMovements'));
+const ExploreKeyword = lazy(() => import('./pages/ExploreKeyword')); // [NEW] pSEO Landing Page
+const ZubeenGargBiography = lazy(() => import('./pages/ZubeenGargBiography')); // [PREMIUM] Zubeen Garg
 
 function App() {
   const location = useLocation();
@@ -107,6 +109,9 @@ function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/privacy" element={<Privacy />} />
                     <Route path="/contact" element={<Contact />} />
+                    
+                    {/* [NEW] The Epic Hub for Zubeen Garg */}
+                    <Route path="/zubeen-garg" element={<ZubeenGargBiography />} />
 
                     {/* SEO Pillar Pages */}
                     {/* SEO Pillar Pages */}
@@ -130,6 +135,9 @@ function App() {
 
                     {/* Private Analytics */}
                     <Route path="/analytics" element={<AnalyticsDashboard />} />
+
+                    {/* pSEO Dynamic Destinations */}
+                    <Route path="/explore/:keyword" element={<ExploreKeyword />} />
                   </Routes>
                 </Suspense>
               </div>

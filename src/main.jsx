@@ -6,6 +6,7 @@ import './i18n'; // Initialize i18n
 import App from './App.jsx'
 import './index.css'
 import { ThemeProvider } from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
 
 import { Analytics } from '@vercel/analytics/react';
 
@@ -56,10 +57,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ErrorBoundary>
       <HelmetProvider>
         <BrowserRouter>
-          <ThemeProvider>
-            <App />
-            <Analytics />
-          </ThemeProvider>
+          <AuthProvider>
+            <ThemeProvider>
+              <App />
+              <Analytics />
+            </ThemeProvider>
+          </AuthProvider>
         </BrowserRouter>
       </HelmetProvider>
     </ErrorBoundary>

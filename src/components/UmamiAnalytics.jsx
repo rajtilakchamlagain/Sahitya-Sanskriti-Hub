@@ -6,16 +6,20 @@ import { useEffect } from 'react';
  */
 const UmamiAnalytics = () => {
     useEffect(() => {
-        const websiteId = import.meta.env.VITE_UMAMI_WEBSITE_ID;
+        // Hardcoded Website ID as requested
+        const websiteId = "cdf17d15-bd9e-4507-bd32-f15d1c974922";
         
-        // If the Key exists and the script hasn't been injected yet
-        if (websiteId && !document.querySelector('script[data-umami-script="true"]')) {
+        // If the script hasn't been injected yet
+        if (!document.querySelector('script[data-website-id="' + websiteId + '"]')) {
             const script = document.createElement('script');
             script.async = true; // Use async for zero render-blocking
             script.defer = true;
             script.src = 'https://cloud.umami.is/script.js';
             script.setAttribute('data-website-id', websiteId);
-            script.setAttribute('data-umami-script', 'true');
+            
+            // Only track live domain (filters out localhost/dev traffic)
+            script.setAttribute('data-domains', 'sahityasanskriti.online'); 
+            
             document.head.appendChild(script);
         }
     }, []);

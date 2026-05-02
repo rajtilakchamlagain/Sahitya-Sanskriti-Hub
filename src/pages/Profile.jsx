@@ -1,6 +1,17 @@
-import { Mail, Award, BookOpen, MapPin } from 'lucide-react';
+import { Mail, Award, BookOpen, MapPin, User as UserIcon } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const Profile = () => {
+    const { currentUser } = useAuth();
+    // Falls back to dummy data if user is not provided
+    const profileData = {
+        name: currentUser?.displayName || "Reader & Contributor",
+        title: currentUser?.email ? "Community Member" : "Guest Reader",
+        email: currentUser?.email || "Connect your account",
+        photoURL: currentUser?.photoURL || "/default-avatar.png",
+        location: "Planet Earth"
+    };
+
     return (
         <div style={{ paddingBottom: '100px' }}>
             {/* Profile Header */}
@@ -17,24 +28,29 @@ const Profile = () => {
                     margin: '0 auto 16px',
                     overflow: 'hidden',
                     border: '4px solid white',
-                    boxShadow: 'var(--shadow-soft)'
+                    boxShadow: 'var(--shadow-soft)',
+                    backgroundColor: '#f0f0f0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                 }}>
-                    <img src="/profile.jpg" alt="Dr. Tilak Sarmah" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    {currentUser?.photoURL ? (
+                        <img src={profileData.photoURL} alt={profileData.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    ) : (
+                        <UserIcon size={64} color="#ccc" />
+                    )}
                 </div>
 
                 <h1 style={{ fontSize: '24px', marginBottom: '8px', color: 'var(--primary-maroon)' }}>
-                    Dr. Tilak Sarmah
+                    {profileData.name}
                 </h1>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', color: 'var(--text-muted)', fontSize: '14px' }}>
                     <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                        <Award size={16} /> M.A., Ph.D.
+                        <Award size={16} /> {profileData.title}
                     </span>
                     <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                        <BookOpen size={16} /> Writer, Author & Assistant Professor
-                    </span>
-                    <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                        <MapPin size={16} /> Assam, India
+                        <MapPin size={16} /> {profileData.location}
                     </span>
                 </div>
             </div>
@@ -62,9 +78,9 @@ const Profile = () => {
                         <Mail size={24} />
                     </div>
                     <div>
-                        <h3 style={{ fontSize: '14px', marginBottom: '2px' }}>Get in Touch</h3>
+                        <h3 style={{ fontSize: '14px', marginBottom: '2px' }}>Identity</h3>
                         <p style={{ fontSize: '16px', fontWeight: 500, color: 'var(--primary-maroon)' }}>
-                            tilaksarmah@gmail.com
+                            {profileData.email}
                         </p>
                     </div>
                 </div>
@@ -72,7 +88,7 @@ const Profile = () => {
                 {/* About Section */}
                 <section style={{ marginBottom: '40px' }}>
                     <h2 style={{ fontSize: '20px', marginBottom: '16px', borderLeft: '4px solid var(--accent-gold)', paddingLeft: '12px' }}>
-                        About Me
+                        Community Status
                     </h2>
                     <div style={{
                         fontFamily: 'var(--font-heading)',
@@ -81,13 +97,10 @@ const Profile = () => {
                         color: 'var(--text-charcoal)'
                     }}>
                         <p style={{ marginBottom: '16px' }}>
-                            Dr. Tilak Sarmah is a distinguished scholar, author, and Assistant Professor based in Assam, India. With an M.A. and Ph.D. in Literature, his work bridges the gap between academic rigor and creative expression.
-                        </p>
-                        <p style={{ marginBottom: '16px' }}>
-                            Through <strong>SahityaSanskritiHub</strong>, Dr. Sarmah curates a digital archive of his literary contributions, research journals, and creative writings. This platform serves as a reflection of his enduring dialogue with society, culture, and the written word.
+                            Welcome to your personal identity portal on <strong>SahityaSanskritiHub</strong>. This is your space to manage your contributions, track your interactions, and engage with the global literary community.
                         </p>
                         <p>
-                            He invites you to explore this collection and share in the journey of preservation and creation.
+                            Start your journey by exploring stories, poems, and research or by submitting your own creative work to the hub.
                         </p>
                     </div>
                 </section>
@@ -98,3 +111,4 @@ const Profile = () => {
 };
 
 export default Profile;
+
