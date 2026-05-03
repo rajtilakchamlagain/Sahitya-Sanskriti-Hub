@@ -1,4 +1,4 @@
-import { X, Home, BookOpen, Feather, User, Info, Phone, Youtube, ChevronRight, FileText, PenTool, Sparkles } from 'lucide-react';
+import { X, Home, BookOpen, Feather, User, Info, Phone, Youtube, ChevronRight, FileText, PenTool, Sparkles, Star } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import LanguageSwitcher from './LanguageSwitcher';
 import ThemeToggle from './ThemeToggle';

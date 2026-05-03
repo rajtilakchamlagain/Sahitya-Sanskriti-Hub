@@ -27,3 +27,4 @@ dist-ssr
 .netlify
 
 .vercel
+.env*.local
