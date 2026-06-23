@@ -9,6 +9,7 @@ import PremiumShareCard from '../components/PremiumShareCard';
 import ContentContext from '../components/ContentContext';
 import RetentionLoop from '../components/RetentionLoop';
 import ReadingProgressBar from '../components/ReadingProgressBar'; // New Component
+import BackButton from '../components/BackButton';
 
 const StoryDetail = () => {
     const { id } = useParams();
@@ -43,23 +44,7 @@ const StoryDetail = () => {
                 }} />
 
                 {/* Back Button */}
-                <Link to="/" style={{
-                    position: 'absolute',
-                    top: '24px',
-                    left: '16px',
-                    backgroundColor: 'rgba(255,255,255,0.9)',
-                    padding: '8px 16px 8px 8px', // Adjusted padding for pill shape
-                    borderRadius: '50px', // Pill shape
-                    backdropFilter: 'blur(4px)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    textDecoration: 'none',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                }}>
-                    <ArrowLeft size={24} color="var(--text-charcoal)" />
-                    <img src="/logo.png?v=2" alt="Logo" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
-                </Link>
+                <BackButton />
             </div>
 
             <div className="container" style={{ marginTop: '-40px', position: 'relative', zIndex: 1, boxShadow: 'none' }}>

@@ -8,10 +8,14 @@ const MobileMenu = ({ isOpen, onClose }) => {
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
 
+    // Sync state before effect runs to avoid cascading renders
+    if (isOpen && !isVisible) {
+        setIsVisible(true);
+    }
+
     // Handle animation delay ensuring mount/unmount smoothness
     useEffect(() => {
         if (isOpen) {
-            setIsVisible(true);
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         } else {
             const timer = setTimeout(() => setIsVisible(false), 300); // Match transition duration
@@ -133,10 +137,10 @@ const MobileMenu = ({ isOpen, onClose }) => {
                 {/* Navigation Links */}
                 <div style={{ flex: 1, padding: '16px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                        {navLinks.map((link) => (
+                        {navLinks.map(({ icon: Icon, label, path }) => (
                             <button
-                                key={link.label}
-                                onClick={() => handleNavigation(link.path)}
+                                key={label}
+                                onClick={() => handleNavigation(path)}
                                 style={{
                                     display: 'flex',
                                     alignItems: 'center',
@@ -151,14 +155,14 @@ const MobileMenu = ({ isOpen, onClose }) => {
                                 onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(139, 0, 0, 0.04)'}
                                 onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                             >
-                                <link.icon size={20} color="var(--primary-maroon)" strokeWidth={1.5} />
+                                <Icon size={20} color="var(--primary-maroon)" strokeWidth={1.5} />
                                 <span style={{
                                     fontSize: '15px',
                                     fontWeight: 500,
                                     color: 'var(--text-main)',
                                     flex: 1
                                 }}>
-                                    {link.label}
+                                    {label}
                                 </span>
                                 <ChevronRight size={16} color="var(--text-light)" />
                             </button>

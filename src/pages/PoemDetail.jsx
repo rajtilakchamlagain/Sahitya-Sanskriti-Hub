@@ -9,6 +9,7 @@ import PremiumShareCard from '../components/PremiumShareCard';
 import RetentionLoop from '../components/RetentionLoop';
 import ContentContext from '../components/ContentContext';
 import RelatedPoems from '../components/RelatedPoems';
+import BackButton from '../components/BackButton';
 
 const PoemDetail = () => {
     const { id } = useParams();
@@ -47,6 +48,7 @@ const PoemDetail = () => {
             flexDirection: 'column',
             overflow: 'hidden' // Need this so background animations don't cause page scrollbars
         }}>
+            <BackButton />
             <script type="application/ld+json" dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
                     "@context": "https://schema.org",

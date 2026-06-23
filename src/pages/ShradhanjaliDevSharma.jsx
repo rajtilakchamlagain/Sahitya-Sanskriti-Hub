@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { BookOpen, MapPin, Calendar, Heart, Award, ArrowDown, Sparkles, GraduationCap, Briefcase, Users, Anchor } from 'lucide-react';
 import SEO from '../components/SEO';
+import BackButton from '../components/BackButton';
+import SocialShare from '../components/SocialShare';
 
 const ShradhanjaliDevSharma = () => {
     const sectionRefs = useRef([]);
+    const contentRef = useRef(null);
 
     useEffect(() => {
         const observerOptions = { threshold: 0.1, rootMargin: '0px' };
@@ -54,6 +57,7 @@ const ShradhanjaliDevSharma = () => {
             `}</style>
 
             <SEO title="श्रद्धाञ्जली: कृति शिक्षक देव शर्मा चापागाईं | Sahitya Sanskriti" />
+            <BackButton />
             <div className="glow-overlay" />
             
             <header className="hero-section">
@@ -64,7 +68,7 @@ const ShradhanjaliDevSharma = () => {
                 </div>
             </header>
 
-            <main className="main-layout">
+            <main className="main-layout" ref={contentRef}>
                 <aside className="reveal portrait-fixed" ref={el => sectionRefs.current[1] = el}>
                     <img src="/dev_sharma_tribute_portrait_1775849859980.png" alt="Dev Sharma Chapagai" className="portrait-image" />
                 </aside>
@@ -136,6 +140,10 @@ const ShradhanjaliDevSharma = () => {
                 <p style={{ fontStyle: 'italic', fontSize: '22px', opacity: 0.8 }}>“उहाँको आकस्मिक वियोगले अञ्चलमा सधैँ एउटा रिक्तता महसुस हुनेछ। शोकाकुल परिवारजनमा हार्दिक समवेदना।”</p>
                 <div className="shanti-text">ॐ शान्तिः शान्तिः शान्तिः।</div>
             </section>
+
+            <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '80px' }}>
+                <SocialShare elementRef={contentRef} title="श्रद्धाञ्जली: कृति शिक्षक देव शर्मा चापागाईं" />
+            </div>
         </div>
     );
 };

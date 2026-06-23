@@ -102,7 +102,7 @@ const Privacy = () => {
                     }}>
                         Transparency, Security, and Respect for the Reader.
                         <br />
-                        <span style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px', display: 'block' }}>Last Updated: April 19, 2026</span>
+                        <span style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px', display: 'block' }}>Last Updated: June 21, 2026</span>
                     </p>
                 </div>
             </div>

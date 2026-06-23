@@ -8,6 +8,7 @@ import CommentSection from '../components/CommentSection';
 import ReadingProgressBar from '../components/ReadingProgressBar';
 import ArticleShare from '../components/ArticleShare';
 import PremiumArticleShareCard from '../components/PremiumArticleShareCard'; // New Component
+import BackButton from '../components/BackButton';
 import { useEffect, useRef } from 'react';
 
 const ArticleDetail = () => {
@@ -54,22 +55,7 @@ const ArticleDetail = () => {
             <article className="container" style={{ maxWidth: '800px', margin: '0 auto', paddingTop: '20px' }}>
 
                 {/* Back Button */}
-                <button
-                    onClick={() => navigate(-1)}
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        marginBottom: '24px',
-                        color: 'var(--text-muted)',
-                        background: 'none',
-                        fontSize: '14px',
-                        padding: '8px 0',
-                        cursor: 'pointer'
-                    }}
-                >
-                    <ArrowLeft size={18} /> Back to Articles
-                </button>
+                <BackButton />
 
                 {/* Article Header */}
                 <header style={{ marginBottom: '32px' }}>

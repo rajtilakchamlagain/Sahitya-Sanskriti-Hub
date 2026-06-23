@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Music, MapPin, Calendar, Heart, Sparkles, Quote, Disc3 } from 'lucide-react';
+import { Music, MapPin, Calendar, Heart, Sparkles, Quote, Disc3, RefreshCw } from 'lucide-react';
 import SEO from '../components/SEO';
+import BackButton from '../components/BackButton';
+import SocialShare from '../components/SocialShare';
 
 const ShradhanjaliYadumani = () => {
     const sectionRefs = useRef([]);
+    const contentRef = useRef(null);
 
     useEffect(() => {
         const observerOptions = { threshold: 0.1, rootMargin: '0px' };
@@ -59,9 +62,11 @@ const ShradhanjaliYadumani = () => {
     return (
         <div className="shradhanjali-memorial">
             <SEO title="श्रद्धाञ्जली: कलाकार यदुमनि शर्मा | Sahitya Sanskriti" />
+            <BackButton />
             <style>{`
                 .shradhanjali-memorial { 
-                    background: #080808; 
+                    /* Lightened pure black to a warm, premium dark sepia/gold tone */
+                    background: #1c1611; 
                     color: #e0d0b0; 
                     font-family: 'var(--font-body)', 'serif'; 
                     overflow-x: hidden; 
@@ -74,30 +79,44 @@ const ShradhanjaliYadumani = () => {
                 /* The Glow overlay */
                 .glow-overlay { 
                     position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-                    background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 60%); 
+                    background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.12) 0%, transparent 60%); 
                     pointer-events: none; z-index: 1; 
                 }
                 
                 /* Typography (Fluid for Mobile) */
-                .fluid-text { font-size: clamp(17px, 2.5vw, 20px); line-height: 2.0; opacity: 0.9; margin-bottom: 24px; color: rgba(255,255,255,0.85); }
-                .fluid-heading { font-size: clamp(28px, 5vw, 48px); color: #D4AF37; font-family: 'var(--font-heading)', serif; margin-bottom: 20px; }
+                .fluid-text { font-size: clamp(17px, 2.5vw, 20px); line-height: 2.0; opacity: 0.9; margin-bottom: 24px; color: rgba(255,255,255,0.85); text-align: justify; }
+                .fluid-heading { font-size: clamp(28px, 5vw, 48px); color: #D4AF37; font-family: 'var(--font-heading)', serif; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
                 
                 /* Layout Containers */
                 .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
                 
                 /* Hero */
                 .hero-section { min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 100px 20px 40px; }
-                .hero-shloka { font-size: clamp(22px, 4vw, 32px); color: #D4AF37; max-width: 800px; margin-bottom: 20px; line-height: 1.8; font-style: italic; }
+                .hero-shloka { font-size: clamp(22px, 4vw, 32px); color: #D4AF37; max-width: 800px; margin-bottom: 20px; line-height: 1.8; font-style: italic; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
                 
                 /* Premium Glass Card */
                 .premium-card {
-                    background: rgba(255, 255, 255, 0.02);
+                    background: rgba(255, 255, 255, 0.03);
                     backdrop-filter: blur(16px);
                     border: 1px solid rgba(212, 175, 55, 0.15);
-                    border-radius: 30px;
+                    border-radius: 32px;
                     padding: clamp(30px, 6vw, 60px);
                     margin-bottom: 60px;
-                    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+                    box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+                }
+
+                /* Highlight Box for Extracted Quote */
+                .highlight-quote-box {
+                    background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(0,0,0,0.3));
+                    border-left: 4px solid #D4AF37;
+                    padding: 30px;
+                    border-radius: 0 20px 20px 0;
+                    margin: 40px 0;
+                    font-size: clamp(18px, 2.5vw, 22px);
+                    line-height: 1.8;
+                    font-style: italic;
+                    color: #D4AF37;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
                 }
 
                 /* Portrait */
@@ -110,7 +129,7 @@ const ShradhanjaliYadumani = () => {
 
                 /* Interactive Flip Cards (Treasure Map Style) */
                 .flip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; perspective: 1000px; }
-                .flip-card { background: transparent; height: 400px; perspective: 1000px; cursor: pointer; }
+                .flip-card { background: transparent; height: 420px; perspective: 1000px; cursor: pointer; }
                 .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; }
                 .flip-card:hover .flip-card-inner, .flip-card:active .flip-card-inner { transform: rotateY(180deg); }
                 
@@ -120,33 +139,54 @@ const ShradhanjaliYadumani = () => {
                     border: 1px solid rgba(212, 175, 55, 0.2);
                 }
                 .flip-card-front { 
-                    background: linear-gradient(145deg, rgba(30,30,30,0.8), rgba(15,15,15,0.9)); 
+                    background: linear-gradient(145deg, rgba(40,30,20,0.8), rgba(20,15,10,0.9)); 
                     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
                 }
                 .flip-card-back { 
-                    background: linear-gradient(145deg, rgba(212,175,55,0.1), rgba(10,10,10,0.95)); 
+                    background: linear-gradient(145deg, rgba(212,175,55,0.15), rgba(20,15,10,0.95)); 
                     transform: rotateY(180deg); 
                     border-color: #D4AF37;
                     align-items: flex-start; text-align: left; overflow-y: auto;
                 }
                 
-                .song-lyric { font-size: 18px; line-height: 1.8; font-style: italic; color: #e0d0b0; opacity: 0.8; white-space: pre-line; }
+                .song-lyric { font-size: 18px; line-height: 1.8; font-style: italic; color: #e0d0b0; opacity: 0.9; white-space: pre-line; margin-bottom: 20px; }
                 .song-meaning { font-size: 15px; line-height: 1.8; color: #fff; opacity: 0.9; text-align: justify; }
+
+                /* Premium Interaction Button on Card */
+                .flip-button {
+                    margin-top: auto;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                    background: rgba(212, 175, 55, 0.1);
+                    border: 1px solid rgba(212, 175, 55, 0.5);
+                    color: #D4AF37;
+                    padding: 10px 20px;
+                    border-radius: 30px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    animation: buttonPulse 2s infinite;
+                }
+
+                @keyframes buttonPulse {
+                    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+                    70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+                }
 
                 /* Signature Block */
                 .signature-block { text-align: right; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(212,175,55,0.2); }
                 .signature-text { color: #D4AF37; font-size: clamp(20px, 3vw, 28px); font-family: 'var(--font-heading)', serif; font-style: italic; }
-                
-                /* Hint Text */
-                .interaction-hint { text-align: center; color: #D4AF37; opacity: 0.6; font-size: 14px; margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; animation: pulse 2s infinite; }
-                @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; } }
             `}</style>
 
             <div className="glow-overlay" />
             
             <header className="hero-section">
                 <div className="reveal" ref={el => sectionRefs.current[0] = el}>
-                    <Sparkles size={48} color="#D4AF37" style={{ marginBottom: '30px' }} />
+                    <Sparkles size={48} color="#D4AF37" style={{ margin: '0 auto 30px' }} />
                     <p className="hero-shloka">“कालचक्रं यथा नित्यं, भ्रमते न निवर्तते।<br />तथा जीवनमृत्युभ्यां, लोकः सर्वः प्रवर्तते॥”</p>
                     <p style={{ opacity: 0.7, fontSize: 'clamp(16px, 2vw, 20px)', maxWidth: '700px', margin: '20px auto', lineHeight: '1.8' }}>
                         - जसरी कालचक्र सधैं घुमिरहन्छ र कहिल्यै रोकिँदैन, त्यसरी नै जीवन र मृत्युको चक्र संसारमा चलिरहन्छ।
@@ -154,25 +194,25 @@ const ShradhanjaliYadumani = () => {
                 </div>
             </header>
 
-            <div className="content-wrapper">
+            <div className="content-wrapper" ref={contentRef}>
                 {/* Intro Section */}
                 <section className="reveal premium-card" ref={el => sectionRefs.current[1] = el}>
                     <div className="portrait-wrap">
                         <img src="/shradhanjali_tribute_portrait_1775849567109.png" alt="Yadumani Sharma" className="portrait-img" />
                         <h1 className="fluid-heading">कलाकार यदुमनि शर्मा</h1>
-                        <p style={{ fontSize: '18px', color: '#a0a090', letterSpacing: '4px' }}>एक सम्झना</p>
+                        <p style={{ fontSize: '18px', color: '#a0a090', letterSpacing: '4px', textTransform: 'uppercase' }}>एक सम्झना</p>
                     </div>
 
                     <div className="fluid-text">
-                        <p>असमे गोर्खा समाजका विशिष्ट व्यक्तित्व यदुमनि शर्मा हाम्रो समाजमा परिचित नाम हो। सानैदेखि संगीत साहित्य आदि क्षेत्रमा रुचि राख्ने यदुमानी शर्मा सन् १९७५ मा पि यु परीक्षा पास गरिसकेपछि सांस्कृतिक क्षेत्रमा आफ्नो योगदान अघि बढाउँछन्। गहपुर क्षेत्रमा नेपाली समाजमा गोर्खाली संस्कृतिलाई गीत र संस्कृतिका विभिन्न कार्यक्रम गराएर सामाजिक सांस्कृतिक भावना जगाएका छन्।</p>
+                        <p>असमे गोर्खा समाजका विशिष्ट व्यक्तित्व यदुमनि शर्मा हाम्रो समाजमा परिचित नाम हो। सानैदेखि संगीत साहित्य आदि क्षेत्रमा रुचि राख्ने यदुमनि शर्मा सन् १९७५ मा पि यु परीक्षा पास गरिसकेपछि सांस्कृतिक क्षेत्रमा आफ्नो योगदान अघि बढाउँछन्। गहपुर क्षेत्रमा नेपाली समाजमा गोर्खाली संस्कृतिलाई गीत र संस्कृतिका विभिन्न कार्यक्रम गराएर सामाजिक सांस्कृतिक भावना जगाएका छन्।</p>
                         
                         <p>त्यसबेला देशमा असम आन्दोलनको सुरुवातको समय बृहत समाजसँग मिलेर बस्नुपर्ने त्यसको साथै आफ्नो सांस्कृतिक परिवेशलाई मलजल गर्ने क्षेत्रमा उनको योगदान उल्लेखनीय छ। गोर्खाली समाज संस्कृति भानु जयन्ती, देवकोटा जयन्ती, कटुवाल जयन्ती आदिका साथै विभिन्न चाडपर्वहरूमा सांस्कृतिक कार्यक्रम र गीत उत्सवादीले नै मलजल भएका छन्। हाम्रो चाडपर्व धर्मीय आस्था र परम्परा र हाम्रो संस्कृतिलाई छुट्याउन नसकिने एउटै खोलाको पानी भएर बगेको छ। उहाँले सिकाएका गीत नृत्यका साथै सांस्कृतिक कार्यक्रमहरू गाउँघरमा उहाँहरुकै नेतृत्वमा हुन्थ्यो भन्ने प्रसङ्ग भग्नी सेवा देवीले आफैं नाचेको कुरा उल्लेख गर्नुहुन्छ।</p>
 
-                        <p>यस क्षेत्रमा यदुमनी शर्माको गहपुर क्षेत्रमा उल्लेखनीय योगदान छ। उनले केवल नेपाली गीत मात्र होइन असमीया, हिन्दी, बङ्गाली विभिन्न भाषामा गीत गाएका छन्। विशेषगरी समर हजारीका, भुपेन हजारीका, हिरेन भट्टचार्य आदि आदिका गीतहरू मञ्चमा गाएर यदुमनि शर्माले कम उमेर मै स्वीकृति पाएका थिए।</p>
+                        <p>यस क्षेत्रमा यदुमनि शर्माको गहपुर क्षेत्रमा उल्लेखनीय योगदान छ। उनले केवल नेपाली गीत मात्र होइन असमीया, हिन्दी, बङ्गाली विभिन्न भाषामा गीत गाएका छन्। विशेषगरी समर हजारीका, भुपेन हजारीका, हिरेन भट्टचार्य आदि आदिका गीतहरू मञ्चमा गाएर यदुमनि शर्माले कम उमेर मै स्वीकृति पाएका थिए।</p>
 
                         <p>हामी साना थियौँ ताते ताते गर्दै गरेको बेलामा सन् १९७९ मा उनी अल इन्डिया रेडियो गुहाटीमा रेडियो आर्टिस्टको रुपमा स्वीकृति पाउँछन्। अल इन्डिया रेडियो गुहाटीको नेपाली सेक्सनका सेक्सन सहयोगी गंगा शर्माको सक्रियतामा त्यो विभाग चलिरहेको थियो। हामीले सानामा सुन्ने गर्थ्यो, अल इन्डिया रेडियो गुहाटीको पूर्वाञ्चल कार्यक्रममा ३. १५ बजे समयमा श्रुतिमधुर बाँसुरीको धुनले पूर्वाञ्चलका गोर्खालीहरू सुन्न धीरभइ रेडियो नजदिक बसी रहेका हुन्थे। त्यसबेला हामी सानै थियौं। गीत सुन्ने अर्को कुनै साधन थिएन। रेडियोमै सबै मानिस निर्भर थिए।</p>
 
-                        <p>असमका विभिन्न कलाकारहरूले दिएको योगदान भित्र यदुमनी शर्मा जस्ता प्रतिभाको योगदान यो समाजका लागि उल्लेखनीय छ।</p>
+                        <p>असमका विभिन्न कलाकारहरूले दिएको योगदान भित्र यदुमनि शर्मा जस्ता प्रतिभाको योगदान यो समाजका लागि उल्लेखनीय छ।</p>
                     </div>
                 </section>
 
@@ -181,7 +221,7 @@ const ShradhanjaliYadumani = () => {
                     <div style={{ textAlign: 'center', marginBottom: '50px' }}>
                         <Disc3 size={40} color="#D4AF37" style={{ margin: '0 auto 20px' }} />
                         <h2 className="fluid-heading">संगीतका मर्महरू</h2>
-                        <p className="interaction-hint">(टच गर्नुहोस् वा होभर गर्नुहोस्)</p>
+                        <p style={{ color: '#D4AF37', opacity: 0.8, fontSize: '16px', letterSpacing: '1px' }}>Flip the cards to reveal the profound meanings</p>
                     </div>
 
                     <div className="flip-grid">
@@ -193,11 +233,16 @@ const ShradhanjaliYadumani = () => {
                                         <Music size={24} color="#D4AF37" style={{ margin: '0 auto 20px' }} />
                                         <h3 style={{ color: '#D4AF37', fontSize: '22px', marginBottom: '20px', fontFamily: 'var(--font-heading)' }}>{song.title}</h3>
                                         <p className="song-lyric">"{song.lyrics}"</p>
+                                        
+                                        {/* Premium Visible Interaction Button */}
+                                        <div className="flip-button">
+                                            <RefreshCw size={16} /> View Meaning
+                                        </div>
                                     </div>
                                     
                                     {/* Back side - Meaning */}
                                     <div className="flip-card-back">
-                                        <Quote size={20} color="#D4AF37" style={{ marginBottom: '15px' }} />
+                                        <Quote size={20} color="#D4AF37" style={{ marginBottom: '15px', flexShrink: 0 }} />
                                         <p className="song-meaning">{song.meaning}</p>
                                     </div>
                                 </div>
@@ -212,11 +257,14 @@ const ShradhanjaliYadumani = () => {
                         <Heart size={36} color="#D4AF37" fill="rgba(212,175,55,0.2)" style={{ margin: '0 auto 15px' }} />
                         <h2 className="fluid-heading">एक आत्मीय साइनो</h2>
                     </div>
+
+                    {/* Extracted Highlight Quote Box */}
+                    <div className="highlight-quote-box">
+                        "कवि कलाकारहरूको भाव विचार केवल व्यक्तिको आवाज होइन हरेक व्यक्तिमा रहने सक्ने भावनाहरुको बाह्य प्रकाश हो। समाज प्रकृति सामाजिक व्यवस्था माया प्रेम सद्भाव पीडा व्यथा यौवन सबै विचारहरु कवि कलाकारहरुले पवित्र हृदयले व्यक्त गरेका हुन्छन्। यदुमनि शर्मा पनि त्यस्तै एकजना प्रेरणादायी कलाकार हुन्।"
+                    </div>
                     
                     <div className="fluid-text">
-                        <p>कवि कलाकारहरूको भाव विचार केवल व्यक्तिको आवाज होइन हरेक व्यक्तिमा रहने सक्ने भावनाहरुको वाह्य प्रकाश हो। समाज प्रकृति सामाजिक व्यवस्था माया प्रेम सद्भाव पीडा व्यथा यौवन सबै विचारहरु कवि कलाकारहरुले पवित्र हृदयले व्यक्त गरेका हुन्छन्। यदुमनि शर्मा पनि त्यस्तै एकजना प्रेरणादायी कलाकार हुन्।</p>
-                        
-                        <p>अब हाम्रो साइनो सम्पर्कको कुरो गर्नु हो भने हाम्रो सम्बन्ध गहपूर निवासी तिम्सिना परिवारकै भान्जी उमाकान्त तिम्सिनाकी छोरीसँग हाम्रो दाम्पत्य जीवन सुरु हुँदा यदुमनी शर्मा हाम्रा मामा ससुराको सम्बन्धमा गाँसिनुभएको छ। पहिला उहाँको गोगामुखमा बसोबास थियो। भेटघाट कम्ती थियो। जब गहपुरमा बस्न थाल्नुभयो तब वर्षमा दुई एकपल्ट भेट्ने मौका हुनथाल्यो। म उनीप्रति आग्रही पनि थिएँ। किनकि उनी एकजना विशिष्ट कलाकार हुनुहुन्छ कलाकारप्रति मेरो त्यसै झुकाउ पनि छ। गीत सुन्ने गुनगुनाउने बानी पनि छ।</p>
+                        <p>अब हाम्रो साइनो सम्पर्कको कुरो गर्नु हो भने हाम्रो सम्बन्ध गहपूर निवासी तिम्सिना परिवारकै भान्जी उमाकान्त तिम्सिनाकी छोरीसँग हाम्रो दाम्पत्य जीवन सुरु हुँदा यदुमनि शर्मा हाम्रा मामा ससुराको सम्बन्धमा गाँसिनुभएको छ। पहिला उहाँको गोगामुखमा बसोबास थियो। भेटघाट कम्ती थियो। जब गहपुरमा बस्न थाल्नुभयो तब वर्षमा दुई एकपल्ट भेट्ने मौका हुनथाल्यो। म उनीप्रति आग्रही पनि थिएँ। किनकि उनी एकजना विशिष्ट कलाकार हुनुहुन्छ कलाकारप्रति मेरो त्यसै झुकाउ पनि छ। गीत सुन्ने गुनगुनाउने बानी पनि छ।</p>
                         
                         <p>त्यसैले जब म ससुराल जान्छु त्यसबेला मामा ससुराको घरमा र काका ससुरा लिला तिम्सिनाको घरमा पनि पुग्छु नै। त्यहीमाथि ज्वाईंहरूलाई ससुराली मामा ससुरा भनेपछि दशैंमा जानुपर्ने हुन्छ नै। यो पनि एउटा खुसीको मुहुर्त नै हुन्थ्यो। जब म मामाको घरमा जान्थे उहाँ हार्मोनियम तबला गिटार घरमा सजाइरहेको हुन्थ्यो। उहाँहरुसँग सादरपूर्वक भेटघाटले खुसीको परिवेश बनिन्थ्यो। यति हुँदाहुँदै मेरो दृष्टि सजाएर राखिएको बाद्य बाजनातिरै पुग्दथ्यो। जब म हार्मोनियम खोलेर गुनगुनाउन थाल्थे, तब मामा ससुरा आएर सोध्नुहुन्थ्यो। अनि बसी बियालोमा विगतका गीतका प्रसङ्गहरु गर्नुहुन्थ्यो। उहाँले आफै हार्मोनियम बजाएर गीत गाउनुहुन्थ्यो। त्यसबेलाका गीतहरूको लय मिठास स्वाद छुट्टै छ। गीतहरूमा सालिनता छ शब्दहरूमा लय, अलङ्कार र अभिव्यञ्जना छ। म एक टक लागेर मुग्ध भई सुन्दथेँ। दशैंको टिको लाउने प्रसङ्ग त्यसबेला हामी भुलेका हुन्थ्यौ।</p>
                         
@@ -234,6 +282,10 @@ const ShradhanjaliYadumani = () => {
                         <div style={{ color: '#a0a090', fontSize: '16px', marginTop: '5px' }}>जामुगुडीहाट</div>
                     </div>
                 </section>
+
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '80px' }}>
+                    <SocialShare elementRef={contentRef} title="श्रद्धाञ्जली: कलाकार यदुमनि शर्मा" />
+                </div>
             </div>
         </div>
     );
