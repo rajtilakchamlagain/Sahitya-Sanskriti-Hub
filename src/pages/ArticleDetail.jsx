@@ -15,7 +15,7 @@ const ArticleDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const shareCardRef = useRef(null);
-    const article = articles.find(a => a.id === parseInt(id));
+    const article = articles.find(a => String(a.id) === String(id));
 
     useEffect(() => {
         window.scrollTo(0, 0);
