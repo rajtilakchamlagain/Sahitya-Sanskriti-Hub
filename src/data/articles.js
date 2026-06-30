@@ -177,7 +177,7 @@ export const articles = [
         author: "सङ्कलक/प्रस्तुतकर्ता",
         date: "June 21, 2026",
         readTime: "5 min read",
-        image: "/logo.png",
+        image: "/putali-rani.png",
         tags: ["Literature", "Poetry", "Haribhakta Katuwal", "Children Literature"]
     },
 ];
