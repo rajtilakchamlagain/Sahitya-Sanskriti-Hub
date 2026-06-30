@@ -5,6 +5,7 @@ import LikeButton from '../components/LikeButton';
 import SocialShare from '../components/SocialShare';
 import BackButton from '../components/BackButton';
 import ExpandableSection from '../components/ExpandableSection';
+import CommentSection from '../components/CommentSection';
 
 const ZubeenGargBiography = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -286,6 +287,10 @@ const ZubeenGargBiography = () => {
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
                          <SocialShare elementRef={contentRef} title="The Zubeen Garg Legend" />
                     </div>
+                </div>
+
+                <div style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '80px', paddingLeft: '20px', paddingRight: '20px' }}>
+                    <CommentSection id="zubeen-tribute-unique" collectionName="zubeen_tributes" />
                 </div>
 
             </div>

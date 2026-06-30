@@ -3,6 +3,8 @@ import { Music, MapPin, Calendar, Heart, Sparkles, Quote, Disc3, RefreshCw } fro
 import SEO from '../components/SEO';
 import BackButton from '../components/BackButton';
 import SocialShare from '../components/SocialShare';
+import LikeButton from '../components/LikeButton';
+import CommentSection from '../components/CommentSection';
 
 const ShradhanjaliYadumani = () => {
     const sectionRefs = useRef([]);
@@ -283,8 +285,13 @@ const ShradhanjaliYadumani = () => {
                     </div>
                 </section>
 
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '80px' }}>
+                <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '20px', marginBottom: '40px' }}>
+                    <LikeButton id="yadumani-sharma" collectionName="shradhanjali" />
                     <SocialShare elementRef={contentRef} title="श्रद्धाञ्जली: कलाकार यदुमनि शर्मा" />
+                </div>
+
+                <div style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '80px', paddingLeft: '20px', paddingRight: '20px' }}>
+                    <CommentSection id="yadumani-sharma" collectionName="shradhanjali" />
                 </div>
             </div>
         </div>

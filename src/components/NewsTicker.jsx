@@ -5,22 +5,22 @@ import { stories } from '../data/stories';
 import './NewsTicker.css';
 
 const NewsTicker = () => {
-    // Construct the live feed by taking the latest items from each category
-    const feedItems = [
+    const dynamicItems = [
         ...articles.slice(-4).map(a => ({ id: `a-${a.id}`, type: 'ARTICLE', title: a.title, link: `/article/${a.id}` })),
         ...poems.slice(-4).map(p => ({ id: `p-${p.id}`, type: 'POEM', title: p.title, link: `/poem/${p.id}` })),
         ...stories.slice(-4).map(s => ({ id: `s-${s.id}`, type: 'STORY', title: s.title, link: `/story/${s.id}` }))
     ];
 
-    // Shuffle them slightly or sort by some logic. Since we just want a mix, shuffling is good for a ticker.
-    // To keep it deterministic for React hydration (if SSG used later), we can sort by ID descending or just interleave them.
-    // Interleaving:
-    const mixedFeed = [];
-    for (let i = 0; i < 4; i++) {
-        if (feedItems[0 + i]) mixedFeed.push(feedItems[0 + i]); // Article
-        if (feedItems[4 + i]) mixedFeed.push(feedItems[4 + i]); // Poem
-        if (feedItems[8 + i]) mixedFeed.push(feedItems[8 + i]); // Story
-    }
+    const staticItems = [
+        { id: 'zubeen', type: 'FEATURED', title: 'Zubeen Garg Biography', link: '/zubeen' },
+        { id: 'shradhanjali', type: 'MEMORIAL', title: 'Shradhanjali: Dr. Dev Sharma & Yadumani Sarmah', link: '/shradhanjali' }
+    ];
+
+    // Interleave static items with dynamic items so they appear evenly
+    const mixedFeed = [...staticItems];
+    dynamicItems.forEach((item, i) => {
+        mixedFeed.splice(i * 2 + 1, 0, item);
+    });
 
     // A ticker needs enough items to fill the screen twice for a seamless loop.
     // If we don't have enough, we can duplicate the array.

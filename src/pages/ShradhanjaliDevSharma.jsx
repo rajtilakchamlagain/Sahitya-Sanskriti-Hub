@@ -3,6 +3,8 @@ import { BookOpen, MapPin, Calendar, Heart, Award, ArrowDown, Sparkles, Graduati
 import SEO from '../components/SEO';
 import BackButton from '../components/BackButton';
 import SocialShare from '../components/SocialShare';
+import LikeButton from '../components/LikeButton';
+import CommentSection from '../components/CommentSection';
 
 const ShradhanjaliDevSharma = () => {
     const sectionRefs = useRef([]);
@@ -141,8 +143,13 @@ const ShradhanjaliDevSharma = () => {
                 <div className="shanti-text">ॐ शान्तिः शान्तिः शान्तिः।</div>
             </section>
 
-            <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '80px' }}>
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '20px', marginBottom: '40px' }}>
+                <LikeButton id="dev-sharma" collectionName="shradhanjali" />
                 <SocialShare elementRef={contentRef} title="श्रद्धाञ्जली: कृति शिक्षक देव शर्मा चापागाईं" />
+            </div>
+
+            <div style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '80px', paddingLeft: '20px', paddingRight: '20px' }}>
+                <CommentSection id="dev-sharma" collectionName="shradhanjali" />
             </div>
         </div>
     );
