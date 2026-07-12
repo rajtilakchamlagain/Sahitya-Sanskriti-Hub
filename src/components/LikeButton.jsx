@@ -50,9 +50,9 @@ const LikeButton = ({ id, collectionName = 'poems' }) => {
         localStorage.setItem(localStorageKey, 'true');
 
         try {
-            await updateDoc(docRef, {
+            await setDoc(docRef, {
                 likes: increment(1)
-            });
+            }, { merge: true });
         } catch (error) {
             console.error("Error updating likes:", error);
             // Revert on failure
