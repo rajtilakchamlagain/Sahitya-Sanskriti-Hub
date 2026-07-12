@@ -185,7 +185,7 @@ export const articles = [
         tags: ["Literature", "Poetry", "Haribhakta Katuwal", "Children Literature"]
     },
     {
-        id: Date.now(), // Generate unique ID
+        id: 1783872980140, // Static unique ID
         title: "भारतको पहिलो हाइड्रोजन रेल : स्वच्छ, दिगो र हरित भविष्यतर्फको ऐतिहासिक यात्रा",
         excerpt: "भारतले रेल यातायातको इतिहासमा नयाँ अध्याय सुरु गर्दै १७ जुलाई २०२६ मा आफ्नो पहिलो हाइड्रोजन इन्धनबाट सञ्चालित रेल सञ्चालनमा ल्याउने तयारी गरेको छ।",
         content: `

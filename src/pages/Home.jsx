@@ -44,6 +44,30 @@ const Home = () => {
                                 <h2 className="hero-title">
                                     Welcome to Sahitya Sanskriti Hub
                                 </h2>
+                                <Link to={`/article/${articles[articles.length - 1].id}`} style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                    backgroundColor: 'rgba(139, 0, 0, 0.05)',
+                                    color: 'var(--primary-maroon)',
+                                    padding: '8px 16px',
+                                    borderRadius: '24px',
+                                    textDecoration: 'none',
+                                    fontWeight: '600',
+                                    fontSize: '14px',
+                                    marginTop: '8px',
+                                    marginBottom: '16px',
+                                    border: '1px solid rgba(139, 0, 0, 0.1)',
+                                    boxShadow: '0 4px 12px rgba(139, 0, 0, 0.05)',
+                                    transition: 'all 0.3s ease'
+                                }}
+                                onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 16px rgba(139, 0, 0, 0.1)'; }}
+                                onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(139, 0, 0, 0.05)'; }}
+                                >
+                                    <span style={{ backgroundColor: 'var(--primary-maroon)', color: 'white', padding: '3px 8px', borderRadius: '12px', fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.5px' }}>NEWLY ADDED</span>
+                                    <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '200px' }}>{articles[articles.length - 1].title}</span>
+                                    <ArrowRight size={16} />
+                                </Link>
                                 <p className="hero-subtitle">
                                     "A curated space for poetry, culture, and reflections rooted in Himalayan heritage and modern thought."
                                 </p>

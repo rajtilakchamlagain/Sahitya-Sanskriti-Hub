@@ -12,6 +12,7 @@ const NewsTicker = () => {
     ];
 
     const staticItems = [
+        { id: 'hydrogen-train', type: 'NEW', title: 'भारतको पहिलो हाइड्रोजन रेल (Recently added)', link: '/article/1783872980140' },
         { id: 'zubeen', type: 'FEATURED', title: 'Zubeen Garg Biography', link: '/zubeen' },
         { id: 'shradhanjali', type: 'MEMORIAL', title: 'Shradhanjali: Dr. Dev Sharma & Yadumani Sarmah', link: '/shradhanjali' }
     ];
