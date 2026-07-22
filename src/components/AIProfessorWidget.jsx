@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Sparkles, BookOpen, User, GraduationCap, ChevronLeft, Languages, Loader2 } from 'lucide-react';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-
+// Removed direct GoogleGenerativeAI import for security
 const AIProfessorWidget = ({ contextText = "", pageTitle = "" }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([
@@ -37,20 +36,6 @@ const AIProfessorWidget = ({ contextText = "", pageTitle = "" }) => {
         setMessages(newMessages);
         setInput('');
         setIsLoading(true);
-
-        const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-
-        if (!apiKey) {
-            setTimeout(() => {
-                setMessages([...newMessages, { 
-                    role: 'ai', 
-                    text: '⚠️ **सिस्टम अलर्ट (System Alert)**: मेरो एआई मष्तिष्क अहिले अफलाइन छ। मलाई सक्रिय गर्न वातावरणीय फाइल (.env.local) मा `VITE_GEMINI_API_KEY` राख्नुपर्छ।\n\n*(Admin: Please add your Gemini API Key to enable the live Professor).*' 
-                }]);
-                setIsLoading(false);
-            }, 1000);
-            return;
-        }
-
         try {
             // Construct System Instruction - Intellectual & Impressive Professor Style
             let systemInstruction = `You are an incredibly knowledgeable, highly respected Professor of Literature. 
@@ -65,33 +50,50 @@ CRITICAL LANGUAGE DEMAND: You MUST respond perfectly in ${chatLanguage}! Do not 
                 systemInstruction += `\n\nCONTEXT: The student is currently reading an article titled "${pageTitle}". Here is the raw text of the article for you to reference: """${contextText.substring(0, 1500)}""".`;
             }
 
-            // Init Official Google Native SDK
-            const genAI = new GoogleGenerativeAI(apiKey);
-            const model = genAI.getGenerativeModel({ 
-                model: "gemini-2.5-flash",
-                systemInstruction: systemInstruction 
-            });
-
             // Construct alternating Chat History 
             const history = messages.slice(1).map(msg => ({
                 role: msg.role === 'ai' ? 'model' : 'user',
                 parts: [{ text: msg.text }]
             }));
 
-            const chat = model.startChat({
-                history: history,
-                generationConfig: {
-                    temperature: 0.8,
-                    maxOutputTokens: 500,
-                }
+            // Call secure Vercel Serverless Function
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    history: history,
+                    message: userText,
+                    systemInstruction: systemInstruction
+                })
             });
 
-            // Stream beautifully via SDK
-            const result = await chat.sendMessageStream(userText);
+            if (!response.ok) {
+                if (response.status === 500) {
+                    const text = await response.text();
+                    if (text.includes('not configured')) {
+                        setMessages([...newMessages, { 
+                            role: 'ai', 
+                            text: '⚠️ **सिस्टम अलर्ट (System Alert)**: मेरो एआई मष्तिष्क अहिले अफलाइन छ। मलाई सक्रिय गर्न Vercel मा `GEMINI_API_KEY` राख्नुपर्छ।\n\n*(Admin: Please add your Gemini API Key to your Vercel Environment Variables).*' 
+                        }]);
+                        setIsLoading(false);
+                        return;
+                    }
+                }
+                throw new Error('Network response was not ok');
+            }
+
+            // Stream beautifully via Web Stream API
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
             let streamedText = "";
 
-            for await (const chunk of result.stream) {
-                const chunkText = chunk.text();
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                
+                const chunkText = decoder.decode(value, { stream: true });
                 streamedText += chunkText;
                 setMessages(prev => {
                     const updated = [...prev];
@@ -131,38 +133,27 @@ CRITICAL LANGUAGE DEMAND: You MUST respond perfectly in ${chatLanguage}! Do not 
         
         setChatLanguage(nextLanguage);
         setIsTranslating(true);
-        
-        const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-        if (!apiKey) {
-            setIsTranslating(false);
-            return;
-        }
-
         try {
-            const genAI = new GoogleGenerativeAI(apiKey);
-            // ENFORCE Strict JSON generation to bypass all conversation / markdown format blocks
-            const model = genAI.getGenerativeModel({ 
-                model: "gemini-2.5-flash",
-                generationConfig: { responseMimeType: "application/json" }
-            });
-
             const messagesToTranslate = messages.map((m, i) => ({ ...m, originalIndex: i }))
                                                 .filter(m => m.role === 'ai');
+                                                
+            // Call secure Vercel Serverless Function
+            const response = await fetch('/api/translate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    messagesToTranslate: messagesToTranslate.map(m => m.text),
+                    nextLanguage: nextLanguage
+                })
+            });
 
-            const textArray = messagesToTranslate.map(m => m.text);
-            
-            const prompt = `Translate this exact JSON array of strings into ${nextLanguage}. Return NOTHING ELSE but the structured JSON array. Array: ${JSON.stringify(textArray)}`;
-
-            const result = await model.generateContent(prompt);
-            let rawResponse = result.response.text().trim();
-            
-            // Bulletproof JSON extractor just in case Gemini hallucinates outside the MIME type
-            const match = rawResponse.match(/\[.*\]/s);
-            if (match) {
-                rawResponse = match[0];
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
 
-            const translatedArray = JSON.parse(rawResponse);
+            const translatedArray = await response.json();
 
             if (Array.isArray(translatedArray) && translatedArray.length === messagesToTranslate.length) {
                 setMessages(prev => {

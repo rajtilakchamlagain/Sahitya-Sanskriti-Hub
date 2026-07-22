@@ -1,58 +1,50 @@
-import axios from 'axios';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-export default async function handler(req, res) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method Not Allowed' });
+export const config = {
+  runtime: 'edge',
+};
+
+export default async function handler(req) {
+  if (req.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405 });
+  }
+
+  try {
+    const { messagesToTranslate, nextLanguage } = await req.json();
+    const apiKey = process.env.GEMINI_API_KEY;
+
+    if (!apiKey) {
+      return new Response('Gemini API key is not configured', { status: 500 });
     }
 
-    const { text, targetLang } = req.body;
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({
+      model: "gemini-2.5-flash",
+      generationConfig: { responseMimeType: "application/json" }
+    });
 
-    if (!text || !targetLang) {
-        return res.status(400).json({ error: 'Missing text or targetLang' });
+    const prompt = `Translate this exact JSON array of strings into ${nextLanguage}. Return NOTHING ELSE but the structured JSON array. Array: ${JSON.stringify(messagesToTranslate)}`;
+
+    const result = await model.generateContent(prompt);
+    let rawResponse = result.response.text().trim();
+
+    // Bulletproof JSON extractor just in case Gemini hallucinates outside the MIME type
+    const match = rawResponse.match(/\[.*\]/s);
+    if (match) {
+        rawResponse = match[0];
     }
 
-    // Placeholder for Environment Variable
-    const apiKey = process.env.AZURE_TRANSLATOR_KEY || 'PLACEHOLDER_KEY';
-    const region = process.env.AZURE_TRANSLATOR_REGION || 'global';
-    const endpoint = 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0';
+    return new Response(rawResponse, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-    // If key is missing/placeholder, return mock data for testing UI
-    if (apiKey === 'PLACEHOLDER_KEY' || !apiKey) {
-        console.warn('Using Mock Translation (No API Key found)');
-
-        // Mock logic to simulate translation "look"
-        const mockTranslated = Array.isArray(text)
-            ? text.map(t => `[${targetLang}] ${t}`)
-            : `[${targetLang}] ${text}`;
-
-        return res.status(200).json({
-            translations: Array.isArray(mockTranslated) ? mockTranslated : [mockTranslated],
-            isMock: true
-        });
-    }
-
-    try {
-        const response = await axios.post(
-            `${endpoint}&to=${targetLang}`,
-            text.map(t => ({ Text: t })),
-            {
-                headers: {
-                    'Ocp-Apim-Subscription-Key': apiKey,
-                    'Ocp-Apim-Subscription-Region': region,
-                    'Content-Type': 'application/json',
-                },
-            }
-        );
-
-        const translations = response.data.map(item => item.translations[0].text);
-
-        // Cache for 24 hours at the edge
-        res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate');
-
-        return res.status(200).json({ translations });
-
-    } catch (error) {
-        console.error('Translation Error:', error.response?.data || error.message);
-        return res.status(500).json({ error: 'Translation Failed' });
-    }
+  } catch (error) {
+    console.error("Translate API Error:", error);
+    return new Response(JSON.stringify({ error: 'Translation failed' }), { 
+      status: 500, 
+      headers: { 'Content-Type': 'application/json' } 
+    });
+  }
 }
