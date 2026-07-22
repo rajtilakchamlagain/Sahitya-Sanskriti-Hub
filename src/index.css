@@ -792,3 +792,34 @@ a {
   background-color: rgba(159, 18, 57, 0.05);
   border-color: var(--primary-maroon);
 }
+
+/* =========================================
+   100X COOLER EFFECTS
+   ========================================= */
+
+/* Custom Text Selection Highlight */
+::selection {
+  background: rgba(180, 83, 9, 0.3); /* Transparent Gold */
+  color: var(--primary-maroon);
+  text-shadow: 0 0 5px rgba(180, 83, 9, 0.2);
+}
+
+/* Pure CSS Golden Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(to right, #b45309, #f59e0b, #9f1239);
+  z-index: 999999;
+  width: 100%;
+  transform-origin: 0 50%;
+  animation: scroll-progress-anim linear;
+  animation-timeline: scroll(root);
+  box-shadow: 0 0 10px rgba(180, 83, 9, 0.5);
+}
+
+@keyframes scroll-progress-anim {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
