@@ -176,87 +176,77 @@ const ZubeenGargBiography = () => {
                     max-width: 800px;
                 }
 
+                /* ================= ZUBEEN DYNAMIC STYLING ================= */
                 .article-section {
                     margin-bottom: 80px;
-                }
-
-                .drop-cap::first-letter {
-                    font-size: 80px;
-                    float: left;
-                    margin-right: 15px;
-                    line-height: 60px;
-                    color: #8C7853;
-                    font-weight: bold;
-                    padding-top: 10px;
-                }
-
-                .article-text {
-                    font-size: 21px;
-                    line-height: 2.1;
-                    color: #333;
-                    margin-bottom: 30px;
-                    text-align: justify;
-                }
-
-                .section-title {
-                    font-size: 36px;
-                    color: #1A1A1A;
-                    margin-bottom: 30px;
-                    font-weight: 700;
-                    letter-spacing: -1px;
-                    display: flex;
-                    align-items: center;
-                    gap: 15px;
-                }
-
-                .poem-block {
-                    background: #fff;
-                    padding: 50px;
-                    border-radius: 16px;
-                    text-align: center;
-                    box-shadow: 0 15px 50px rgba(0,0,0,0.04);
-                    margin: 60px 0;
-                    border: 1px solid rgba(0,0,0,0.03);
-                }
-
-                .poem-line {
-                    font-size: 24px;
-                    color: #111;
-                    margin-bottom: 15px;
-                    font-style: italic;
+                    padding: 60px;
+                    border-radius: 20px;
+                    transition: all 0.5s ease;
+                    position: relative;
+                    overflow: hidden;
                 }
                 
-                .highlight-gold {
-                    color: #8C7853;
-                    font-weight: 700;
+                @media (max-width: 768px) {
+                    .article-section { padding: 30px 20px; }
                 }
 
-                .quote-pull {
-                    border-left: 4px solid #8C7853;
-                    padding: 30px 40px;
-                    margin: 60px 0;
-                    background: rgba(140, 120, 83, 0.05);
-                    font-size: 28px;
-                    line-height: 1.6;
-                    font-style: italic;
-                    color: #1A1A1A;
-                    border-radius: 0 16px 16px 0;
+                /* SECTION 1: THE ICON (Cinematic, Dark Royal) */
+                .theme-iconic {
+                    background: linear-gradient(145deg, #0a0a0a, #111424);
+                    color: #fff;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+                    border: 1px solid rgba(255,255,255,0.05);
+                }
+                .theme-iconic .section-title { color: #D4AF37; text-shadow: 0 0 20px rgba(212,175,55,0.3); }
+                .theme-iconic .article-text { color: #e0e0e0; }
+                .theme-iconic .drop-cap::first-letter { color: #D4AF37; text-shadow: 0 0 30px rgba(212,175,55,0.4); }
+                .theme-iconic .quote-pull { 
+                    background: rgba(212,175,55,0.05); 
+                    border-left-color: #D4AF37; 
+                    color: #fff; 
                 }
 
-                .book-list {
-                    list-style: none;
-                    padding: 0;
+                /* SECTION 2: EARLY LIFE (Nostalgic, Sepia, Earthy) */
+                .theme-nostalgic {
+                    background: #F4EEDD;
+                    background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.05"/%3E%3C/svg%3E');
+                    color: #2C1810;
+                    box-shadow: inset 0 0 50px rgba(140,120,83,0.1);
+                    border: 1px solid rgba(140,120,83,0.2);
                 }
+                .theme-nostalgic .section-title { color: #5C3A21; font-family: 'serif'; border-bottom: 2px solid rgba(92,58,33,0.2); padding-bottom: 15px; }
+                .theme-nostalgic .article-text { color: #3A2618; font-weight: 500; }
+                .theme-nostalgic .poem-block { background: rgba(255,255,255,0.4) !important; border-color: rgba(140,120,83,0.3) !important; }
+                .theme-nostalgic h3 { color: #5C3A21 !important; }
+                .theme-nostalgic .book-list li { color: #3A2618; border-color: rgba(92,58,33,0.1); }
 
-                .book-list li {
-                    font-size: 18px;
-                    padding: 15px 0;
-                    border-bottom: 1px solid rgba(0,0,0,0.05);
-                    color: #555;
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
+                /* SECTION 3: THE REBEL/ROCKSTAR (Edgy, High Contrast) */
+                .theme-rockstar {
+                    background: #000;
+                    color: #fff;
+                    position: relative;
+                    border: 1px solid rgba(255,51,102,0.2);
+                    box-shadow: 0 20px 80px rgba(255,51,102,0.1);
                 }
+                .theme-rockstar::before {
+                    content: '';
+                    position: absolute;
+                    top: 0; right: 0; width: 100%; height: 100%;
+                    background: radial-gradient(circle at 90% 10%, rgba(255,51,102,0.15) 0%, transparent 50%);
+                    pointer-events: none;
+                }
+                .theme-rockstar .section-title { color: #FF3366; text-transform: uppercase; font-family: 'sans-serif'; font-weight: 900; letter-spacing: 2px; }
+                .theme-rockstar .article-text { color: #ccc; }
+                .theme-rockstar .quote-pull {
+                    background: transparent;
+                    border-left-color: #FF3366;
+                    color: #fff;
+                    font-family: 'sans-serif';
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                }
+                
+                /* ================= END DYNAMIC STYLING ================= */
 
                 .footer-action {
                     text-align: center;
@@ -318,7 +308,7 @@ const ZubeenGargBiography = () => {
                         <div className="poem-line">युग युग अविरल गतिमा बग्ने स्वर्णिम युग पुरुष</div>
                     </div>
 
-                    <div className="article-section">
+                    <div className="article-section theme-iconic">
                         <h2 className="section-title">जुबिन गर्ग : एक परिचय</h2>
                         <p className="article-text drop-cap">
                             प्रकृति र करुणाका पूजारी जुबिन गर्ग सङ्गीत जगतका एकजना बहुमुखी साधक हुन्। भारतवर्षको सङ्गीत इतिहासमा भुपेन हाजिरीका पछि लामो समय गीत–सङ्गीतले आलोड़न ल्याउने कण्ठशिल्पी हुन् जुबिन गर्ग। दुबै व्यक्तित्व भारतीय सङ्गीतका युगान्तकारी शिल्पी हुन्। असमको सौभाग्य हो—यस्ता कालजयी कण्ठशिल्पी असममै जन्म लिएका छन्।
@@ -334,7 +324,7 @@ const ZubeenGargBiography = () => {
                         </p>
                     </div>
 
-                    <div className="article-section">
+                    <div className="article-section theme-nostalgic">
                         <h2 className="section-title">प्रारम्भिक जीवन र परिवार</h2>
                         <p className="article-text">
                             जुबिन गर्गको जन्म १८ नोभेम्बर १९७२ मा तुराको ब्राह्मण पारा (मेघालय) मा भएको हो। उनका पिताको नाम मोहिनी मोहन बरठाकुर र माताको नाम स्वर्गीय इलि बठाकुर। उनीहरूका तीन सन्तानमध्ये एकजना जुविन अनि दुई छोरी जङ्की र पामी बरठाकुर। मोहिनी बरठाकुरको प्रकृत घर शिवसागरको जाजी भन्ने ठाउँमा हो। हरियालीले भरिएको तुराको प्राकृतिक परिवेश मनोरम छ।
@@ -353,7 +343,7 @@ const ZubeenGargBiography = () => {
                         </div>
                     </div>
 
-                    <div className="article-section">
+                    <div className="article-section theme-rockstar">
                         <h2 className="section-title">शिक्षा र सांगीतिक यात्राको आरम्भ</h2>
                         <p className="article-text">
                             पिता जागिरका कारण जुबिन गर्गको बाल्यकाल असमको विभिन्न ठाउँमा बित्यो। तुरामा जन्मिएका जुबिनले बाल्यकालको पहिलो दुई वर्ष तेजपुरमा बिताए। त्यसपछि सन् १९७५ मा जोरहाट चिनामराको अंग्रेजी माध्यमको विद्यालय ‘कार्मेल’ मा भर्ना भए। पछि करिमगञ्जको सरकारी उच्च माध्यमिक विद्यालयमा पढे।

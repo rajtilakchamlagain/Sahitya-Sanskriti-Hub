@@ -36,7 +36,7 @@ const ShradhanjaliHub = () => {
             <SEO title="श्रद्धाञ्जली: हाम्रो गौरवमय स्मृति | Sahitya Sanskriti" />
             <style>{`
                 .shradhanjali-hub {
-                    background: #FAF9F6;
+                    background: #FDFAFC;
                     color: #2C2C2C;
                     min-height: 100vh;
                     padding: 100px 20px;
@@ -46,30 +46,31 @@ const ShradhanjaliHub = () => {
 
                 .hub-header {
                     text-align: center;
-                    margin-bottom: 100px;
+                    margin-bottom: 120px;
                     position: relative;
                     z-index: 2;
                 }
 
                 .hub-title {
-                    font-size: clamp(40px, 8vw, 72px);
+                    font-size: clamp(45px, 8vw, 80px);
                     color: #111;
                     margin-bottom: 25px;
-                    letter-spacing: -1px;
+                    letter-spacing: -2px;
                     font-weight: 700;
                 }
 
                 .hub-subtitle {
-                    font-size: 22px;
+                    font-size: 24px;
                     color: #555;
                     max-width: 800px;
                     margin: 0 auto;
                     line-height: 1.8;
+                    font-style: italic;
                 }
 
                 .portals-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
                     gap: 60px;
                     max-width: 1400px;
                     margin: 0 auto;
@@ -80,39 +81,42 @@ const ShradhanjaliHub = () => {
 
                 .portal-card {
                     background: #fff;
-                    border: 1px solid rgba(0,0,0,0.05);
-                    border-radius: 4px;
+                    border: 1px solid rgba(0,0,0,0.03);
+                    border-radius: 2px;
                     overflow: hidden;
                     text-decoration: none;
-                    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+                    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s ease;
                     position: relative;
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+                    box-shadow: 0 15px 40px rgba(0,0,0,0.04);
                     display: flex;
                     flex-direction: column;
                 }
 
                 .portal-card:hover {
-                    transform: translateY(-10px);
-                    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-                    border-color: rgba(140, 120, 83, 0.3);
+                    transform: translateY(-15px);
+                    box-shadow: 0 30px 60px rgba(140, 120, 83, 0.15);
+                    border-color: rgba(140, 120, 83, 0.2);
                 }
 
                 .portal-image-wrap {
-                    height: 450px;
+                    height: 500px;
                     overflow: hidden;
                     position: relative;
-                    background: #f5f5f5;
+                    background: #fdfdfd;
+                    padding: 15px;
                 }
 
                 .portal-image {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+                    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+                    filter: sepia(0.15) contrast(1.05);
                 }
 
                 .portal-card:hover .portal-image {
-                    transform: scale(1.05);
+                    transform: scale(1.03);
+                    filter: sepia(0) contrast(1.1);
                 }
 
                 .portal-info {
@@ -123,27 +127,30 @@ const ShradhanjaliHub = () => {
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
+                    border-top: 1px solid rgba(0,0,0,0.03);
                 }
 
                 .portal-role {
                     color: #8C7853;
                     font-size: 13px;
-                    letter-spacing: 3px;
+                    letter-spacing: 4px;
                     text-transform: uppercase;
-                    margin-bottom: 15px;
+                    margin-bottom: 20px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    gap: 10px;
+                    gap: 12px;
                     font-weight: 600;
+                    font-family: 'sans-serif';
                 }
 
                 .portal-name {
-                    font-size: 32px;
+                    font-size: 34px;
                     color: #111;
-                    margin-bottom: 20px;
-                    font-weight: 600;
+                    margin-bottom: 25px;
+                    font-weight: 700;
                     line-height: 1.3;
+                    letter-spacing: -0.5px;
                 }
 
                 .enter-btn {
@@ -151,16 +158,17 @@ const ShradhanjaliHub = () => {
                     align-items: center;
                     justify-content: center;
                     gap: 8px;
-                    color: #8C7853;
+                    color: #a0a0a0;
                     font-weight: bold;
                     transition: 0.3s;
                     text-transform: uppercase;
-                    font-size: 12px;
-                    letter-spacing: 1px;
+                    font-size: 13px;
+                    letter-spacing: 2px;
+                    font-family: 'sans-serif';
                 }
 
                 .portal-card:hover .enter-btn {
-                    color: #111;
+                    color: #8C7853;
                 }
             `}</style>
 
