@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ArticleCard = ({ article }) => {
     return (
-        <Link to={`/article/${article.id}`} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
+        <Link to={article.link || `/article/${article.id}`} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
             <div className="article-card">
                 {/* Image Section */}
                 <div className="article-card-image-wrapper">

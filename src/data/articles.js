@@ -216,4 +216,15 @@ export const articles = [
         image: "/hydrogen_train.png",
         tags: ["Technology", "India", "Green Energy", "Hydrogen Train", "Environment"]
     },
+    {
+        id: 'geeta-upadhyay',
+        title: "श्रद्धाञ्जली: गीता उपाध्यायको स्मृतिमा",
+        excerpt: "हामी सबैकी दिदी गीता उपाध्यायको स्मृतिमा विशेष श्रद्धाञ्जली लेख, जसले आफ्नो सम्पूर्ण जीवन शिक्षा र साहित्यमा समर्पित गरिन्।",
+        author: "Sahitya Hub",
+        date: "July 24, 2026",
+        readTime: "5 min read",
+        image: "/aaa.jpeg",
+        link: "/shradhanjali/geeta-upadhyay",
+        tags: ["Tribute", "Literature", "Memorial"]
+    }
 ];

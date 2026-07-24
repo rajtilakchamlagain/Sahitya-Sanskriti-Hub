@@ -6,6 +6,14 @@ import SEO from '../components/SEO';
 const ShradhanjaliHub = () => {
     const tributes = [
         {
+            id: 'geeta-upadhyay',
+            name: 'हामी सबैकी दिदी: गीता उपाध्याय',
+            role: 'शिक्षा, साहित्य र संस्कृतिकी सेतु',
+            image: '/aaa.jpeg',
+            icon: <BookOpen size={24} />,
+            path: '/shradhanjali/geeta-upadhyay'
+        },
+        {
             id: 'yadumani-sharma',
             name: 'कलाकार यदुमनि शर्मा',
             role: 'विशिष्ट सङ्गीत साधक',
@@ -20,14 +28,6 @@ const ShradhanjaliHub = () => {
             image: '/dev_sharma_tribute_portrait_1775849859980.png',
             icon: <GraduationCap size={24} />,
             path: '/shradhanjali/dev-sharma-chapagai'
-        },
-        {
-            id: 'geeta-upadhyay',
-            name: 'हामी सबैकी दिदी: गीता उपाध्याय',
-            role: 'शिक्षा, साहित्य र संस्कृतिकी सेतु',
-            image: '/aaa.jpeg',
-            icon: <BookOpen size={24} />,
-            path: '/shradhanjali/geeta-upadhyay'
         }
     ];
 
