@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { BookOpen, Heart, Award, Sparkles, GraduationCap, Briefcase, Users, FileText } from 'lucide-react';
 import SEO from '../components/SEO';
 import BackButton from '../components/BackButton';
@@ -7,29 +7,22 @@ import LikeButton from '../components/LikeButton';
 import CommentSection from '../components/CommentSection';
 
 const ShradhanjaliGeetaUpadhyay = () => {
-    const sectionRefs = useRef([]);
     const contentRef = useRef(null);
-
-    useEffect(() => {
-        const observerOptions = { threshold: 0.1, rootMargin: '0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal-active');
-                }
-            });
-        }, observerOptions);
-
-        sectionRefs.current.forEach(ref => { if (ref) observer.observe(ref); });
-        return () => observer.disconnect();
-    }, []);
 
     return (
         <div className="shradhanjali-memorial geetaupadhyay-theme">
             <style>{`
                 .shradhanjali-memorial { background: #FDFAFC; color: #2C2C2C; font-family: 'serif'; overflow-x: hidden; position: relative; }
-                .reveal { opacity: 0; transform: translateY(40px); transition: all 1.8s cubic-bezier(0.16, 1, 0.3, 1); }
-                .reveal-active { opacity: 1 !important; transform: translateY(0) !important; }
+                
+                /* Simple fade in animation on load */
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(15px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .hero-section, .main-layout, .farewell-section {
+                    animation: fadeIn 1.2s ease-out forwards;
+                }
+
                 .glow-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% -20%, rgba(240, 230, 210, 0.6) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.05) 0%, transparent 50%); pointer-events: none; z-index: 1; }
                 
                 .hero-section { height: 75vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; position: relative; z-index: 2; border-bottom: 1px solid rgba(140, 120, 83, 0.1); background: linear-gradient(to bottom, #ffffff, transparent); }
@@ -73,7 +66,7 @@ const ShradhanjaliGeetaUpadhyay = () => {
             <div className="glow-overlay" />
             
             <header className="hero-section">
-                <div className="reveal" ref={el => sectionRefs.current[0] = el}>
+                <div>
                     <Sparkles size={50} color="#8C7853" style={{ marginBottom: '30px' }} />
                     <p className="hero-shloka">“जयन्ति ते सुकृतिनो रससिद्धाः कवीश्वराः<br />नास्ति येषां यशःकाये जरास्मरणजं भयम्॥”</p>
                     <p style={{ opacity: 0.7, fontSize: '18px', maxWidth: '800px', margin: '30px auto 0', color: '#555', lineHeight: '1.8' }}>- पुण्यात्मा र महान् व्यक्तिहरूको सधैं जय हुन्छ, जसको 'यश' (कीर्ति) रूपी शरीरलाई कहिल्यै बुढ्यौली (जरा) र मृत्युको डर हुँदैन। भौतिक शरीर मरे पनि उनीहरूको नाम सधैं अमर रहन्छ। (भर्तृहरि नीतिशतकम्)</p>
@@ -81,7 +74,7 @@ const ShradhanjaliGeetaUpadhyay = () => {
             </header>
 
             <main className="main-layout" ref={contentRef}>
-                <section className="reveal content-flow" ref={el => sectionRefs.current[1] = el}>
+                <section className="content-flow">
                     <h1>हामी सबैकी दिदी: गीता उपाध्यायको स्मृतिमा</h1>
                     <span className="bio-subtitle">शिक्षा, साहित्य र संस्कृतिकी सेतु</span>
                     
@@ -204,7 +197,7 @@ const ShradhanjaliGeetaUpadhyay = () => {
                 </section>
             </main>
 
-            <section className="farewell-section reveal" ref={el => sectionRefs.current[2] = el}>
+            <section className="farewell-section">
                 <p style={{ fontStyle: 'italic', fontSize: '24px', opacity: 0.9, lineHeight: '1.8' }}>“दिदीको प्रेरणा हामी सबैलाई सधैँ मिलिरहोस् । दिदीको विदेह आत्माले परम शान्ति पाओस्। उहाँप्रति हार्दिक श्रद्धाञ्जली अर्पण गर्दछु।”</p>
                 <div className="shanti-text">ॐ शान्तिः शान्तिः शान्तिः।</div>
             </section>
