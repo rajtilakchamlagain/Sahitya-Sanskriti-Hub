@@ -29,12 +29,21 @@ export default function AdminGateway() {
 
   // If they are not logged in, prompt them to log in
   if (!user) {
+    const handleAdminSignIn = async () => {
+      try {
+        await signInWithPopup(auth, googleProvider);
+      } catch (error) {
+        console.error("Error signing in with Google: ", error);
+        alert(`Google Sign-In Failed: ${error.message}\n\nPlease ensure you have enabled the 'Google' Sign-in provider in your Firebase Console (Authentication > Sign-in method).`);
+      }
+    };
+
     return (
       <div style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '20px', backgroundColor: '#fafafa' }}>
         <h2 style={{ color: '#333' }}>Admin Authentication Required</h2>
         <p style={{ color: '#666' }}>Please sign in to access the admin dashboard.</p>
         <button 
-          onClick={() => signInWithPopup(auth, googleProvider)}
+          onClick={handleAdminSignIn}
           style={{ 
             display: 'flex', alignItems: 'center', gap: '10px', 
             padding: '12px 24px', backgroundColor: '#fff', color: '#444', 

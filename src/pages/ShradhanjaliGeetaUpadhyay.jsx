@@ -27,44 +27,41 @@ const ShradhanjaliGeetaUpadhyay = () => {
     return (
         <div className="shradhanjali-memorial geetaupadhyay-theme">
             <style>{`
-                .shradhanjali-memorial { background: #05070a; color: #f0e6d2; font-family: 'serif'; overflow-x: hidden; position: relative; }
-                .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+                .shradhanjali-memorial { background: #FAF9F6; color: #2C2C2C; font-family: 'serif'; overflow-x: hidden; position: relative; }
+                .reveal { opacity: 0; transform: translateY(40px); transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1); }
                 .reveal-active { opacity: 1 !important; transform: translateY(0) !important; }
-                .glow-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%); pointer-events: none; z-index: 1; }
+                .glow-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%); pointer-events: none; z-index: 1; }
                 
-                .hero-section { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; position: relative; z-index: 2; }
-                .hero-shloka { font-size: clamp(24px, 4vw, 32px); color: #D4AF37; max-width: 900px; margin-bottom: 25px; line-height: 1.6; font-style: italic; }
+                .hero-section { height: 75vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; position: relative; z-index: 2; border-bottom: 1px solid rgba(0,0,0,0.05); }
+                .hero-shloka { font-size: clamp(24px, 4vw, 36px); color: #1a1a1a; max-width: 900px; margin-bottom: 25px; line-height: 1.5; font-style: italic; font-weight: 500; text-shadow: 0 2px 10px rgba(0,0,0,0.05); }
                 
-                .main-layout { padding: 100px 20px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: start; position: relative; z-index: 2; }
-                @media (max-width: 1024px) { .main-layout { grid-template-columns: 1fr; text-align: center; } }
+                .main-layout { padding: 80px 20px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2.5fr; gap: 80px; align-items: start; position: relative; z-index: 2; }
+                @media (max-width: 1024px) { .main-layout { grid-template-columns: 1fr; gap: 40px; } }
                 
-                .portrait-fixed { position: sticky; top: 100px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); border: 1px solid rgba(212, 175, 55, 0.2); margin-bottom: 20px; }
-                .portrait-image { width: 100%; height: auto; filter: contrast(1.05) brightness(0.95); transition: 0.3s; }
-                .portrait-image:hover { transform: scale(1.02); }
+                .portrait-fixed { position: sticky; top: 120px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0,0,0,0.05); margin-bottom: 30px; background: #fff; padding: 10px; }
+                .portrait-image { width: 100%; height: auto; filter: contrast(1.02); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); border-radius: 8px; }
+                .portrait-image:hover { transform: scale(1.03); }
                 
-                .content-flow h1 { font-size: clamp(36px, 5vw, 56px); color: #D4AF37; margin-bottom: 10px; line-height: 1.2; }
-                .bio-subtitle { font-size: 20px; color: #a0a090; margin-bottom: 50px; letter-spacing: 1px; }
+                .content-flow h1 { font-size: clamp(40px, 6vw, 64px); color: #111; margin-bottom: 15px; line-height: 1.15; font-weight: 700; letter-spacing: -1px; }
+                .bio-subtitle { font-size: 22px; color: #8C7853; margin-bottom: 60px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; border-bottom: 1px solid rgba(140,120,83,0.3); padding-bottom: 20px; display: inline-block; }
                 
-                .story-section { margin-bottom: 60px; padding-left: 25px; border-left: 2px solid rgba(212, 175, 55, 0.2); }
-                .story-section h2 { color: #D4AF37; font-size: 26px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px; }
-                .story-text p { font-size: 19px; line-height: 1.9; margin-bottom: 20px; color: rgba(240, 230, 210, 0.9); }
-                .story-text ul { list-style: none; padding-left: 10px; margin-bottom: 20px; }
-                .story-text li { font-size: 18px; line-height: 1.8; margin-bottom: 10px; position: relative; padding-left: 20px; color: rgba(240, 230, 210, 0.85); }
-                .story-text li::before { content: '•'; position: absolute; left: 0; color: #D4AF37; }
+                .story-section { margin-bottom: 80px; position: relative; }
+                .story-section::before { content: ''; position: absolute; left: -40px; top: 10px; bottom: 0; width: 1px; background: rgba(0,0,0,0.1); }
+                @media (max-width: 1024px) { .story-section::before { display: none; } }
+                .story-section h2 { color: #1a1a1a; font-size: 32px; margin-bottom: 30px; display: flex; align-items: center; gap: 15px; font-weight: 700; }
+                .story-text p { font-size: 20px; line-height: 2.1; margin-bottom: 25px; color: #333; font-weight: 400; text-align: justify; }
+                .story-text ul { list-style: none; padding-left: 0; margin-bottom: 30px; }
+                .story-text li { font-size: 19px; line-height: 1.9; margin-bottom: 15px; position: relative; padding-left: 30px; color: #444; }
+                .story-text li::before { content: ''; position: absolute; left: 0; top: 12px; width: 8px; height: 8px; background: #8C7853; border-radius: 50%; }
+                .story-text strong { color: #111; font-weight: 700; }
 
-                .inline-image { width: 100%; max-width: 600px; border-radius: 16px; margin: 30px 0; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+                .inline-image { width: 100%; max-width: 700px; border-radius: 12px; margin: 40px auto; display: block; box-shadow: 0 15px 40px rgba(0,0,0,0.06); }
 
-                .legacy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-                .legacy-card { background: rgba(20, 25, 30, 0.7); border: 1px solid rgba(212, 175, 55, 0.1); border-radius: 16px; padding: 25px; transition: 0.4s; }
-                .legacy-card:hover { border-color: #D4AF37; background: rgba(212, 175, 55, 0.05); }
-                .legacy-card h3 { font-size: 18px; margin-bottom: 10px; color: #D4AF37; }
-                .legacy-card p { font-size: 15px; opacity: 0.8; }
-
-                .farewell-section { max-width: 1000px; margin: 100px auto; text-align: center; padding: 80px 40px; background: rgba(212, 175, 55, 0.03); border-radius: 40px; border: 1px solid rgba(212, 175, 55, 0.1); }
-                .shanti-text { font-size: 32px; color: #D4AF37; letter-spacing: 6px; margin-top: 30px; }
+                .farewell-section { max-width: 900px; margin: 80px auto; text-align: center; padding: 60px 40px; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); position: relative; z-index: 2; }
+                .shanti-text { font-size: 36px; color: #8C7853; letter-spacing: 10px; margin-top: 40px; font-weight: bold; }
                 
-                .doc-download { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; background: rgba(212, 175, 55, 0.1); border: 1px solid #D4AF37; color: #D4AF37; border-radius: 30px; text-decoration: none; font-size: 18px; font-weight: bold; transition: 0.3s; margin-top: 20px; }
-                .doc-download:hover { background: #D4AF37; color: #05070a; transform: translateY(-3px); }
+                .doc-download { display: inline-flex; align-items: center; gap: 12px; padding: 18px 40px; background: #1a1a1a; color: #fff; border-radius: 40px; text-decoration: none; font-size: 18px; font-weight: 600; transition: all 0.3s ease; margin-top: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+                .doc-download:hover { background: #8C7853; transform: translateY(-3px); box-shadow: 0 15px 25px rgba(140,120,83,0.3); }
             `}</style>
 
             <SEO title="हामी सबैकी दिदी: गीता उपाध्यायको स्मृतिमा | Sahitya Sanskriti" />
@@ -73,9 +70,9 @@ const ShradhanjaliGeetaUpadhyay = () => {
             
             <header className="hero-section">
                 <div className="reveal" ref={el => sectionRefs.current[0] = el}>
-                    <Sparkles size={60} color="#D4AF37" style={{ marginBottom: '40px' }} />
+                    <Sparkles size={50} color="#8C7853" style={{ marginBottom: '30px' }} />
                     <p className="hero-shloka">“जयन्ति ते सुकृतिनो रससिद्धाः कवीश्वराः<br />नास्ति येषां यशःकाये जरास्मरणजं भयम्॥”</p>
-                    <p style={{ opacity: 0.6, fontSize: '18px', maxWidth: '700px', margin: '20px auto' }}>- पुण्यात्मा र महान् व्यक्तिहरूको सधैं जय हुन्छ, जसको 'यश' (कीर्ति) रूपी शरीरलाई कहिल्यै बुढ्यौली (जरा) र मृत्युको डर हुँदैन। भौतिक शरीर मरे पनि उनीहरूको नाम सधैं अमर रहन्छ। (भर्तृहरि नीतिशतकम्)</p>
+                    <p style={{ opacity: 0.7, fontSize: '18px', maxWidth: '800px', margin: '30px auto 0', color: '#555', lineHeight: '1.8' }}>- पुण्यात्मा र महान् व्यक्तिहरूको सधैं जय हुन्छ, जसको 'यश' (कीर्ति) रूपी शरीरलाई कहिल्यै बुढ्यौली (जरा) र मृत्युको डर हुँदैन। भौतिक शरीर मरे पनि उनीहरूको नाम सधैं अमर रहन्छ। (भर्तृहरि नीतिशतकम्)</p>
                 </div>
             </header>
 

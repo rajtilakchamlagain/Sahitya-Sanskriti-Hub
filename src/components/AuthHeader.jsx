@@ -40,6 +40,7 @@ export default function AuthHeader() {
       setDropdownOpen(false);
     } catch (error) {
       console.error("Error signing in with Google: ", error);
+      alert(`Google Sign-In Failed: ${error.message}\n\nPlease ensure you have enabled the 'Google' Sign-in provider in your Firebase Console (Authentication > Sign-in method).`);
     }
   };
 

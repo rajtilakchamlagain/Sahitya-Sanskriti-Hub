@@ -34,139 +34,137 @@ const ShradhanjaliHub = () => {
     return (
         <div className="shradhanjali-hub">
             <SEO title="श्रद्धाञ्जली: हाम्रो गौरवमय स्मृति | Sahitya Sanskriti" />
-            <style>{`
                 .shradhanjali-hub {
-                    background: #050505;
-                    color: #fff;
+                    background: #FAF9F6;
+                    color: #2C2C2C;
                     min-height: 100vh;
-                    padding: 80px 20px;
+                    padding: 100px 20px;
                     font-family: 'serif';
                     position: relative;
                 }
 
-                .starry-bg {
-                    position: fixed;
-                    top: 0; left: 0; width: 100%; height: 100%;
-                    background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%);
-                    z-index: 1;
-                }
-
                 .hub-header {
                     text-align: center;
-                    margin-bottom: 80px;
+                    margin-bottom: 100px;
                     position: relative;
                     z-index: 2;
                 }
 
                 .hub-title {
-                    font-size: clamp(32px, 6vw, 64px);
-                    color: #D4AF37;
-                    margin-bottom: 20px;
-                    letter-spacing: 4px;
+                    font-size: clamp(40px, 8vw, 72px);
+                    color: #111;
+                    margin-bottom: 25px;
+                    letter-spacing: -1px;
+                    font-weight: 700;
                 }
 
                 .hub-subtitle {
-                    font-size: 20px;
-                    color: #a0a0a0;
-                    max-width: 700px;
+                    font-size: 22px;
+                    color: #555;
+                    max-width: 800px;
                     margin: 0 auto;
-                    line-height: 1.6;
+                    line-height: 1.8;
                 }
 
                 .portals-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(320px, 450px));
-                    gap: 40px;
+                    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                    gap: 60px;
+                    max-width: 1400px;
+                    margin: 0 auto;
                     justify-content: center;
                     position: relative;
                     z-index: 2;
                 }
 
                 .portal-card {
-                    background: rgba(20, 20, 20, 0.6);
-                    border: 1px solid rgba(212, 175, 55, 0.2);
-                    border-radius: 20px;
+                    background: #fff;
+                    border: 1px solid rgba(0,0,0,0.05);
+                    border-radius: 4px;
                     overflow: hidden;
                     text-decoration: none;
-                    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
                     position: relative;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+                    display: flex;
+                    flex-direction: column;
                 }
 
                 .portal-card:hover {
-                    transform: translateY(-15px) scale(1.02);
-                    border-color: #D4AF37;
-                    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+                    transform: translateY(-10px);
+                    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+                    border-color: rgba(140, 120, 83, 0.3);
                 }
 
                 .portal-image-wrap {
-                    height: 400px;
+                    height: 450px;
                     overflow: hidden;
                     position: relative;
+                    background: #f5f5f5;
                 }
 
                 .portal-image {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    filter: grayscale(0.5) contrast(1.1);
-                    transition: all 0.8s;
+                    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
                 }
 
                 .portal-card:hover .portal-image {
-                    filter: grayscale(0) contrast(1);
-                    transform: scale(1.1);
-                }
-
-                .portal-overlay {
-                    position: absolute;
-                    bottom: 0; left: 0; width: 100%;
-                    height: 50%;
-                    background: linear-gradient(to top, #141414, transparent);
+                    transform: scale(1.05);
                 }
 
                 .portal-info {
-                    padding: 30px;
+                    padding: 40px 30px;
                     text-align: center;
+                    background: #fff;
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
                 }
 
                 .portal-role {
-                    color: #D4AF37;
-                    font-size: 14px;
-                    letter-spacing: 2px;
+                    color: #8C7853;
+                    font-size: 13px;
+                    letter-spacing: 3px;
                     text-transform: uppercase;
-                    margin-bottom: 10px;
+                    margin-bottom: 15px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     gap: 10px;
+                    font-weight: 600;
                 }
 
                 .portal-name {
-                    font-size: 28px;
-                    color: #f0e6d2;
-                    margin-bottom: 15px;
+                    font-size: 32px;
+                    color: #111;
+                    margin-bottom: 20px;
+                    font-weight: 600;
+                    line-height: 1.3;
                 }
 
                 .enter-btn {
                     display: inline-flex;
                     align-items: center;
+                    justify-content: center;
                     gap: 8px;
-                    color: #fff;
+                    color: #8C7853;
                     font-weight: bold;
-                    opacity: 0.6;
                     transition: 0.3s;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    letter-spacing: 1px;
                 }
 
                 .portal-card:hover .enter-btn {
-                    opacity: 1;
-                    color: #D4AF37;
+                    color: #111;
                 }
             `}</style>
 
-            <div className="starry-bg" />
-
             <div className="hub-header">
-                <Sparkles size={48} color="#D4AF37" style={{ marginBottom: '20px' }} />
+                <Sparkles size={40} color="#8C7853" style={{ marginBottom: '20px' }} />
                 <h1 className="hub-title">श्रद्धाञ्जली</h1>
                 <p className="hub-subtitle">
                     हाम्रो समाज र संस्कृतिका ती धरोहरहरू, जसले आफ्नो जीवन कर्म र साधनाद्वारा हामीलाई मार्ग देखाउनुभयो।
@@ -178,7 +176,6 @@ const ShradhanjaliHub = () => {
                     <Link key={tribute.id} to={tribute.path} className="portal-card">
                         <div className="portal-image-wrap">
                             <img src={tribute.image} alt={tribute.name} className="portal-image" />
-                            <div className="portal-overlay" />
                         </div>
                         <div className="portal-info">
                             <div className="portal-role">{tribute.icon} {tribute.role}</div>
@@ -191,7 +188,7 @@ const ShradhanjaliHub = () => {
                 ))}
             </div>
 
-            <div style={{ textAlign: 'center', marginTop: '100px', opacity: 0.5, fontSize: '14px', position: 'relative', zIndex: 2 }}>
+            <div style={{ textAlign: 'center', marginTop: '100px', color: '#8C7853', fontSize: '18px', position: 'relative', zIndex: 2, letterSpacing: '4px', fontWeight: 'bold' }}>
                 ॐ शान्तिः शान्तिः शान्तिः।
             </div>
         </div>
