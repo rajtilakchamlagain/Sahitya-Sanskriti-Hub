@@ -34,6 +34,7 @@ const ShradhanjaliHub = () => {
     return (
         <div className="shradhanjali-hub">
             <SEO title="श्रद्धाञ्जली: हाम्रो गौरवमय स्मृति | Sahitya Sanskriti" />
+            <style>{`
                 .shradhanjali-hub {
                     background: #FAF9F6;
                     color: #2C2C2C;
