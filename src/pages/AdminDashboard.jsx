@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { auth, db, storage } from '../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { auth, db } from '../firebase';
 import { LogOut, LayoutDashboard, Feather, BookOpen, FileText, Image as ImageIcon, FileClock, Newspaper } from 'lucide-react';
+
+const adminEmails = ['rjtiksrm@gmail.com', 'rajtilakchamlagain@gmail.com'];
 import { compressImage } from '../utils/imageCompressor';
 import { uploadImageToImgBB } from '../utils/imageUploader';
 
@@ -16,8 +19,6 @@ export default function AdminDashboard() {
   const [file, setFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
-
-  const adminEmails = ['rjtiksrm@gmail.com', 'rajtilakchamlagain@gmail.com'];
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {

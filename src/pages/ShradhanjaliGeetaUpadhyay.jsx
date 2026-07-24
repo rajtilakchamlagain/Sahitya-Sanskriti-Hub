@@ -162,7 +162,7 @@ const ShradhanjaliGeetaUpadhyay = () => {
                     </div>
                     
                     <div style={{ textAlign: 'center', marginTop: '40px' }}>
-                        <a href="/शिक्षा, साहित्य.docx" download className="doc-download">
+                        <a href="/shiksha-sahitya.docx" download className="doc-download">
                             <FileText size={24} />
                             शिक्षा, साहित्य - पूर्ण लेख डाउनलोड गर्नुहोस् (Word Document)
                         </a>
