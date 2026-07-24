@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node postbuild.js",
-    "lint": "eslint .",
+    "lint:local": "eslint .",
     "preview": "vite preview",
     "notify": "node scripts/send-notification.js"
   },
