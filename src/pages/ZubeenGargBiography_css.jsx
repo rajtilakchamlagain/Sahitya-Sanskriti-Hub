@@ -10,7 +10,6 @@ import CommentSection from '../components/CommentSection';
 const ZubeenGargBiography = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-    const [activeTheme, setActiveTheme] = useState('theme-iconic');
     const contentRef = useRef(null);
 
     useEffect(() => {
@@ -20,23 +19,10 @@ const ZubeenGargBiography = () => {
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('mousemove', handleMouseMove);
         window.scrollTo(0, 0);
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setActiveTheme(entry.target.getAttribute('data-theme'));
-                }
-            });
-        }, { threshold: 0.2 });
-
-        setTimeout(() => {
-            document.querySelectorAll('.theme-section').forEach(sec => observer.observe(sec));
-        }, 100);
         
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('mousemove', handleMouseMove);
-            observer.disconnect();
         };
     }, []);
 
@@ -57,6 +43,9 @@ const ZubeenGargBiography = () => {
     const styles = {
         container: {
             minHeight: '200vh',
+            // Lighter/Deep Indigo tone matching the vibe requested
+            background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%)',
+            color: '#fff',
             fontFamily: 'var(--font-body)',
             position: 'relative',
             overflowX: 'hidden'
@@ -134,7 +123,7 @@ const ZubeenGargBiography = () => {
     };
 
     return (
-        <div className={`dynamic-container ${activeTheme}`} style={styles.container}>
+        <div style={styles.container}>
             <BackButton />
             {/* Background Image Layer */}
             <div style={styles.heroImage} />
@@ -179,7 +168,7 @@ const ZubeenGargBiography = () => {
             <div ref={contentRef} style={styles.contentSection}>
                 
                 {/* 1st: The Poem (जुबिन गर्गको जीवन यात्रा) */}
-                <div className="theme-section" data-theme="theme-iconic">
+                <div className="theme-wrapper theme-iconic">
                 <ExpandableSection title="जुबिन गर्गको जीवन यात्रा" icon={Star} defaultOpen={true}>
                     <div style={{ textAlign: 'center', marginBottom: '48px' }}>
                         <h3 style={{ fontSize: 'clamp(18px, 3vw, 24px)', color: '#D4AF37', opacity: 0.8, letterSpacing: '6px' }}>— युग पुरुष —</h3>
@@ -197,37 +186,14 @@ const ZubeenGargBiography = () => {
                 </div>
 
                 {/* 2nd: About Zubeen Garg (जुबिन गर्ग) */}
-                <div className="theme-section" data-theme="theme-iconic">
+                <div className="theme-wrapper theme-iconic">
                 <ExpandableSection title="जुबिन गर्ग" icon={Mic2}>
                     <div style={{ fontSize: 'clamp(16px, 2.5vw, 18px)', lineHeight: '1.8', color: 'rgba(255,255,255,0.95)', textAlign: 'left', marginTop: '20px' }}>
                         <p style={{ marginBottom: '20px' }}>प्रकृति र करुणाका पूजारी जुबिन गर्ग सङ्गीत जगतका एकजना बहुमुखी साधक हुन्।</p>
                         <p style={{ marginBottom: '20px' }}>भारतवर्षको सङ्गीत इतिहासमा भुपेन हाजिरीका पछि लामो समय गीत–सङ्गीतले आलोड़न ल्याउने कण्ठशिल्पी हुन् जुबिन गर्ग। दुबै व्यक्तित्व भारतीय सङ्गीतका युगान्तकारी शिल्पी हुन्। असमको सौभाग्य हो—यस्ता कालजयी कण्ठशिल्पी असममै जन्म लिएका छन्।</p>
                         <p style={{ marginBottom: '20px' }}>भारतीय सङ्गीत जगतका ताराहरू मध्ये जुबिन गर्ग एक हुन्, जसको उज्यालो केवल असमको भूभागमा मात्र सीमित नरही सम्पूर्ण सांगीतिक जगतलाई आलोकित पारेको छ। जुबिन सङ्गीत जगतका अद्वितीय व्यक्तित्व हुन्।</p>
-                        <p style={{ marginBottom: '20px' }}>उनी जीवित रहँदा उनलाई मन पराउने मान्छे यति धेरै रहेछन् भन्ने कुरा धेरैलाई थाहा थिएन। जब उनको परलोक भयो, पार्थिव शरीरको अन्तिम यात्रा गराउँदा मात्र त्यो स्पष्ट भयो। आम जनताको भीड़ देखेर धेरैले यसलाई एसियाकै सर्वबृहत् जनभेला भएको दाबी गरेका छन्। यो केवल अन्तिम बिदाइ मात्र थिएन, जनतासँगको आत्मीय सम्बन्धको प्रत्यक्ष प्रमाण थियो।</p>
-                        <p style={{ marginBottom: '20px' }}>आफूलाई “जुबिन जेनेरेसन”को प्रतीक मान्ने जुबिनले देशकाल र परिस्थितिअनुसार चौतर्फी योगदान दिएका रहेछन्। उनले नयाँ पुस्तालाई नयाँ नौलो सन्देश दिएका छन्। एकजना मानवतावादी, सु–गायक, सङ्गीतकार, गीतकार, अभिनेता, सांस्कृतिक सूत्रधार र समाज–सचेतक — यी सबै परिचय उनका जीवन र कृतित्वका आयाम हुन्।</p>
-                        <p style={{ fontSize: 'clamp(18px, 3vw, 22px)', color: '#D4AF37', fontWeight: 700, marginTop: '32px', textAlign: 'center' }}>त्यसैले उनी युगपुरुषका रूपमा चिनिएका छन्।</p>
-                    </div>
-                </ExpandableSection>
-                </div>
-
-                {/* 3rd: Timeline */}
-                <div className="theme-section" data-theme="theme-iconic">
-                <ExpandableSection title="Legacy Milestones" icon={Trophy}>
-                    <div style={{ marginTop: '20px' }}>
-                        {timelineData.map((item, idx) => (
-                            <div key={idx} style={styles.timelineItem}>
-                                <div style={styles.yearBadge}>{item.year}</div>
-                                <div style={{ flex: 1 }}>
-                                    <p style={{ fontSize: 'clamp(15px, 2.5vw, 18px)', color: 'rgba(255,255,255,0.9)', margin: 0 }}>{item.event}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </ExpandableSection>
-                </div>
-
-                {/* 4th: Early Life (प्रारम्भिक जीवन) */}
-                <div className="theme-section" data-theme="theme-nostalgic">
+                        <p style={{ marginBottom: '20px' }}>उनी जीवित रहँदा उनलाई मन पराउने मान्छे यति धेरै रहेछन् भन्ने कुरा धेरैलाई थाहा थिएन। जब उनको परलोक भयो, पार्थिव शरीरको अन्तिम यात्रा गराउँदा मात्र त्यो स्पष्ट भयो। आम जनताको भ�                {/* 4th: Early Life (प्रारम्भिक जीवन) */}
+                <div className="theme-wrapper theme-nostalgic">
                 <ExpandableSection title="प्रारम्भिक जीवन" icon={Star}>
                     <div style={{ fontSize: 'clamp(16px, 2.5vw, 18px)', lineHeight: '1.8', color: 'rgba(255,255,255,0.95)', textAlign: 'left', marginTop: '20px' }}>
                         <p style={{ marginBottom: '20px' }}>जुबिन गर्गको जन्म १८ नोभेम्बर १९७२ मा तुराको ब्राह्मण पारा (मेघालय) मा भएको हो। उनका पिताको नाम मोहिनी मोहन बरठाकुर र माताको नाम स्वर्गीय इलि बठाकुर। उनीहरूका तीन सन्तानमध्ये एकजना जुविन अनि दुई छोरी जङ्की र पामी बरठाकुर। मोहिनी बरठाकुरको प्रकृत घर शिवसागरको जाजी भन्ने ठाउँमा हो। तर कर्मसूत्रले असमको विभिन्न ठाउँमा सरुवा भइरहनु पर्ने हुनाले जुबिनको यात्रा पनि विभिन्न ठाउँमा भएको छ। मेघालयको गाह्रो पहाडको रमाइलो हरियाली प्राकृतिक परिवेशलाई डाँडा काट्दै तुरा पुगिन्थ्यो। हरियालीले भरिएको तुराको प्राकृतिक परिवेश मनोरम छ। जोबिन बाल्यकालमा साह्रै सुन्दर थिए। बामे सर्ने उमेरमा नानीहरूको स्वभाव भन्दा अलिक फरक नडराउने स्वभावका थिए। घरको काम धन्दाले पनि कोहीबेला हेर्न नभ्याउने आमा इली बरठाकुरले जुबिनका खुट्टामा झुनुका बाँधी दिएर चन्चले जुबिनको स्थान निगरानी गर्थिन्।</p>
@@ -254,10 +220,33 @@ const ZubeenGargBiography = () => {
                         <p>वर्तमान अवसर लिए पछि घरमै रहेर साहित्य सेवा गर्दै आएका छन्। तर अपर्झट एकमात्र छोराको अकाल वियोगले उनी मर्माहत भएका छन्।</p>
                     </div>
                 </ExpandableSection>
-                </div>
+                </div>हाडको रमाइलो हरियाली प्राकृतिक परिवेशलाई डाँडा काट्दै तुरा पुगिन्थ्यो। हरियालीले भरिएको तुराको प्राकृतिक परिवेश मनोरम छ। जोबिन बाल्यकालमा साह्रै सुन्दर थिए। बामे सर्ने उमेरमा नानीहरूको स्वभाव भन्दा अलिक फरक नडराउने स्वभावका थिए। घरको काम धन्दाले पनि कोहीबेला हेर्न नभ्याउने आमा इली बरठाकुरले जुबिनका खुट्टामा झुनुका बाँधी दिएर चन्चले जुबिनको स्थान निगरानी गर्थिन्।</p>
+                        
+                        <p style={{ marginBottom: '20px' }}>बाल्यकालमा जुबिनलाई पिताजीले गोल्डी भनेर बोलाउने गर्थे। त्यसबेला स्कुलहरुमा जुबिन बरठाकुर नामले परिचित थिए। पछि मेट्रिक परीक्षा दिने समयमा आफ्नो नामका पछि थर नलेखेर गोत्र लेख्न थाले। त्यसबेला देखि जुबिन गर्ग नामले परिचित हुँदै आए। उनका पिता जुबिन मेहताका अनुरागी थिए। पिताजीका लागि यो परिचित मात्र होइन आदर्शको नाम थियो। जुबिनको अर्थ भयो पार्सीहरूका देवताले लिने तरोवाल। जुविनले पछिल्ला समयमा विभिन्न मञ्चमा आफ्नो नामलाई त्यसरी परिभाषित गरेका छन्। जसलाई असमीयामा 'तरोवाल' र आहोम भाषामा 'हेङदाङ' भनेर भनिन्छ।</p>
+                        
+                        <p style={{ marginBottom: '20px' }}>जुबिनको सानैदेखि पुस्तक पढ्ने बानी थियो। मातृ अध्यापिका, नृत्यमा पारदर्शी, सु गायिका अनि अभिनेत्री थिन। त्यसैले घरमा संगीतको सांस्कृतिक माहोल थियो। संगीतको वातावरणमा हुर्किएका जुबिनले सानैदेखि विभिन्न वाद्ययन्त्र बजाउने गर्थे। पछि गायनमा पनि असाधारण रुचि देखाउँदै गए। यसरी पारिवारिक संस्कारले नै उनको जीवन संगीततर्फ मोड़ियो।</p>
+                        
+                        <p style={{ marginBottom: '20px' }}>जुबिनका पितृ मोहिनी मोहन बरठाकुर शुरुमा केरानीको जागिर गर्दथे। पछि धेरै साधना गरी 'ए पी एस सी' परीक्षामा अवतीर्ण भई सफलता पाए। यसपछि मेजिस्ट्रेटको जागिर खान सक्षम हुन्छन्। उनी एकजना दयालु स्वभावका व्यक्ति थिए। मानिसलाई दान गरेर, सहयोग पुर्याएर खुसी अनुभव गर्थे। जागीरे जीवन भएर पनि साहित्य साधनामा निरन्तरता दिँदै आएका थिए। त्यसैले वर्तमान पनि सफल कवि एवं साहित्यकारको रूपमा परिचित हुँदै आएका छन्। उनको साहित्यिक नाम हो कपिल बरठाकुर।</p>
+                        
+                        <div style={{ padding: '20px', background: 'rgba(212, 175, 55, 0.05)', borderRadius: '15px', borderLeft: '4px solid #D4AF37', margin: '30px 0' }}>
+                            <h3 style={{ color: '#D4AF37', marginBottom: '15px', fontSize: '20px' }}>कपिल बरठाकुरका साहित्यिक रचनाहरू:</h3>
+                            <ul style={{ paddingLeft: '20px', margin: 0, lineHeight: '1.8' }}>
+                                <li>दुःखर दिनर लखिमी (काव्य सङ्कलन)</li>
+                                <li>भय मृत्यु आरु चढ़ खुन्दरता (दार्शनिक प्रबन्धावली)</li>
+                                <li>खोनाली माहर दिन (गल्प सङ्कलन)</li>
+                                <li>कल्पतरु वर्णमाला (कविता सङ्कलन)</li>
+                                <li>अन्तर्मुखी यात्रा (उपन्यास)</li>
+                                <li>कथा कोवा छवि (काव्य सङ्कलन)</li>
+                                <li>Someone somewhere (English novel)</li>
+                            </ul>
+                        </div>
+                        
+                        <p>वर्तमान अवसर लिए पछि घरमै रहेर साहित्य सेवा गर्दै आएका छन्। तर अपर्झट एकमात्र छोराको अकाल वियोगले उनी मर्माहत भएका छन्।</p>
+                    </div>
+                </ExpandableSection>
 
                 {/* 5th: Education (शिक्षा) */}
-                <div className="theme-section" data-theme="theme-rockstar">
+                <div className="theme-wrapper theme-rockstar">
                 <ExpandableSection title="शिक्षा" icon={BookOpen}>
                     <div style={{ fontSize: 'clamp(16px, 2.5vw, 18px)', lineHeight: '1.8', color: 'rgba(255,255,255,0.95)', textAlign: 'left', marginTop: '20px' }}>
                         <div style={{ textAlign: 'center', marginBottom: '30px', fontStyle: 'italic', color: '#D4AF37', fontSize: 'clamp(18px, 3vw, 22px)' }}>
@@ -319,30 +308,6 @@ const ZubeenGargBiography = () => {
             {/* Embedded styles for animations */}
             <style>
                 {`
-                .theme-iconic {
-                    --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-                    --text-primary: #ffffff;
-                    --accent: #D4AF37;
-                }
-                .theme-nostalgic {
-                    --bg-gradient: linear-gradient(135deg, #3E2723 0%, #4E342E 50%, #3E2723 100%);
-                    --text-primary: #F5F5DC;
-                    --accent: #FFD54F;
-                }
-                .theme-rockstar {
-                    --bg-gradient: linear-gradient(135deg, #1a0000 0%, #400000 50%, #1a0000 100%);
-                    --text-primary: #ffe6e6;
-                    --accent: #ff4d4d;
-                }
-                .dynamic-container {
-                    background: var(--bg-gradient);
-                    color: var(--text-primary);
-                    transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
-                }
-                .dynamic-container h1, .dynamic-container h2, .dynamic-container h3, .dynamic-container h4 {
-                    color: var(--text-primary);
-                    transition: color 1.5s ease-in-out;
-                }
                 @keyframes bounce {
                     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
                     40% { transform: translateY(-30px); }
@@ -359,6 +324,51 @@ const ZubeenGargBiography = () => {
                 @media (max-width: 768px) {
                     .desktop-only { display: none; }
                 }
+
+                /* ================= DYNAMIC THEMES ================= */
+                .theme-wrapper {
+                    margin-bottom: 40px;
+                    border-radius: 20px;
+                    transition: all 0.5s ease;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                /* SECTION 1: THE ICON (Cinematic, Dark Royal) */
+                .theme-iconic {
+                    background: linear-gradient(145deg, #0a0a0a, #111424);
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+                    border: 1px solid rgba(255,255,255,0.05);
+                }
+                .theme-iconic p, .theme-iconic div { color: #e0e0e0 !important; }
+                .theme-iconic span { color: #D4AF37 !important; }
+
+                /* SECTION 2: EARLY LIFE (Nostalgic, Sepia, Earthy) */
+                .theme-nostalgic {
+                    background: #F4EEDD;
+                    background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.05"/%3E%3C/svg%3E');
+                    box-shadow: inset 0 0 50px rgba(140,120,83,0.1);
+                    border: 1px solid rgba(140,120,83,0.2);
+                }
+                .theme-nostalgic p, .theme-nostalgic div, .theme-nostalgic li { color: #3A2618 !important; font-weight: 500; }
+                .theme-nostalgic h3 { color: #5C3A21 !important; font-family: 'serif'; }
+
+                /* SECTION 3: THE REBEL/ROCKSTAR (Edgy, High Contrast) */
+                .theme-rockstar {
+                    background: #000;
+                    position: relative;
+                    border: 1px solid rgba(255,51,102,0.2);
+                    box-shadow: 0 20px 80px rgba(255,51,102,0.1);
+                }
+                .theme-rockstar::before {
+                    content: '';
+                    position: absolute;
+                    top: 0; right: 0; width: 100%; height: 100%;
+                    background: radial-gradient(circle at 90% 10%, rgba(255,51,102,0.15) 0%, transparent 50%);
+                    pointer-events: none;
+                }
+                .theme-rockstar p, .theme-rockstar div { color: #ccc !important; }
+                /* ================================================== */
                 `}
             </style>
         </div>
