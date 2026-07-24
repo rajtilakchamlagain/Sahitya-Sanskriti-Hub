@@ -12,8 +12,9 @@ const NewsTicker = () => {
     ];
 
     const staticItems = [
-        { id: 'hydrogen-train', type: 'NEW', title: 'भारतको पहिलो हाइड्रोजन रेल (Recently added)', link: '/article/1783872980140' },
-        { id: 'zubeen', type: 'FEATURED', title: 'Zubeen Garg Biography', link: '/zubeen' },
+        { id: 'shradhanjali-geeta', type: 'NEW', title: 'गीता उपाध्यायको स्मृतिमा (New Tribute)', link: '/shradhanjali/geeta-upadhyay' },
+        { id: 'hydrogen-train', type: 'NEW', title: 'भारतको पहिलो हाइड्रोजन रेल', link: '/article/1783872980140' },
+        { id: 'zubeen', type: 'FEATURED', title: 'Zubeen Garg Biography', link: '/zubeen-garg' },
         { id: 'shradhanjali', type: 'MEMORIAL', title: 'Shradhanjali: Dr. Dev Sharma & Yadumani Sarmah', link: '/shradhanjali' }
     ];
 

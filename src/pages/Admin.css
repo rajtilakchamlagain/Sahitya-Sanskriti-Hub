@@ -1,0 +1,130 @@
+.admin-login-container, .admin-dashboard-container {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+.admin-login-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+.admin-login-card h2 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.admin-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+.admin-btn:hover {
+  background: #2980b9;
+}
+
+.admin-btn:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.admin-error {
+  background: #ffeaa7;
+  color: #d35400;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Dashboard Styles */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-header h1 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.logout-btn {
+  background: #e74c3c;
+  width: auto;
+}
+
+.logout-btn:hover {
+  background: #c0392b;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.admin-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.admin-card h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.admin-card p {
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-bottom: 20px;
+}

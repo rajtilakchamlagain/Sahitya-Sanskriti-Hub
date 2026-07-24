@@ -8,6 +8,7 @@ import NewsTicker from './components/NewsTicker'
 import AnimatedCharacter from './components/AnimatedCharacter'
 import ImmersivePoetryBackground from './components/ImmersivePoetryBackground'
 import UmamiAnalytics from './components/UmamiAnalytics'
+import AuthHeader from './components/AuthHeader'
 
 // Lazy Load Pages for Performance
 const Home = lazy(() => import('./pages/Home'));
@@ -30,6 +31,12 @@ const ArtOfWriting = lazy(() => import('./pages/seo/ArtOfWriting')); // [NEW] St
 const ShradhanjaliHub = lazy(() => import('./pages/ShradhanjaliHub')); // [NEW] Tribute Hub
 const ShradhanjaliYadumani = lazy(() => import('./pages/ShradhanjaliYadumani')); // [NEW] Tribute
 const ShradhanjaliDevSharma = lazy(() => import('./pages/ShradhanjaliDevSharma')); // [NEW] Tribute
+const ShradhanjaliGeetaUpadhyay = lazy(() => import('./pages/ShradhanjaliGeetaUpadhyay')); // [NEW] Tribute
+
+// Admin & Auth Pages
+const AdminGateway = lazy(() => import('./pages/AdminGateway'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const TrollPage = lazy(() => import('./pages/TrollPage'));
 
 // SEO Pillar Pages
 const NepaliSahitya = lazy(() => import('./pages/seo/NepaliSahitya'));
@@ -75,6 +82,7 @@ function App() {
 
       <div className="site-layout-wrapper">
         <div className="site-container">
+          <AuthHeader />
           <div className="content-paper">
 
             {/* Main Flex Layout: Sidebar + Content */}
@@ -106,6 +114,7 @@ function App() {
                     <Route path="/shradhanjali" element={<ShradhanjaliHub />} />
                     <Route path="/shradhanjali/yadumani-sharma" element={<ShradhanjaliYadumani />} />
                     <Route path="/shradhanjali/dev-sharma-chapagai" element={<ShradhanjaliDevSharma />} />
+                    <Route path="/shradhanjali/geeta-upadhyay" element={<ShradhanjaliGeetaUpadhyay />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/privacy" element={<Privacy />} />
                     <Route path="/contact" element={<Contact />} />
@@ -138,6 +147,11 @@ function App() {
 
                     {/* pSEO Dynamic Destinations */}
                     <Route path="/explore/:keyword" element={<ExploreKeyword />} />
+
+                    {/* Admin Routes */}
+                    <Route path="/admin" element={<AdminGateway />} />
+                    <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                    <Route path="/troll" element={<TrollPage />} />
                   </Routes>
                 </Suspense>
               </div>

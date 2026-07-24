@@ -11,9 +11,8 @@ const CommentSection = ({ id, collectionName = 'poems' }) => {
 
     useEffect(() => {
         const q = query(
-            collection(db, 'comments'),
+            collection(db, `${collectionName}_comments`),
             where('itemId', '==', String(id)),
-            where('collectionName', '==', collectionName),
             orderBy('createdAt', 'desc')
         );
 
@@ -36,9 +35,8 @@ const CommentSection = ({ id, collectionName = 'poems' }) => {
 
         setSubmitting(true);
         try {
-            await addDoc(collection(db, 'comments'), {
+            await addDoc(collection(db, `${collectionName}_comments`), {
                 itemId: String(id),
-                collectionName,
                 text: newComment,
                 user: username,
                 createdAt: serverTimestamp()

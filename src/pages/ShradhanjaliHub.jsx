@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Heart, Music, GraduationCap, ChevronRight } from 'lucide-react';
+import { Sparkles, Heart, Music, GraduationCap, ChevronRight, BookOpen } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const ShradhanjaliHub = () => {
@@ -20,6 +20,14 @@ const ShradhanjaliHub = () => {
             image: '/dev_sharma_tribute_portrait_1775849859980.png',
             icon: <GraduationCap size={24} />,
             path: '/shradhanjali/dev-sharma-chapagai'
+        },
+        {
+            id: 'geeta-upadhyay',
+            name: 'हामी सबैकी दिदी: गीता उपाध्याय',
+            role: 'शिक्षा, साहित्य र संस्कृतिकी सेतु',
+            image: '/aaa.jpeg',
+            icon: <BookOpen size={24} />,
+            path: '/shradhanjali/geeta-upadhyay'
         }
     ];
 

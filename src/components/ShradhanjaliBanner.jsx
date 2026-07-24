@@ -127,16 +127,16 @@ const ShradhanjaliBanner = () => {
             `}</style>
             
             <div className="banner-image-preview">
-                <img src="/shradhanjali_tribute_portrait_1775849567109.png" alt="Yadumani Sharma" />
+                <img src="/aaa.jpeg" alt="Geeta Upadhyay" />
             </div>
 
             <div className="banner-content">
                 <div className="banner-label">
                     <Sparkles size={14} /> Memorial Tribute
                 </div>
-                <h2 className="banner-title">कलाकार यदुमनि शर्मा: एक स्वर्णिम सम्झना</h2>
+                <h2 className="banner-title">हामी सबैकी दिदी: गीता उपाध्याय</h2>
                 <p className="banner-subtitle">
-                    असमे गोर्खा समाजका सुप्रसिद्ध कलाकार यदुमनि शर्माको जीवन र सङ्गीतमय यात्राको विशेष श्रद्धाञ्जली।
+                    पद्मश्री सम्मानित शिक्षाविद् तथा साहित्यकार गीता उपाध्यायको स्मृतिमा विशेष श्रद्धाञ्जली।
                 </p>
             </div>
 

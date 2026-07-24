@@ -1,0 +1,190 @@
+import React, { useEffect, useRef } from 'react';
+import { BookOpen, MapPin, Calendar, Heart, Award, ArrowDown, Sparkles, GraduationCap, Briefcase, Users, Anchor, FileText } from 'lucide-react';
+import SEO from '../components/SEO';
+import BackButton from '../components/BackButton';
+import SocialShare from '../components/SocialShare';
+import LikeButton from '../components/LikeButton';
+import CommentSection from '../components/CommentSection';
+
+const ShradhanjaliGeetaUpadhyay = () => {
+    const sectionRefs = useRef([]);
+    const contentRef = useRef(null);
+
+    useEffect(() => {
+        const observerOptions = { threshold: 0.1, rootMargin: '0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                }
+            });
+        }, observerOptions);
+
+        sectionRefs.current.forEach(ref => { if (ref) observer.observe(ref); });
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <div className="shradhanjali-memorial geetaupadhyay-theme">
+            <style>{`
+                .shradhanjali-memorial { background: #05070a; color: #f0e6d2; font-family: 'serif'; overflow-x: hidden; position: relative; }
+                .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+                .reveal-active { opacity: 1 !important; transform: translateY(0) !important; }
+                .glow-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%); pointer-events: none; z-index: 1; }
+                
+                .hero-section { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; position: relative; z-index: 2; }
+                .hero-shloka { font-size: clamp(24px, 4vw, 32px); color: #D4AF37; max-width: 900px; margin-bottom: 25px; line-height: 1.6; font-style: italic; }
+                
+                .main-layout { padding: 100px 20px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: start; position: relative; z-index: 2; }
+                @media (max-width: 1024px) { .main-layout { grid-template-columns: 1fr; text-align: center; } }
+                
+                .portrait-fixed { position: sticky; top: 100px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); border: 1px solid rgba(212, 175, 55, 0.2); margin-bottom: 20px; }
+                .portrait-image { width: 100%; height: auto; filter: contrast(1.05) brightness(0.95); transition: 0.3s; }
+                .portrait-image:hover { transform: scale(1.02); }
+                
+                .content-flow h1 { font-size: clamp(36px, 5vw, 56px); color: #D4AF37; margin-bottom: 10px; line-height: 1.2; }
+                .bio-subtitle { font-size: 20px; color: #a0a090; margin-bottom: 50px; letter-spacing: 1px; }
+                
+                .story-section { margin-bottom: 60px; padding-left: 25px; border-left: 2px solid rgba(212, 175, 55, 0.2); }
+                .story-section h2 { color: #D4AF37; font-size: 26px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px; }
+                .story-text p { font-size: 19px; line-height: 1.9; margin-bottom: 20px; color: rgba(240, 230, 210, 0.9); }
+                .story-text ul { list-style: none; padding-left: 10px; margin-bottom: 20px; }
+                .story-text li { font-size: 18px; line-height: 1.8; margin-bottom: 10px; position: relative; padding-left: 20px; color: rgba(240, 230, 210, 0.85); }
+                .story-text li::before { content: '•'; position: absolute; left: 0; color: #D4AF37; }
+
+                .inline-image { width: 100%; max-width: 600px; border-radius: 16px; margin: 30px 0; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+                .legacy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+                .legacy-card { background: rgba(20, 25, 30, 0.7); border: 1px solid rgba(212, 175, 55, 0.1); border-radius: 16px; padding: 25px; transition: 0.4s; }
+                .legacy-card:hover { border-color: #D4AF37; background: rgba(212, 175, 55, 0.05); }
+                .legacy-card h3 { font-size: 18px; margin-bottom: 10px; color: #D4AF37; }
+                .legacy-card p { font-size: 15px; opacity: 0.8; }
+
+                .farewell-section { max-width: 1000px; margin: 100px auto; text-align: center; padding: 80px 40px; background: rgba(212, 175, 55, 0.03); border-radius: 40px; border: 1px solid rgba(212, 175, 55, 0.1); }
+                .shanti-text { font-size: 32px; color: #D4AF37; letter-spacing: 6px; margin-top: 30px; }
+                
+                .doc-download { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; background: rgba(212, 175, 55, 0.1); border: 1px solid #D4AF37; color: #D4AF37; border-radius: 30px; text-decoration: none; font-size: 18px; font-weight: bold; transition: 0.3s; margin-top: 20px; }
+                .doc-download:hover { background: #D4AF37; color: #05070a; transform: translateY(-3px); }
+            `}</style>
+
+            <SEO title="हामी सबैकी दिदी: गीता उपाध्यायको स्मृतिमा | Sahitya Sanskriti" />
+            <BackButton />
+            <div className="glow-overlay" />
+            
+            <header className="hero-section">
+                <div className="reveal" ref={el => sectionRefs.current[0] = el}>
+                    <Sparkles size={60} color="#D4AF37" style={{ marginBottom: '40px' }} />
+                    <p className="hero-shloka">“जयन्ति ते सुकृतिनो रससिद्धाः कवीश्वराः<br />नास्ति येषां यशःकाये जरास्मरणजं भयम्॥”</p>
+                    <p style={{ opacity: 0.6, fontSize: '18px', maxWidth: '700px', margin: '20px auto' }}>- पुण्यात्मा र महान् व्यक्तिहरूको सधैं जय हुन्छ, जसको 'यश' (कीर्ति) रूपी शरीरलाई कहिल्यै बुढ्यौली (जरा) र मृत्युको डर हुँदैन। भौतिक शरीर मरे पनि उनीहरूको नाम सधैं अमर रहन्छ। (भर्तृहरि नीतिशतकम्)</p>
+                </div>
+            </header>
+
+            <main className="main-layout" ref={contentRef}>
+                <aside className="reveal" ref={el => sectionRefs.current[1] = el}>
+                    <div className="portrait-fixed">
+                        <img src="/aaa.jpeg" alt="Geeta Upadhyay Portrait" className="portrait-image" />
+                    </div>
+                    <div className="portrait-fixed" style={{ marginTop: '30px' }}>
+                        <img src="/bbb.jpeg" alt="Geeta Upadhyay" className="portrait-image" />
+                    </div>
+                </aside>
+                
+                <section className="reveal content-flow" ref={el => sectionRefs.current[2] = el}>
+                    <h1>हामी सबैकी दिदी: गीता उपाध्यायको स्मृतिमा</h1>
+                    <p className="bio-subtitle">शिक्षा, साहित्य र संस्कृतिकी सेतु • पद्मश्री सम्मानित व्यक्तित्व</p>
+                    
+                    <div className="story-section">
+                        <h2><Heart size={22} /> परिचय र आरम्भ</h2>
+                        <div className="story-text">
+                            <p>भारतीय नेपाली साहित्यमा असमको योगदान अत्यन्त महत्त्वपूर्ण मानिन्छ। यस योगदानलाई समृद्ध बनाउने स्रष्टाहरूमध्ये गीता उपाध्यायको स्थान विशिष्ट छ। शिक्षाविद्, साहित्यकार र अनुवादकका रूपमा नेपाली तथा असमिया साहित्यलाई एकअर्कासँग जोड्ने सेतुको रूपमा गीता उपाध्यायलाई चिनिन्छ। अङ्ग्रेजी तथा भारतीय साहित्यद्वारा भाषा, संस्कृति र समाजबीच आपसी सद्भाव विस्तार गर्नु उहाँको साहित्यिक यात्राको प्रमुख विशेषता हो।</p>
+                            <img src="/ccc.jpeg" alt="Geeta Upadhyay Memory" className="inline-image" />
+                            <p>समाजमा 'दिदी' विशेषणले परिचित गीता उपाध्यायको जन्म १४ फेब्रुअरी १९३९ मा असम राज्य अन्तर्गत तत्कालीन दरङ (हाल बिश्वनाथ) जिल्लाको गङ्गामौथानमा भएको हो। उहाँ स्वतन्त्रता सेनानी तथा समाजसेवी छबिलाल उपाध्यायकी नातिनी तथा साहित्यकार अनुवादक टंकनाथ उपाध्याय र माता भागीरथी देवीकी सुपुत्री हुनुहुन्छ। समसामयिक देशको परिस्थिति र सामाजिक, पारिवारिक वातावरणले उहाँको बाल्यकाल व्यक्तित्व निर्माणमा गहिरो प्रभाव पारेको थियो।</p>
+                        </div>
+                    </div>
+
+                    <div className="story-section">
+                        <h2><GraduationCap size={22} /> शैक्षिक यात्रा र प्राध्यापन</h2>
+                        <div className="story-text">
+                            <p>गीता उपाध्यायले आफ्नो प्रारम्भिक शिक्षा गङ्गामौथान बालिका प्राथमिक विद्यालयबाट सुरु गर्नुभयो। त्यसपछि सन् १९५५ मा बिहाली हाई स्कूलबाट मेट्रिक (HSLC) परीक्षा उत्तीर्ण हुनुभयो। त्यसबेला छोरी-चेली लाई उच्चशिक्षा दिने परम्परा थिएन। शिक्षित परिवारमा जन्मिएकी दिदीलाई उच्चशिक्षा लिन घर परिवारले उत्साहित गर्छन्। यसरी दिदीको उच्चशिक्षाको यात्रा अघि बढ्दै जान्छ।</p>
+                            <img src="/ddd.jpeg" alt="Geeta Upadhyay Teaching" className="inline-image" />
+                            <p>उच्च शिक्षाका लागि गुवाहाटीको हेण्डिक गर्ल्स कलेजमा नाम भर्ना गर्नु हुन्छ। उच्चतर माध्यमिक शिक्षा पछि सन् १९५९ मा कला संकायमा राजनीति विज्ञान विषय लिएर बी.ए.को उपाधि प्राप्त गर्नु हुन्छ। त्यसपछि सन् १९६४ मा राजनीतिशास्त्रमा स्नातकोत्तर (एम.ए.) उपाधि हासिल गर्नुभयो। असमका गोर्खा समुदायबाट स्नातकोत्तर उपाधि प्राप्त गर्ने पहिलो महिलाका रूपमा उहाँले इतिहास रच्नु भएको छ। यो उपलब्धिले त्यस समयको सामाजिक तथा शैक्षिक परिवेशमा नारी शिक्षाको महत्त्वलाई नयाँ उचाइमा पुर्याएको छ। साथै भावी पिँढीका लागि कर्म प्रेरणाको स्रोत बन्नु भएको छ।</p>
+                            <p>सन् १९६५ मा उहाँ Sibsagar College मा राजनीतिशास्त्रकी प्राध्यापिकाको रूपमा नियुक्त हुनुहुन्छ। शिक्षण पेसालाई जीवनको प्रमुख कर्मक्षेत्र बनाउँदै उहाँले ३४ बर्षको लामो समयसम्म महाविद्यालयमा राजनीतिशास्त्र अध्यापन गर्नुहुन्छ। अध्ययन र अध्यापनको लामो यात्रा पछि सन् १९९९ मा विभाग प्रमुख भएर अवकाश लिनुहुन्छ। एक सक्षम शिक्षिकाका रूपमा उहाँले हजारौँ विद्यार्थीलाई ज्ञान, अनुशासन र सामाजिक उत्तरदायित्वको भावना विकास गर्न समाजका नवयुवाहरुलाई प्रेरणा दिनुभयो। बहुआयामिक प्रतिभाले शिक्षण, साहित्य सिर्जना र अनुवादलाई निरन्तरता दिँदै अघि बढ्नु भयो।</p>
+                        </div>
+                    </div>
+
+                    <div className="story-section">
+                        <h2><BookOpen size={22} /> साहित्यिक योगदान</h2>
+                        <div className="story-text">
+                            <p>साहित्यका क्षेत्रमा गीता उपाध्यायले उपन्यास, आत्मकथा, निबन्ध, बालसाहित्य, यात्रा–वृत्तान्त तथा अनुवादका माध्यमबाट हाम्रो समाजलाई उल्लेखनीय योगदान दिनु भएको छ। असमका प्रख्यात साहित्यकार रूपकुँवर ज्योतिप्रसाद अग्रवालद्वारा लिखित प्रसिद्ध नाटक ‘कारेङ्गर लिगिरी’ लाई नेपालीमा ‘दरबारकी सुसारे’ शीर्षकमा अनुवाद गर्नुभयो। त्यसैगरी असमिया साहित्यकार निरुपमा बरगोहाइको चर्चित उपन्यास ‘अभियात्री’ लाई नेपालीमा ‘अभिव्यक्ति’ शीर्षकमा अनुवाद गर्नुभएको छ। उहाँका रचनाहरूमा मातृभूमिप्रतिको प्रेम, सांस्कृतिक पहिचान, सामाजिक यथार्थ, नारी चेतना तथा मानवीय मूल्यहरूको प्रभावशाली अभिव्यक्ति पाइन्छ। उहाँको चर्चित उपन्यास ‘जन्मभूमि मेरो स्वदेश’ र आत्मकथा ‘जीवनलाई फर्केर हेर्दा’ नेपाली साहित्यका महत्त्वपूर्ण कृतिका रूपमा मानिन्छन्।</p>
+                            <img src="/eee.jpeg" alt="Literary Works" className="inline-image" />
+                            <p>गुवाहाटी विश्वविद्यालयमा उहाँको जन्मभूमि मेरो स्वदेश उपन्यास पाठ्यक्रममा अन्तर्भुक्त गरिएको छ। यो उपन्यास आफ्नो हजुरबुबा छविलाल उपाध्यायको सामाजिक चरित्रलाई झल्काउँदै गोर्खाली समाजको एउटा ऐतिहासिक दस्तावेजलाई प्रस्तुत गरिएको छ। उच्चतर माध्यमिक शिक्षा संसद अन्तर्गत उहाँको कथा 'मातृत्व' पाठ्यक्रममा अन्तर्भुक्त छ। त्यस्तै अन्य विश्वविद्यालयमा पनि उनकाे परिचय सहित रचनाहरू पाठ्यक्रममा अन्तर्भुक्त छन्। भाषा ज्ञानको दृष्टिले गीता दिदीको असमीया नेपाली अंग्रेजी हिन्दी बङ्गाली आदि विभिन्न भाषाहरूमा ज्ञान थियो। विशेष गरेर उहाँले धेरै असमीया तथा नेपाली भाषामा रचनाहरू लेखन र सम्पादना पनि गर्नुभएको छ।</p>
+                            
+                            <h3>उहाँका केही उल्लेखनीय रचनाहरु:</h3>
+                            <p><strong>नेपाली भाषामा मौलिक कृतिहरू :-</strong> आमा मा फर्स्ट भएँ (बाल उपन्यास, १९९७), महापुरुष शङ्करदेव : जीवन र कर्म (जीवनी, २००३), मन्दाकिनी र अलकानन्दाको तिरैतिर बद्री - केदारसम्म (यात्रा स्मरण २००३), कथाञ्जली (कथासङ्ग्रह, २००५), जन्मभूमि मेरो स्वदेश (उपन्यास, २०१३), जीवनलाई फर्केर हेर्दा (आत्मकथा, २०१८)</p>
+                            <p><strong>असमिया भाषामा मौलिक कृतिहरू :-</strong> মা মই ফাৰ্ষ্ট হ'লোঁ (मा म प्रथम भए)(बाल उपन्यास, १९९७), নেপাল দেশৰ লোককথা (नेपाल देशको लोककथा) (कथासङ्ग्रह, २००१), সুবাসিত বতাহ (सुभाषित बतास) (कथासङ्ग्रह, २००५), मोर आई मोर जनमभूमि (२०१७)</p>
+                            <p><strong>नेपाली भाषामा अनूदित कृतिहरू :-</strong> एन फ्राङ्कको डायरी (डायरी, १९७२), दरबारकी सुसारे (नाटक, २००८), अभिव्यक्ति (उपन्यास, २०१०) ।</p>
+                            <p><strong>असमिया भाषामा अनूदित कृतिहरू :-</strong> Anne Frank Diary (डायरी, १९७५; अनुवादक: गीता उपाध्याय र बासन्ती लस्कर), भानुभक्तको रामायण (महाकाव्य, १९८७), कला सुरुज (उपन्यास, १९९८), मुनामदन (खण्डकाव्य, २०००), थलुवा सन्तान (उपन्यास, २००३), নিজ অভিব্যক্তিৰ দাপোনত কৰ্মবীৰ ধন বাহাদুৰ সোনাৰ (आत्मकथा, २००८), आनन्दी गोपाल (उपन्यास, मराठीबाट असमीया २००८)।</p>
+                            <img src="/fff.jpeg" alt="Book Publications" className="inline-image" />
+                            <p>सन् २०२१ मा जन्मभूमि मेरो स्वदेश उपन्यासलाई सरिता शर्माले अङ्ग्रेजीमा Swadesh - My Motherland नामले अनुवाद गरेकी छन्।</p>
+                        </div>
+                    </div>
+
+                    <div className="story-section">
+                        <h2><Briefcase size={22} /> अनुवाद र एनी फ्र्याङ्कको डायरी</h2>
+                        <div className="story-text">
+                            <p>गीता दिदीको अनुवाद साहित्यमा योगदान उल्लेखनीय छ। विश्वप्रसिद्ध कृति ‘The Diary of Anne Frank’ लाई असमिया भाषामा अनुवाद गरेर भारतीय साहित्य इतिहासमा ठूलो गुण लगाउनु भएको छ। महायुद्धकालीन समयका अन्तर्राष्ट्रिय सत्य र ऐतिहासिक घटना युक्त विश्व साहित्यलाई स्थानीय पाठकमाझ पुर्याउने महत्त्वपूर्ण कार्य गर्नुभएको छ। उल्लेखनीय के छ भने दिदीले अनुवाद गरेको उक्त पुस्तक त्यागवीर हेमबरुवा महाविद्यालयको पुस्तकालयमा पढ्ने मौका पाएको थिएँ। म आफैलाई धन्य मान्छु, असमीया भाषामा लेखिएको यस पुस्तकले नयाँ तथ्य र ज्ञानले मुग्ध पारेको थियो। यसका केही प्रसङ्ग यहाँ साझा गर्दैछु -</p>
+                            <p>एनी फ्र्याङ्कको डायरीमा विश्वप्रसिद्ध आत्मकथा लुकेको छ। द्वितीय विश्वयुद्धका समयमा नाजी शासनको अत्याचारबाट बच्नका लागि एनी फ्र्याङ्क र उनका परिवारले करिब दुई वर्षसम्म एउटा अन्धकार गोदाम भित्र लुकेर जीवन बिताएको थिए। उनीहरूले भोगेका संघर्ष, आशा, भावना, डर , त्रास आदि अनुभवहरूको अत्यन्त यथार्थ र मार्मिक वर्णन गरिएको छ। एनी फ्र्याङ्क एक यहूदी किशोरी थिइन्। उनको जन्म १२ जुन १९२९ मा जर्मनीको फ्राङ्कफर्ट शहरमा भएको थियो। एडोल्फ हिटलरको नेतृत्वमा नाजी शासनद्वारा यहूदीहरूमाथि बढ्दो दमन र अत्याचारका कारण मानिसहरु जर्मन छाड़ेर भागी रहेका थिए। सन् १९४२ मा नाजीहरूले यहूदीहरूलाई पक्राउ गरी यातना शिविरमा राखेर यातना दिने गर्थे। एनी फ्र्याङ्कको परिवार आफ्नो ज्यान जोगाउन सन् १९३३ मा जर्मनी छोडेर नेदरल्यान्ड्सको एम्स्टर्डम शहरमा बसाइँ सरेका थिए। एम्स्टर्डमस्थित एउटा गोप्य गोदाम घरमा कसैको अलिकति सहायताले लुक्ने ठाउँ भेटे। त्यहीँ लुकेर बसेका बेला एनीले आफ्नो दैनिक जीवन, सपना, पीडा र अनुभूतिहरू डायरीमा लेखेकी थिइन्, जुन पछि "एनी फ्र्याङ्कको डायरी" का रूपमा विश्वभर प्रसिद्ध भयो।</p>
+                            <img src="/ggg.jpeg" alt="Diary Translation" className="inline-image" />
+                            <p>तर दुःखको कुरा एकदिन ४ अगस्ट १९४४ मा नाजीहरूले उनीहरूको गोप्य आश्रयस्थल पत्ता लगाए। एनी फ्र्याङ्क र परिवारलाई पक्राउ गरी Concentration Camp मा लिएर गए। सन् १९४५ मा 'टाइफस' रोगका कारण १५ वर्षको उमेरमा एनीको दुःखद निधन भयो। आफ्नो पिता मात्रै जीवित रहन्छन्। परिवारका सबै सदस्यको मृत्यु हुन्छ। युद्धपछि एनीका पिता ओट्टो फ्र्याङ्क मात्र जीवित रहे। उनले एनीको डायरी सुरक्षित अवस्थामा भेटे। एनीको लेखिका बन्ने चाहना पूरा गर्ने उद्देश्यले पिताले सन् १९४७ मा यो डायरी प्रकाशित गरे। यस पुस्तकको ऐतिहासिक महत्व रहेको छ। आज ‘एनी फ्र्याङ्कको डायरी’ दोस्रो विश्वयुद्ध र Holocaust होलोकास्ट (यहूदीहरूको नरसंहार) सम्बन्धी सबैभन्दा महत्त्वपूर्ण ऐतिहासिक दस्तावेज मध्ये एक मानिन्छ। यसले युद्धको विभीषिका, मानव अधिकारको महत्त्व, स्वतन्त्रताको मूल्य र शान्तिको आवश्यकता अत्यन्त मार्मिक रूपमा प्रस्तुत गर्दछ।</p>
+                        </div>
+                    </div>
+                    
+                    <div className="story-section">
+                        <h2><Award size={22} /> सम्मान र पुरस्कार</h2>
+                        <div className="story-text">
+                            <p>गीता दिदीले लेख्नु अथवा अनुदित गर्नुभएका प्रत्येक रचनाको एउटा विशेष तात्पर्य रहेको हुन्छ। दिदीले रचना गर्नुभएको नेपाली र असमिया साहित्यबीचको अन्तरसम्बन्धलाई सुदृढ बनाउन उहाँले अनेक अनुवाद तथा साहित्यिक गतिविधिमा सक्रिय भूमिका निर्वाह गरि आउनुभएको छ। दिदीका रचनाहरूमा जिज्ञासा र सन्देशहरू पर्याप्त पाईन्छ।</p>
+                            <p>दिदीको साहित्यिक योगदानलाई राष्ट्रिय सम्मानहरूले उच्च मूल्याङ्कन गरेको बुझिन्छ। सन् २०१६ मा ‘जन्मभूमि मेरो स्वदेश’ ऐतिहासिक घटनामा आधारित उपन्यासका लागि साहित्य अकादेमी पुरस्कार प्राप्त गर्नु उहाँको साहित्यिक यात्राको महत्त्वपूर्ण उपलब्धि हो। त्यसैगरी सन् २०२५ मा भारत सरकारले साहित्य र शिक्षाको क्षेत्रमा पुर्याएको विशिष्ट योगदानको कदर गर्दै उहाँलाई पद्मश्री सम्मान प्रदान गरेको छ।</p>
+                            <img src="/hhh.jpeg" alt="Awards and Recognition" className="inline-image" />
+                            <p>पद्मश्री (स्थापना २ जनवरी १९५४) भारत गणराज्यको चौथो सर्वोच्च नागरिक सम्मान हो। यो सम्मान भारत रत्न, पद्म विभूषण र पद्म भूषणपछि चौथो स्थानमा पर्दछ। यो सम्मानले उहाँको व्यक्तिगत सफलताका साथै भारतीय गोर्खाली समाजमा नेपाली साहित्यको गौरवलाई पनि उजागर गरेको छ। गीता दिदीले पनि धेरै कठिनाइहरूको सामना गर्दै उहाँले उच्च शिक्षा हासिल गर्नुभयो, साहित्य सिर्जना गर्नुभयो, अनुवादका माध्यमबाट नेपाली र असमिया साहित्यलाई समृद्ध बनाउनुभयो र त्यसैले पद्मश्री जस्तो प्रतिष्ठित राष्ट्रिय सम्मान प्राप्त गर्न सफल हुनुभयो।</p>
+                            <p>फेमिना (Femina) भारतको एक प्रसिद्ध महिला पत्रिका हो। यसले हरेक वर्ष "Fab List" प्रकाशित गर्ने गर्छ। गीता दिदीले पनि जीवनभर शिक्षा, साहित्य र समाजसेवामा निरन्तर योगदान दिई आउनु भएको छ। त्यसैको कारण उहाँलाई यस पत्रिकाको चयन समितिले स्थान दिएर यो सम्मान प्रदान गरेको छ।</p>
+                            <p><strong>उहाँले विभिन्न समयमा पाउनुभएको सम्मान पुरस्कारहरू :-</strong> पद्मप्रसाद ढुङ्गाना पुरस्कार (२००१), असम सरकारद्वारा साहित्यिक पेन्सन (२००३), साहित्य अकादेमी कार्यक्रम From My Window (२००७), पारिजात मैत्री सम्मान (२००७), अभि–जमान स्मृति पुरस्कार (२००८), फूलचन्द खण्डेलवाल पुरस्कार (२००९), महाकवि देवकोटा शताब्दी सम्मान (२०१०), लालमान सञ्चरणी पुरस्कार (२०१०), प्रवीण सैकिया साहित्य पुरस्कार (२०११), भानु सम्मान (२०११), साहित्य अकादेमी अनुवाद पुरस्कार (२०१२), साहित्य अकादेमी Meet the Author कार्यक्रम (२०१५), साहित्य अकादेमी पुरस्कार (२०१६)। हालैमा असम सरकारले असमको साहित्य तथा सांस्कृतिक परम्परालाई आजीवन समर्पणद्वारा समृद्ध तुल्याएकोमा गीता उपाध्याय दिदीलाई सती साधनी पुरस्कार–२०२६ प्रदान गरेको छ।</p>
+                        </div>
+                    </div>
+                    
+                    <div className="story-section">
+                        <h2><Users size={22} /> अन्तिम सम्झना र प्रेरणा</h2>
+                        <div className="story-text">
+                            <p>गीता दिदीले Central University तेजपुर विश्वविद्यालय Tezpur University को व्यवस्थापन बोर्डमा पनि सक्रिय सदस्यका रूपमा कार्य निर्वाह गर्नुभयो। समसामयिक गतिविधिमा पनि सचेत रहने दिदी शिक्षण कार्यका अतिरिक्त सामाजिक तथा साहित्यिक संस्थाहरूमा सक्रिय भई कार्य गर्नु भएको छ। उहाँले असमका गोर्खा समाजको भाषा संस्कृतिलाई जगेड़ा गर्ने नेपाली साहित्य परिषद् (असम) को अध्यक्ष रहेर कार्य निर्वाह गर्नुभएको छ। त्यसरी नै भारतव्यापी फैलिएको गोर्खाहरूको संगठन भारतीय गोर्खा परिसंघ (असम शाखा) को अध्यक्षका रूपमा दायित्वभार निभाउनु भएको छ।</p>
+                            <img src="/iii.jpeg" alt="Legacy" className="inline-image" />
+                            <p>दिदीलाई सन् २०२०मा तेजपुर चानमारी घरमा भेट्न गएको थिए। कोरोनाको कारणले दिदी आफैलाई खुबै आइसोलेटेड बनाएर राख्नुभएको थियो। मेरो जिज्ञासा थियो महाविद्यालयका विद्यार्थीहरु एकपल्ट उहाँसँग भेट गर्ने र भलाकुसारी गर्ने, कोरोनाको बेला आफै आइसोलेटेड बस्नुभएकोले अलिक पछि त्यस्तो मौका मिलाउँला भन्नुभयो। शारीरिक अस्वस्थताको कारणले डिस्टेन्स मेन्टेन गरेर टाढैबाट नै हाम्रो बाताचित भएको थियो। दिदीले आश्वासन दिनुभयो तर फेरि भेट गर्ने मौका परेन।</p>
+                            <p>अपर्झट १३ जुलाई दिनभरी भानु जयन्तीको विभिन्न कार्यसूचीमा संलग्न रही उत्सव मनाइरहेको बेला बेलुकी मोबाइलमा समाचार आयो। ९.१० बजे राति आदिकवि भानुभक्त आचार्यको जन्मदिनकै दिन दिदीको देहावसानको शोक समाचार आयो। यस समाचारले असममा बसोबास गर्ने सबै जाति जनगोष्ठीलाई मर्माहत पारेको छ। दिदीको महा- परायणमा हामी सबै शोकाकुल छौँ।</p>
+                        </div>
+                    </div>
+                    
+                    <div style={{ textAlign: 'center', marginTop: '40px' }}>
+                        <a href="/शिक्षा, साहित्य.docx" download className="doc-download">
+                            <FileText size={24} />
+                            शिक्षा, साहित्य - पूर्ण लेख डाउनलोड गर्नुहोस् (Word Document)
+                        </a>
+                    </div>
+                </section>
+            </main>
+
+            <section className="farewell-section reveal" ref={el => sectionRefs.current[3] = el}>
+                <p style={{ fontStyle: 'italic', fontSize: '22px', opacity: 0.8 }}>“दिदीको प्रेरणा हामी सबैलाई सधैँ मिलिरहोस् । दिदीको विदेह आत्माले परम शान्ति पाओस्। उहाँप्रति हार्दिक श्रद्धाञ्जली अर्पण गर्दछु।”</p>
+                <div className="shanti-text">ॐ शान्तिः शान्तिः शान्तिः।</div>
+            </section>
+
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '20px', marginBottom: '40px' }}>
+                <LikeButton id="geeta-upadhyay" collectionName="shradhanjali" />
+                <SocialShare elementRef={contentRef} title="श्रद्धाञ्जली: गीता उपाध्यायको स्मृतिमा" />
+            </div>
+
+            <div style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '80px', paddingLeft: '20px', paddingRight: '20px' }}>
+                <CommentSection id="geeta-upadhyay" collectionName="shradhanjali" />
+            </div>
+        </div>
+    );
+};
+
+export default ShradhanjaliGeetaUpadhyay;
