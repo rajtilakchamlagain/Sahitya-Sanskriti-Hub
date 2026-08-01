@@ -27,20 +27,34 @@ const StoryDetail = () => {
     return (
         <div style={{ paddingBottom: '80px', backgroundColor: 'var(--bg-paper)' }}>
             <ReadingProgressBar /> {/* Reading Progress Bar */}
-            {/* Header Image with Fade */}
-            <div style={{ position: 'relative', height: '300px', width: '100%' }}>
+            {/* Premium Header Image with Blurred Background */}
+            <div style={{ position: 'relative', height: '400px', width: '100%', overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#0a0a0a' }}>
+                {/* Blurred Background */}
+                <div style={{
+                    position: 'absolute',
+                    top: '-20px', left: '-20px', right: '-20px', bottom: '-20px',
+                    backgroundImage: `url(${story.img})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    filter: 'blur(15px) brightness(0.3)',
+                    zIndex: 0
+                }} />
+                
+                {/* Main Image */}
                 <img
                     src={story.img}
                     alt="Story Cover"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    style={{ maxHeight: '90%', maxWidth: '90%', objectFit: 'contain', position: 'relative', zIndex: 1, borderRadius: '8px', boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}
                 />
+
                 <div style={{
                     position: 'absolute',
                     bottom: 0,
                     left: 0,
                     right: 0,
-                    height: '100px',
-                    background: 'linear-gradient(to bottom, transparent, var(--bg-paper))'
+                    height: '150px',
+                    background: 'linear-gradient(to bottom, transparent, var(--bg-paper))',
+                    zIndex: 2
                 }} />
 
                 {/* Back Button */}
