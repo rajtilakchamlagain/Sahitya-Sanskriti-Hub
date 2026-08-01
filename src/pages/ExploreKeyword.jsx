@@ -177,6 +177,33 @@ const ExploreKeyword = () => {
                     </div>
                 )}
                 
+                {/* Section: Stories */}
+                {matchedStories.length > 0 && (
+                    <div style={{ marginBottom: '40px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+                            <BookOpen size={20} color="var(--primary-maroon)" />
+                            <h3 style={{ fontSize: '20px', fontFamily: 'var(--font-heading)', margin: 0, color: 'var(--primary-maroon)' }}>Related Stories</h3>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                            {matchedStories.map(story => (
+                                <Link to={`/story/${story.id}`} key={story.id} style={{
+                                    backgroundColor: 'rgba(255,255,255,0.7)', padding: '20px', borderRadius: '16px',
+                                    textDecoration: 'none', color: 'inherit', border: '1px solid rgba(255,255,255,0.8)',
+                                    boxShadow: '0 4px 12px rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', gap: '16px',
+                                    transition: 'transform 0.2s',
+                                }}
+                                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+                                    <img src={story.img} alt={story.title} style={{ width: '60px', height: '60px', borderRadius: '10px', objectFit: 'cover' }} />
+                                    <div>
+                                        <h4 style={{ margin: '0 0 6px 0', fontSize: '18px', color: '#2c0404', fontFamily: 'var(--font-heading)' }}>{story.title}</h4>
+                                        <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted)' }}>{story.author} • {story.readTime}</p>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                )}
                 {/* Fallback Message */}
                 {matchedPoems.length === 0 && matchedArticles.length === 0 && matchedStories.length === 0 && (
                     <div style={{ textAlign: 'center', padding: '40px', backgroundColor: 'rgba(255,255,255,0.5)', borderRadius: '16px' }}>

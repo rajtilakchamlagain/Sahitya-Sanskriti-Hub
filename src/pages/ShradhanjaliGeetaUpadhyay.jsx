@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import SEO from '../components/SEO';
 import BackButton from '../components/BackButton';
 import SocialShare from '../components/SocialShare';
@@ -6,6 +6,8 @@ import LikeButton from '../components/LikeButton';
 import CommentSection from '../components/CommentSection';
 
 const ShradhanjaliGeetaUpadhyay = () => {
+    const contentRef = useRef(null);
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -204,7 +206,7 @@ const ShradhanjaliGeetaUpadhyay = () => {
                 </div>
             </div>
 
-            <main className="content-wrapper">
+            <main className="content-wrapper" ref={contentRef}>
                 <p className="memorial-paragraph">
                     भारतीय नेपाली साहित्यमा असमको योगदान अत्यन्त महत्त्वपूर्ण मानिन्छ। यस योगदानलाई समृद्ध बनाउने स्रष्टाहरूमध्ये गीता उपाध्यायको स्थान विशिष्ट छ। शिक्षाविद्, साहित्यकार र अनुवादकका रूपमा नेपाली तथा असमिया साहित्यलाई एकअर्कासँग जोड्ने सेतुको रूपमा गीता उपाध्यायलाई चिनिन्छ। अङ्ग्रेजी तथा भारतीय साहित्यद्वारा भाषा, संस्कृति र समाजबीच आपसी सद्भाव विस्तार गर्नु उहाँको साहित्यिक यात्राको प्रमुख विशेषता हो।
                 </p>
@@ -338,11 +340,11 @@ const ShradhanjaliGeetaUpadhyay = () => {
                     <div className="om-shanti">ॐ शान्तिः शान्तिः शान्तिः।</div>
                 </div>
 
-                <div style={{ marginTop: '50px' }}>
-                    <SocialShare url={window.location.href} title="हामी सबैकी दिदी: गीता उपाध्यायको स्मृतिमा" />
-                    <LikeButton itemId="geeta-upadhyay" />
-                    <CommentSection itemId="geeta-upadhyay" />
+                <div style={{ marginTop: '50px', display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '40px' }}>
+                    <SocialShare elementRef={contentRef} title="हामी सबैकी दिदी: गीता उपाध्यायको स्मृतिमा" />
+                    <LikeButton id="geeta-upadhyay" collectionName="shradhanjali" />
                 </div>
+                <CommentSection id="geeta-upadhyay" collectionName="shradhanjali" />
             </main>
         </div>
     );
