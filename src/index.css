@@ -823,3 +823,27 @@ a {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
 }
+
+/* Responsive Inline Images for Stories/Articles */
+.story-inline-img-left {
+  float: left;
+  margin: 0 1.5rem 1rem 0;
+  width: 35%;
+  max-width: 250px;
+}
+.story-inline-img-right {
+  float: right;
+  margin: 0 0 1rem 1.5rem;
+  width: 40%;
+  max-width: 300px;
+}
+@media (max-width: 768px) {
+  .story-inline-img-left,
+  .story-inline-img-right {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 1.5rem 0;
+    display: block;
+  }
+}
