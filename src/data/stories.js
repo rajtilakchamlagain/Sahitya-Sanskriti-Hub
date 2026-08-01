@@ -123,7 +123,7 @@ export const stories = [
         id: 3,
         title: 'आनन्दको स्रोत (Source of Joy)',
         author: 'Dr. Tilak Sarmah',
-        img: 'https://images.unsplash.com/photo-1544365558-35aa4afcf11f?w=800&q=80',
+        img: '/homen.jpg',
         readTime: '12 min read',
         audioDuration: '09:00',
         content: `
