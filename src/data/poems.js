@@ -10,19 +10,20 @@ export const poems = [
 तुलसी गंगा जल खुवाइ
 निस्तब्ध बन्दै जान्छ आकाश
 गर्छन् खुब मालाले सजाई ।
-मुढो जब राख्छन् यहाँ 
-सम्झिने सामु आई रुन्छन् कराई ।
+मुढो जब राख्छन् यहाँ लड़ाई 
+सम्झिने सामु आई रुन्छन् कराई -
 सुन्दर संसार सजाउने रहर 
 मैले कल्पेका इच्छाहरू
 फैलिदै जानेछन् दागबत्ती सँगै
 शुन्य आकाशमा झिल्काहरु -
-धुवाँ धुवाँ भै फैलिने छ 
+धुवाँ धुवाँ भै फैलिने छन्.....
 कुँदेको थिए सपना त धेरै 
 रहस्यमयी यो जीवन यात्रामा
-कति पूर्ति भए  कति अधुरो
-लेख रचेको जीवन बाटोमा।`,
+कति पूर्ति भए  कति अधुरो बाटोमा 
+लेख लेखेको जीवन भरीमा।`,
+        englishSummary: "A philosophical poem reflecting on the fleeting nature of life. It beautifully expresses how all human desires, hopes, and struggles eventually fade away, urging acceptance of the inevitable end.",
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=800&auto=format&fit=crop", // Aestheic mist
+        image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=800&auto=format&fit=crop",
         about: {
             writtenBy: "Dr. Tilak Sarmah",
             writtenWhen: "Late Night Reflection",
@@ -35,7 +36,7 @@ export const poems = [
     {
         id: 2,
         title: "Prerana Ho (प्रेरणा हो)",
-        excerpt: `यो फोटो होईन
+        excerpt: `यो फोटो होईन 
 यो तस्वीर हो
 यो तस्वीर होईन
 यो प्रेरणा हो 
@@ -45,8 +46,9 @@ export const poems = [
 यो गन्थन हो 
 यो गन्थन होईन 
 यो आत्म मन्थन हो।`,
+        englishSummary: "A deeply introspective poem titled 'Prerana Ho' (It is Inspiration). It explores the idea that true art is not just a visual picture, but a profound creation, an inspiration, and a soul-stirring self-reflection.",
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop", // Majestic Mountains
+        image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop",
         tags: ["Inspiration", "Philosophy", "Art"]
     },
     {
@@ -55,17 +57,17 @@ export const poems = [
         excerpt: `तुरा माजनका सपनामा    
 राजकुमारी आउन थालिछन -    
 जंगल फाँडदै गोठतिर लम्किदा  
-छम छम पायल बजेछन - 
+छम छम पायल सुन्न थालेछन - 
 बलेसीमा फुर्के पुच्छर भैसीको      
-मन मनै कुची झै हल्लेछ-  
-वासन्ती वतासको लहरमा        
-चुर्लुम्मै भई सकेछ    -          
-भुमरी बालुवाको उडानमा    
-शक्तिमान हात उचाल्छन - 
+मन मनै कुची लाउन थालेछन -  
+वासन्ती वतासको उडानमा        
+चुर्लुम्मै भई सकेछन    -          
+भूमरी बालुवाको उडानमा    
+शक्तिमान भाई हात उचाल्छन - 
 राजकुमारीको कैश - तरंग  
 ब्रहमपुत्रको छालमा देख्छन -   
-तिम्सिनापाल,राधावरे, किस्ते, 
-योगी मुसे टापुमा गोठछन -  
+तिम्सिनापाल,राधावरे, किस्ते, योगी
+मुसे' टापुमा हाम्रा गोठ छन -  
 तिमसिना,कोइराला,अधिकारी, काफ्ले 
 चम्लागाई खुबै हास्तछन -    
 सानैमा गोठमा " क " ख " पढी  
@@ -75,46 +77,61 @@ export const poems = [
 तुरा महाजनका सपनामा     
 राजकुमारी आउन थालिछन -    
 ब्रह्मपुत्र किनारको गोर्खाको 
-किस्सा शर्माले यहीं बिसाउछन।`,
+किस्सा शर्माले यहीं बिसाउछन।
+
+(हिन्दी अनुवाद: ब्रह्मपुत्र द्वीप)
+तुरा महाजन के सपने में
+एक् राजकुमारी आई -
+जंगल से चलकर खलिहान की ओर
+छम छम पायल सुनने लगी -
+बालेसी में ततैया की फुरके पूँछ
+मेरा दिल पसीजने लगा -
+वसंती वत्स की उड़ान में
+लीन तल्लीन हो चुका  -
+समुद्री रेत की उड़ान में
+शक्तिमान की हाथ उठाते  -
+राजकुमारी पोखराज बालों से -
+ब्रह्मपुत्र की लहरों में लहरें दिखती -
+तिम्सीनापाल, राधावरे, किस्ते, योगी
+मुसे- टापु पर हमारे गोठ हैं -
+तिमसीना, कोइराला, अधिकारी, काफले
+चम्लागाई बेहद खूबसूरत हैं  -
+जब मैं छोटा था, मैंने खलिहान में "ए" और "बी" पढ़ा
+रौमारी गमिरिपाल चल आते हैं -
+बेटे और पोते के लिए स्कूली शिक्षा
+आज ज्ञानी गुनी बनाते हैं -
+तुरा महाजन के सपने में
+राजकुमारी आई है -
+ब्रह्मपुत्र के तट पर गोरखाओं की
+किस्सा शर्मा यहीं रुकते हैं।`,
+        englishSummary: "A nostalgic poem capturing childhood memories and the vibrant Gorkhali heritage flourishing along the banks of the mighty Brahmaputra river in Assam.",
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800&auto=format&fit=crop", // Nature/River/Boat
+        image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800&auto=format&fit=crop",
         tags: ["Nature", "Culture", "Assam"]
     },
     {
         id: 4,
         title: "Kasto Samaya (कस्तो समय)",
-        excerpt: `पराई भन्दा आफन्त नै 
-निष्ठुरी वनि दिन्छन्
-कोलाहल वीच आफ्नो 
-आवाज नसुन्ने हुन्छन्
-
+        excerpt: `पराई भन्दा आफन्त नै निष्ठुरी वनि दिन्छन्
+कोलाहल वीच आफ्नो आवाज नसुन्ने हुन्छन्
 दुधमा पानि जति मिल्छ  
 तेति नै मनले खोज्छ 
 नौलो आकाश मुन्तिर 
-उज्यालो छरेको छ
-
+उज्यालो छरि रहेको छ
 तैपनि कुइरोका बीचमा 
-ढोढे ले मुख देखाउँछ 
+मुख देखाउँछ ढोढेले
 विहान वासन् नपाउँदै 
-चोर हान्ने तालमा हुन्छ। 
-
-बाघले झम्टिन आउँदा 
-मेरै आडमा लुकेथ्यो 
-आफन्त झैं साखै बनेको 
-अहिले जस्तो लागेथ्यो
-
-आफन्त विर्सी मलाई नै 
-कहिले उत्पीडन गर्छ 
-कस्तो समय कसैका लागि 
-आफ्नो विरानो बन्छ 
-
-विरानु कहिले आफ्नै हुन्छ
-आफ्नैले चोट पुर्याउछ
-आफ्नोमा विरानु भई बस्न 
-कति कठिन छ  !!
-कति कठिन हुन्छ!!`,
+जिस्काउने र चोर हान्ने सल्लाहमा हुन्छन्। 
+बाघले झम्टिन आउँदा मेरै आडमा
+जिउ लुकाएको अहिले जस्तो लाग्छ
+फेरि आफन्त विर्सी मलाई नै ,....उ...फ
+कस्तो समय 
+बरु विरानु ठाउँमा अटाउथे होला
+आफ्नोमा विरानु भई बस्न कति कठिन छ... किनकि
+पराई भन्दा आफन्त नै निष्ठुरी वनि दिन्छन्।`,
+        englishSummary: "A poignant poem titled 'Kasto Samaya' (What Times Are These). It reflects on the painful reality of betrayal and how, over time, close loved ones can unexpectedly turn into distant strangers.",
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop", // Starry Night Dark Forest
+        image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop",
         tags: ["Society", "Life", "Philosophy"]
     },
     {
@@ -133,12 +150,12 @@ export const poems = [
 दिन -दिनताको लागि एकमुठी अन्न
 कहाँ बन्न सक्ला--
 
-           त्यसैले भन्छु मित्र-
-           कविता कोर्न मलाई जोड नगर
-           लंगडा खोरण्डा अपाङ्ग जस्ता
-           पुर्ण पोषण नपाएका--मेरा कविताले
-           न त शब्दलाई गुन्न सक्छन्
-          न त दृश्यलाई गम्न सक्छन्
+त्यसैले भन्छु मित्र-
+कविता कोर्न मलाई जोड नगर
+लंगडा खोरण्डा अपाङ्ग जस्ता
+पुर्ण पोषण नपाएका--मेरा कविताले
+न त शब्दलाई गुन्न सक्छन्
+न त दृश्यलाई गम्न सक्छन्
 
 चैतन्य शक्ति पाएका हरियाली पालुवाका
 रंगीन सपनाहरु----
@@ -162,55 +179,55 @@ export const poems = [
 महान कवि कलाकार--
 
 मान्यवर हरेन सुब्बा चक्रपाणि शर्मा खेम मैनाली
- अन्जु देवी  यदुमणि शर्मा कृष्ण मिजार आरती देवी
- राधा प्रधान, प्रभाकर नेउपाने, गीताञ्जली देवी, 
+अन्जु देवी  यदुमणि शर्मा कृष्ण मिजार आरती देवी
+राधा प्रधान, प्रभाकर नेउपाने, गीताञ्जली देवी, 
 हेमन्त चाम्लागाई, नर बहादुर दर्जी आदिआदि देखि
- म प्रेरित छु ।
+म प्रेरित छु ।
 
 अनेकौं प्रेरणाले--  अनि मल- जलले
 म र मेरो समाज सलबलाएको थियो
 अनि मेरो काँचो कवि मन टुसाएको थियो--
 
 अफसोस पनि लाग्छ
- कहाँ कहाँ होलान् उनीहरू
- समयको बिरानो बेलामा
- ओझेलमा परि हराउँदै गएका--
- सुनिदैन आज त्यो मधुर सरगम---
+कहाँ कहाँ होलान् उनीहरू
+समयको बिरानो बेलामा
+ओझेलमा परि हराउँदै गएका--
+सुनिदैन आज त्यो मधुर सरगम---
 
- एकपल सम्झिने फुर्सद पनि नपाउँदा 
+एकपल सम्झिने फुर्सद पनि नपाउँदा 
 उदासीन्छ यो मन --+-+
 
 मित्र,----
- म सम्झन्छु वर्ड्सवर्थ, टेगोर,
+म सम्झन्छु वर्ड्सवर्थ, टेगोर,
 पन्त-निरला, बिष्णु- ज्योति र भुपेन दालाई 
 अनि भानु- लेखनाथ -सम- देवकोटा ,पुष्पलाल- कटुवाल
 आदि महान् व्यक्तित्वलाई---
 
 जसका आदर्शका किरणहरु प्रेरणाका स्रोत
- बनी रहनेछन्।---
+बनी रहनेछन्।---
 
 म त एउटा अति नै सुक्ष्म
- झिनो मान्छे 
+झिनो मान्छे 
 त्यसैले भन्छु, मित्र --
 
 कविताको लय भाका सम्म बुझ्न नसक्ने
- म मान्छेको जीवन बोध र 
+म मान्छेको जीवन बोध र 
 खान लाउनको अभर सम्म टार्न नसक्ने 
 मेरो कविता--
- कसरी जीवन हाक्ने गीत बन्ला
- हृदयको चुर बन्ला 
+कसरी जीवन हाक्ने गीत बन्ला
+हृदयको चुर बन्ला 
 त्यसैले भन्छु,  मित्र---
- कविता लेख्न मलाई ढिपी नगर।---`,
+कविता लेख्न मलाई ढिपी नगर।---`,
+        englishSummary: "A humble and moving poetic expression where the author asks not to be pressured into writing. He reflects on his own perceived limitations when compared to the great literary giants of the past who have profoundly shaped society.",
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop", // Writing Book Vintage
+        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop",
         tags: ["Inspiration", "Society", "Art"]
     },
     {
         id: 6,
         title: "Himali (हिमाली)",
-        excerpt: `हिमालको फेंदीमा बस्ने तिमी 
-हिमाली हौ हिमाली 
-
+        excerpt: `हिमालको फेदीमा बस्ने तिमी 
+हिमाली हो हिमाली 
 तिमी अन्नपूर्णा हौ
 तिमी कान्चनजंघा
 कान्चन कान्चन कान्चन
@@ -218,22 +235,21 @@ export const poems = [
 
 संसार कै शिखरमा बसी 
 चिहाउछेउ तिमी मलाई
-स्वच्छ  निर्मल जल औम् दिँदै 
+स्वच्छ र निर्मल जल औम दिँदै 
 खोतल छौ मेरो मनलाई
-
 म हावा बन्छु म पानी बन्छु, बहन्छु म तिमी संगै
-तिमी अन्नपूर्णा हौ तिमी कान्चनजंघा। कान्चन०
+तिमीअन्नपूर्णा हौ तिमी कान्चनजंघा। कान्चन०
 
 बनपाखा लाई चुम्दै हिडछेऊ 
-रंग -विरंग आभा छर्दै 
+रंग -विरंगी आभा छर्दै 
 सैलानी सारालाई लोभ्याउछौ 
 हृदयलाई पुलकित पार्दै 
-
-सगर माथा हौ सोन्दर्य फिजाऊ मेरो अभिज्ञानलाई जगाउ
+सगर माथा हौ सोन्दर्य फिजाऊ मेरो अभिज्ञान लाई जगाउ
 सगर माथा हौ प्रेमी छु तिम्रो मेरो अभिज्ञान लाई जगाउ
 तिमी अन्नपूर्णा हौ तिमी कान्चनजंघा । कान्चन् ० ।`,
+        englishSummary: "A beautiful, patriotic ode to the Himalayas. The poem celebrates the pristine beauty of the Annapurna and Kanchenjunga mountain ranges and their deep connection to the poet's identity.",
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop", // Snow Mountain
+        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop",
         tags: ["Nature", "Culture", "Patriotism"]
     },
     {
@@ -249,8 +265,9 @@ export const poems = [
 अभिनय गर्छौं  हामी मन्चमा, बालक र बृद्धको
 राजा र रङ्कको -
 जीन्दगी हाम्रो एक नाटक हो ... अभिनय गर्ने हाम्रो काम हो..।`,
+        englishSummary: "A classic philosophical poem that compares human life to a theatrical play. It touches on the universal themes of joy and sorrow, peace, conflict, and the inevitable cycle of birth and death.",
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop", // Re-using Vintage Book, guaranteed to work
+        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop",
         tags: ["Life", "Philosophy", "Art"]
     },
     {
@@ -260,8 +277,207 @@ export const poems = [
 संघर्ष आज पनि जारी नै छ
 केही संघर्ष टुका टुका भए
 केही संगामी-यात्रा अझै बाँकी नै छ..`,
+        englishSummary: "A short, motivational piece titled 'Koshish Garchu Kati Sakchu' (I Will Try As Much As I Can). It emphasizes resilience, the continuous nature of human struggle, and the determination to keep moving forward despite obstacles.",
         author: "Dr. Tilak Sarmah",
-        image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop", // Deep Forest Path
+        image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop",
         tags: ["Society", "Life", "Inspiration"]
+    },
+    {
+        id: 9,
+        title: "Pyaro Darjeeling (प्यारो दार्जिलिङ)",
+        excerpt: `दार्जिलिङ  सा...रै रमाइलो छ
+गोर्खाभूमि मलाई प्यारो छ,
+किनकि यहाँ मेरा बाजेले सुगन्धित फूल 
+लगाउँनु भएको थियो,
+आज केही  वसांई रहेको छ भने 
+केही ओइलाई रहेछ 
+बाजेले भिरालो कोठे बारीमा चियाको बुट्टाले
+हरियाली भर्नु भएको थियो
+मानेडाडाबाट देखिने भन्ज्याङ अनि आकाशै 
+छुने हिंउ चुचुरो..... देखि--
+खस्रेताका पात 
+चट्ट चौंरी गाईले फुर्के पुच्छर हल्लाउँदै खाएको-
+त्यो बाक्लो ओलन अनि ..छुर्पी चबाएको
+टेनजिंगले सगर चुमेको,
+मेरा बाजेको पौरख अइलेपनि टलक्क टल्कि रहेको छ,
+मेरो माटोको वास्ना अइले हराएको छैन
+हतास र आतेसले पनि मेरो घ्राण शक्तिलाई
+नाश गर्न सकेको छैन।
+मेरी आमाका शिरमा नाम्लोले खोपिल्टयाएको
+दागहरू,
+डोकोले थिचिएर लाम भई बसेका
+छिया छिया पारेकाे पिठ्युँ।
+
+एकातिर दाउराको भारी अर्कोतिर म
+एकातिर घाँसको भारी अर्कातिर तिमी
+एकातिर चियाका बुट्टा अर्कातिर हामी
+मेरो भक्कानिएको मनले भन्छ 
+मलाई मैं भएर बाँच्न मन छ
+मलाई आमाको अनुहार यो माटोमा 
+हेर्न मन छ
+ट्वाय ट्रेनमा चढि वताशिया लुपको सौन्दर्य हेर्न मन छ
+टाईगरहिल्समा उभिएर सगरमाथा छुन पुग्छ यो मन 
+पीस पगेडाबाट विश्वलाई शान्तिको वार्ता दिन
+चाहान्छु म 
+दुरपिन डाडाको चुचुरोमा उत्तानु भै आफ्नो छाती आकाशमा 
+टस्साएर निरढुक्कको लामो सांस फेर्न छ।
+पिता पुर्खाको घर आफ्नो अस्मिताको घर
+नव पिढीको घर जहाँ तिमी म हामी 
+चौतारामा बसिवियालो गरेकाे घर
+प्यारो यो गोर्खा भूमि
+मलाई प्यारो छ मलाई प्यारो छ।`,
+        englishSummary: "A beautiful tribute to Darjeeling, affectionately known as Gorkhabhoomi. The poem invokes nostalgia, remembering the hard work of ancestors, the scenic tea gardens, Mount Everest, and the deep cultural roots tied to this land.",
+        author: "Dr. Tilak Sarmah",
+        image: "https://images.unsplash.com/photo-1544634076-a90160ddf44e?q=80&w=800&auto=format&fit=crop",
+        tags: ["Darjeeling", "Nostalgia", "Gorkha"]
+    },
+    {
+        id: 10,
+        title: "Ke Bhanu (के भनुँ)",
+        excerpt: `के भनुँ तिमीलाई
+हुन सक्दिनँ म जिउँदो तस्वीर सलबलाई रहने 
+तिम्रो जीवनमा 
+के त ?
+के वन्न सक्दिन होला 
+भित्तामा टाँसेको मुक तस्वीर सरी
+विहान वेलुका एक झलक हेरी
+सारा दिनको कर्म व्यस्ततामा 
+सलेदो हाल्ने ?
+हामी आपसमा प्रेरणा बन्न सक्छौ 
+जीवनको परिभाषा प्रेम हो यही सत्य् हो, 
+स्वार्थ होईन, आस्था हो, 
+अनास्था होईन, आशा हो- भरोसा हो 
+तर धोका होईन, 
+समग्रता हो वि- खन्डण होईन, 
+त्यसैले भन्छु अविस्वासका पहरा 
+नछर्क तिमी
+खोलो वगाईदेउ अमृत वाणी
+फुल्ने छन हजार कोपिला 
+जलधाराका साथै मन धारामा
+संगै बसेर एक दिन टिपी खाँउला।`,
+        englishSummary: "An emotional poem reflecting on relationships and trust. The poet wishes to be a source of genuine inspiration rather than a superficial presence, emphasizing that true love thrives on faith, unity, and shared hope rather than selfishness or deceit.",
+        author: "Dr. Tilak Sarmah",
+        image: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=800&auto=format&fit=crop",
+        tags: ["Love", "Relationships", "Inspiration"]
+    },
+    {
+        id: 11,
+        title: "Phulcha Ki Ta (फूल्छ कि त)",
+        excerpt: `नमस्कार मित्र 
+सन्चै हुनुहुन्छ होला, 
+कता कता राम्रा विचारहरु पोखिएको देख्दा, 
+मित्रको उद्गारले मेरो भित्रको गागरी छचल्कियो,
+मन थियो इन्द्रेणी भई आकाश चम्काइ 
+सागरको संग्लो पानी सोसेर 
+उनको मुहारमा रौँनक भँरुला,
+विश्वमा मायाका टुसा उमारुँमला,
+तर के गर्नु भित्र 
+गागरी भित्र साँघुरिएको
+सफरी भई बस्नुपर्ने यो वाध्यता
+भट्याक भट्याक गर्छ 
+यो भाल 
+अनि पार्छ मेरो यस्तो हाल। 
+तै पनि हजार काँडा बीच
+फुल्छ कि त .......!`,
+        englishSummary: "A poetic greeting to a friend that expresses a strong desire to spread joy and positive thoughts like a rainbow across the sky. Despite feeling confined by circumstances, the poet remains hopeful that something beautiful will bloom among the thorns.",
+        author: "Dr. Tilak Sarmah",
+        image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=800&auto=format&fit=crop",
+        tags: ["Friendship", "Hope", "Inspiration"]
+    },
+    {
+        id: 12,
+        title: "Naya Saalko Shubhakamana (नयाँ सालको शुभकामना)",
+        excerpt: `नयाँ सालको शुभकामना तिमीलाई तिमीलाई,   
+स्वागतम स्वागतम स्वागतम  नववर्षलाई,                                 
+नयाँ दिनले नयाँ सपना बोकी आउदै छ   
+विफलताका क्षण भूलि अब तिमी         
+नयाँ सृजनाको सपना रच             
+दुख पीड़का पल भूलि अब               
+पन्छि पंख फिजाई आकाश लम्क । 
+यही शुभकामना मेरो                  
+आउने समय तिम्रा प्रेरणाले भरून    
+हर पाइला तिम्रा अघि बढी रहुन्।   
+नौलो आशा - सपना संगाली राख  
+सफलताले शिखर चुम्नेछ।`,
+        englishSummary: "A cheerful New Year greeting filled with optimism. The poem encourages leaving behind past failures and sorrows, urging readers to spread their wings, dream anew, and step forward toward a successful future.",
+        author: "Dr. Tilak Sarmah",
+        image: "https://images.unsplash.com/photo-1467810563316-b5476525c0f9?q=80&w=800&auto=format&fit=crop",
+        tags: ["New Year", "Optimism", "Greeting"]
+    },
+    {
+        id: 13,
+        title: "Manma Bishwas (मनमा विश्वास)",
+        excerpt: `विश्वास आस्था राख्न सके
+हजारौं ठोकर खाए पनि निराश हुन दिँदैन
+ती तुच्छ मानव हुन जसले जीवन बोधको पाठ नपाईकन
+बस्ररुपी चोला पहिरिएर आए
+अज्ञानतावश 
+चारो टिपिरहेका चराहरुलाई ढुङ्गा झटारो फ्याँके 
+के थाहा गुँडका चल्ला- बच्चा आश्रय हीन जीवनको व्यथा
+हर पल संग्रामी जीवनका पन्नाहरुले
+झान्सी, सरोजीनी, कल्पना, किरण वेदी आदिका 
+घात प्रतिघातले यस्तो पाठ सिकाउँछ, 
+यसले जीवनलाई सताउन हैन
+बाँच्ने साहस र प्रेरणा मिलोस्।
+
+सुनेको थिए राम्रा मानिसहरूलाई
+याद गर्दा दिन राम्ररी पार हुन्छ 
+त्यसैले मैले सहृदयताका साथ
+तपाहरूलाई याद गरेको आफन्त सम्झेर  
+तपाईको दिन शुभहोस
+गुरु ती हैनन् जसले कसैको आशालाई पुरा गर्छन 
+गुरु ती हुन - जसले हर अभाव र समस्याकाे
+समाधान गर्ने क्षमता र बाटो देखाई दिन्छन -
+जुन क्षमता आफुमा छिपेको हुन्छ।
+
+म सपनामा दौडिने घोडपंछी झैं
+तीब्र वेगमा दौडिन्छु 
+निरुत्तरलाई उत्तर दिन 
+अन्धकार कोलाहल बीच
+'लेजर' को रेखा झै
+टोनी स्टारक पार्कर पिटार कुईल भई 
+तीब्र गति लिई महाकाशमा खेल्छु
+स्पेस सीपमा सवार भई
+थेनोस हेलालाई प्रहार गर्छु।
+
+अगर कसैमा गुण देखेऊ भने मनलाई केमेरा बनाऊ,  
+अगर कतै अवगुण देखेऊ भने, आफ्नो मनलाई ऐना बनाऊ।      
+प्रार्थन मसरी गर मानौ सबै भाव इश्वरमा निर्भर रहोस,  
+प्रयास यसरी गर कि मानौ, सबै सर्वशक्ति आफूमा निर्भर रहोस् ।                
+ध्यान र योगले बुद्धि खारिन्छ- सृष्टि शीलता ल्याउँछ।  
+ध्यान र योग विनाको बुद्धिले समाजलाई तल झार्छ ।`,
+        englishSummary: "A multifaceted poem focusing on self-belief, the true role of a mentor, and the power of a positive mindset. It advocates for resilience, inner strength, and cultivating a mind that amplifies virtues while reflecting deeply on vices through meditation and spiritual connection.",
+        author: "Dr. Tilak Sarmah",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
+        tags: ["Belief", "Wisdom", "Spirituality"]
+    },
+    {
+        id: 14,
+        title: "Dhanya Timi Hau Mahan (धन्य तिमी हौ महान)",
+        excerpt: `धन्य तिमी हौ महान 
+सपुत भई यो देशको 
+जन्मभूमिको अविर ली
+हिमशिखर टल्काउने तिमी 
+अपार गरिमा मय 
+कहाँ अस्तराग हौ तिमी
+असहायको गीत गाउने
+तिमी त अश्वराग हौ 
+वुलन्द भै आकाश हाँक्ने
+अदम्य साहस साथ ली 
+समाज देश हाँक्ने तिमी 
+जितेन्द्रीय शक्ति हौ
+सृष्टि तत्वलाई बुझने 
+तिमी त पन्च शक्ति हौ 
+सिर्जनाका फहरा छर्ने
+सप्तरङ्गी छौं तिमी 
+सृष्टि शीलताकी दानी 
+ज्ञानी अन्वेषणी हौ 
+निरन्तरताको गीत गाउने 
+तिमी त हिमालय हौ
+तिमी त हिमालय हौ।`,
+        englishSummary: "A glorious tribute to an inspiring, heroic figure who uplifts society. The poem elevates this person to the status of a life-giving force, akin to the Himalayas, possessing immense dignity, courage, and creative brilliance.",
+        author: "Dr. Tilak Sarmah",
+        image: "https://images.unsplash.com/photo-1483728642387-6c3ba6c665e7?q=80&w=800&auto=format&fit=crop",
+        tags: ["Tribute", "Greatness", "Inspiration"]
     }
 ];
