@@ -161,9 +161,11 @@ const PoemDetail = () => {
 
                         <EnglishSummaryCard text={poem.englishSummary} />
 
-                        <div className="nepali-poem-body" style={{ whiteSpace: 'pre-wrap' }}>
-                            {poem.excerpt}
-                        </div>
+                        <div 
+                            className="nepali-poem-body" 
+                            style={{ lineHeight: '1.8' }}
+                            dangerouslySetInnerHTML={{ __html: poem.excerpt.replace(/\n/g, '<br />') }}
+                        />
 
                         <div style={{
                             fontSize: '14px',
