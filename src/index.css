@@ -291,8 +291,8 @@ body.dark .site-background,
 
 @media (max-width: 640px) {
   .poetry-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    /* Force 2 equal columns for Poems, rigidly bounding them to prevent 1 dominating */
+    grid-template-columns: minmax(0, 1fr);
+    /* Force 1 column for Poems on mobile for better reading */
     gap: 16px;
   }
 
