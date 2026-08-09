@@ -164,7 +164,7 @@ const PoemDetail = () => {
                         <div 
                             className="nepali-poem-body" 
                             style={{ lineHeight: '1.8' }}
-                            dangerouslySetInnerHTML={{ __html: poem.excerpt.replace(/\n/g, '<br />') }}
+                            dangerouslySetInnerHTML={{ __html: poem.excerpt }}
                         />
 
                         <div style={{
