@@ -10,6 +10,7 @@ import ContentContext from '../components/ContentContext';
 import RetentionLoop from '../components/RetentionLoop';
 import ReadingProgressBar from '../components/ReadingProgressBar'; // New Component
 import BackButton from '../components/BackButton';
+import EnglishSummaryCard from '../components/EnglishSummaryCard';
 
 const StoryDetail = () => {
     const { id } = useParams();
@@ -26,6 +27,28 @@ const StoryDetail = () => {
 
     return (
         <div style={{ paddingBottom: '80px', backgroundColor: 'var(--bg-paper)' }}>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "Article",
+                    "headline": story.title,
+                    "description": story.englishSummary || story.content.substring(0, 150),
+                    "author": {
+                        "@type": "Person",
+                        "name": story.author,
+                        "url": "https://sahityasanskriti.online/about"
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "SahityaSanskritiHub",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": "https://sahityasanskriti.online/logo.png"
+                        }
+                    },
+                    "mainEntityOfPage": `https://sahityasanskriti.online/story/${story.id}`
+                })
+            }} />
             <ReadingProgressBar /> {/* Reading Progress Bar */}
             {/* Premium Header Image with Blurred Background */}
             <div style={{ position: 'relative', height: '400px', width: '100%', overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#0a0a0a' }}>
@@ -96,12 +119,15 @@ const StoryDetail = () => {
                     <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{story.readTime}</span>
                 </div>
 
+                <EnglishSummaryCard text={story.englishSummary} />
+
                 {/* Content */}
                 <article style={{
                     fontFamily: 'var(--font-heading)',
                     fontSize: '18px',
                     lineHeight: '1.8',
-                    color: 'var(--text-charcoal)'
+                    color: 'var(--text-charcoal)',
+                    whiteSpace: 'pre-wrap'
                 }} dangerouslySetInnerHTML={{ __html: story.content }} />
 
                 <div style={{ height: '40px' }} />

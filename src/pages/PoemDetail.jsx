@@ -10,6 +10,7 @@ import RetentionLoop from '../components/RetentionLoop';
 import ContentContext from '../components/ContentContext';
 import RelatedPoems from '../components/RelatedPoems';
 import BackButton from '../components/BackButton';
+import EnglishSummaryCard from '../components/EnglishSummaryCard';
 
 const PoemDetail = () => {
     const { id } = useParams();
@@ -54,6 +55,7 @@ const PoemDetail = () => {
                     "@context": "https://schema.org",
                     "@type": "Article",
                     "headline": poem.title,
+                    "description": poem.englishSummary || poem.excerpt,
                     "author": {
                         "@type": "Person",
                         "name": "Dr. Tilak Sarmah",
@@ -157,7 +159,9 @@ const PoemDetail = () => {
                             </div>
                         )}
 
-                        <div className="nepali-poem-body">
+                        <EnglishSummaryCard text={poem.englishSummary} />
+
+                        <div className="nepali-poem-body" style={{ whiteSpace: 'pre-wrap' }}>
                             {poem.excerpt}
                         </div>
 
