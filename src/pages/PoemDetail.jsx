@@ -100,47 +100,29 @@ const PoemDetail = () => {
                 </nav>
 
                 {/* Poem Content */}
-                <main style={{
-                    flex: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '40px 24px',
-                    textAlign: 'center',
-                    maxWidth: '600px',
-                    margin: '0 auto',
-                    width: '100%'
-                }}>
-                    {/* Capture Area for Sharing */}
-                    <div style={{
-                        backgroundColor: '#FDF6E3', // Ensure background is captured
-                        padding: '40px',
-                        borderRadius: '8px',
-                        width: '100%'
-                    }}>
-                        <h1 style={{
-                            fontFamily: 'var(--font-heading)',
-                            fontSize: '28px',
-                            color: 'var(--primary-maroon)',
-                            marginBottom: '12px'
-                        }}>
+                <main className="poem-reading-container">
+                    {/* Glassmorphic Capture Area */}
+                    <div className="poem-glass-card">
+                        
+                        <h1 className="poem-title-elegant">
                             {poem.title}
                         </h1>
 
-                        <div style={{
-                            width: '40px',
-                            height: '2px',
-                            backgroundColor: 'var(--accent-gold)',
-                            marginBottom: '32px',
-                            marginLeft: 'auto',
-                            marginRight: 'auto'
-                        }}></div>
+                        <div className="poem-author-credit">
+                            — {poem.author}
+                        </div>
+
+                        {/* Integrated Elegant English Summary */}
+                        {poem.englishSummary && (
+                            <div className="poem-english-summary-quote">
+                                {poem.englishSummary}
+                            </div>
+                        )}
 
                         {/* Optional Poem Illustration */}
                         {poem.image && (
                             <div style={{
-                                marginBottom: '32px',
+                                marginBottom: 'var(--space-12)',
                                 width: '100%',
                                 display: 'flex',
                                 justifyContent: 'center'
@@ -150,30 +132,21 @@ const PoemDetail = () => {
                                     alt={poem.title}
                                     style={{
                                         maxWidth: '100%',
-                                        maxHeight: '300px',
-                                        borderRadius: '8px',
-                                        boxShadow: 'var(--shadow-card)',
+                                        maxHeight: '350px',
+                                        borderRadius: 'var(--radius-md)',
+                                        boxShadow: 'var(--shadow-md)',
                                         objectFit: 'cover'
                                     }}
                                 />
                             </div>
                         )}
 
-                        <EnglishSummaryCard text={poem.englishSummary} />
-
+                        {/* The formatted HTML Poem */}
                         <div 
                             className="nepali-poem-body" 
-                            style={{ lineHeight: '1.8' }}
                             dangerouslySetInnerHTML={{ __html: poem.excerpt }}
                         />
-
-                        <div style={{
-                            fontSize: '14px',
-                            fontStyle: 'italic',
-                            color: 'var(--text-muted)'
-                        }}>
-                            — {poem.author}
-                        </div>
+                        
                     </div>
 
                     {/* Hidden Premium Card for Capture - Rendered Off-screen */}

@@ -847,3 +847,97 @@ a {
     display: block;
   }
 }
+
+/* =========================================
+   POEM DETAIL PREMIUM DESIGN
+   ========================================= */
+.poem-reading-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+}
+
+.poem-glass-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(159, 18, 57, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-12) var(--space-8);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.poem-glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-maroon), var(--accent-gold));
+}
+
+.poem-title-elegant {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  color: var(--primary-maroon);
+  text-align: center;
+  margin-bottom: var(--space-3);
+  line-height: var(--leading-tight);
+}
+
+.poem-author-credit {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: var(--space-8);
+}
+
+.poem-english-summary-quote {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+  max-width: 85%;
+  margin: 0 auto var(--space-12);
+  padding: var(--space-4) var(--space-6);
+  border-left: 3px solid var(--accent-gold);
+  border-right: 3px solid var(--accent-gold);
+  background: rgba(180, 83, 9, 0.03);
+  border-radius: var(--radius-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.nepali-poem-body {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  color: var(--text-main);
+  line-height: 1.8;
+  text-align: center;
+}
+
+.nepali-poem-body p {
+  margin-bottom: 1.5em; /* Delicate stanza gap, far less than default */
+  margin-top: 0;
+}
+
+.nepali-poem-body p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .poem-glass-card {
+    padding: var(--space-8) var(--space-4);
+  }
+  .poem-title-elegant {
+    font-size: var(--text-2xl);
+  }
+  .poem-english-summary-quote {
+    max-width: 100%;
+    font-size: var(--text-sm);
+  }
+  .nepali-poem-body {
+    font-size: var(--text-base);
+  }
+}
