@@ -4,6 +4,7 @@ export const articles = [
         id: 1,
         title: "जामुगुरिहाटको गमिरिपालमा सनातनी हिन्दू सम्मेलन आयोजना",
         excerpt: "शोणितपुर जिल्लाको जामुगुरिहाट गमिरिपालमा पूव बरभोगीया हिन्दू समितिको आयोजनामा भव्य सनातनी हिन्दू सम्मेलन सम्पन्न।",
+        englishSummary: "A grand Sanatan Hindu Sammelan was organized in Gamiripal, Jamugurihat. The event featured cultural processions, traditional songs, and speeches emphasizing the values of the Sanatan Hindu tradition, environmental protection, and social harmony.",
         content: `
             <p>शोणितपुर जिल्लाको जामुगुरिहाट गमिरिपालमा पूव बरभोगीया हिन्दू समितिको आयोजनामा दिनभरीको कार्यक्रम लिएर सनातनी हिन्दू सम्मेलन सम्पन्न भयो। यस अवसरमा प्रभात फेरी निकालिनुका साथै धर्म ध्वजा रोहण गर्नु भयो पण्डित मेघनाथ मिश्रजीले, दीप प्रज्वलन गर्नु भयो ड०तिलक शर्मा र माल्यार्पण गर्नु भयो धर्मप्राणा महिला बालाकुमारी देवीले। यस कार्यसूचीलाई अघि बढाउन जातीय विद्यालय कुसुमतोलाका विद्यार्थी वर्गले संस्कृतमा दिप प्रज्लन मन्त्रले मन्त्रमुग्ध पारेको थियो। यसपछि अर्को कार्यसूचीमा खेनशुवा गाउँका असमीया पारम्परिक साज-सज्जा सज्जित महिला वर्गले दिहा नाम परिवेशन गरेका थिए।</p>
 
@@ -36,6 +37,7 @@ export const articles = [
         id: 2,
         title: "समसामयिक चर्चा    यो--त्यो ...",
         excerpt: "यो युग वैज्ञानिक युग हो। वर्तमान हर कुराहरु प्रयोगशालाको साँचोमा हालेर तौलिने गरिन्छ। हाम्रो सामाजिक परम्परा र संस्कृतिलाई पालन गर्ने पद्धति र शैली वस्तुनिष्ठ हुनु जरुरी छ।",
+        englishSummary: "A contemporary discussion on the need to evaluate our social traditions and cultural practices through an objective and scientific lens. It emphasizes true karma (duty), unselfish action, and maintaining a balanced harmony with nature in the modern scientific era.",
         content: `
             <p>यो युग वैज्ञानिक युग हो। वर्तमान हर कुराहरु प्रयोगशालाको साँचोमा हालेर तौलिने गरिन्छ। वैज्ञानिक ढाँचा अथवा विज्ञान सम्मत तरिकाले विचार विमर्श नगरेसम्म त्यस विषयको सठिक निर्णय लिन सकिन्न। कुनै पनि विषयलाई हेर्ने दृष्टिकोण वस्तुनिष्ठ वा युक्तिसंगत हुनुपर्छ, त्यो अहिलेको सभ्यताको माँग हो। वर्तमान प्रगतिको शिखरमा पुग्न लागेको यो  दुनियाँमा हाम्रा परम्परित सामाजिक व्यवस्थाको नाप तौल गर्ने युक्ति सङ्गत आधार के हो ?  यो एउटा ठूलो प्रश्न हो। हाम्रो सामाजिक परम्परा र संस्कृतिलाई पालन गर्ने पद्धति र शैली वस्तुनिष्ठ हुनु जरुरी छ,र व्यवस्थित तरिकाले तिनीहरूको विश्लेषण गरिनु प्रयोजन भएको छ। नत्र हाम्रो व्यवस्थाले हामीलाई अर्कै बाटो धकेल्ने सम्म हुने देखिन्छ।</p>
             
@@ -122,6 +124,7 @@ export const articles = [
         id: 4,
         title: "आदर्शवादी गुरुआमा भूवनेश्वरी देवीको परलोक",
         excerpt: "गमिरिपाल निवासी आदर्शवादी गुरुआमा भूवनेश्वरी देवीको गत 13 फरवरी 2022 आईतवारका दिन 79 वर्षको उमेरमा परलोक भएको समाचारले क्षेत्रमा शोक छाएको छ।",
+        englishSummary: "An obituary honoring the life and legacy of Bhubaneswari Devi, an idealistic and dedicated teacher from Gamiripal who passed away at the age of 79, leaving behind a 44-year legacy of educational service.",
         content: `
             <p>गमिरिपाल निवासी आदर्शवादी गुरुआमा भूवनेश्वरी देवीको गत 13 फरवरी 2022 आईतवारका दिन परलोक भएको समाचारले क्षेत्रमा शोकले छाएको छ। सन् 1944 मा गमिरिपालमा जन्म ग्रहण गर्ने भूवनेश्वरी देवीले प्रारम्भिक शिक्षा गमिरिपालको प्राथमिक विद्यालयमा गर्नु हुन्छ। प्राथमिक विद्यालय सम्पूर्ण भएपछि बडपोखरिको पूव वरभगीया एम भी स्कुलबाट क्लास सात कक्षा सम्म अध्ययन गर्नु हुन्छ।</p>
             <p>यसरी शिक्षा चल्दा चल्दै सन 1958 मा पिता हरिभक्त अधिकारीको सक्रियतामा खलिहामारी प्राथमिक विद्यालयमा शिक्षिकाको जागीरे जीवन शुरु गर्नु हुन्छ। त्यहाँ 4 बर्ष सम्म जागीर गरेपश्चात गमिरिपाल प्राथमिक विद्यालयमा सरुवा हुनुहुन्छ। उनको वैवाहिक जीवन सन् 1961 मा गाउँकै निवासी पूण्य पराजुलीसँग विवाह सम्पन्न भएको थियो। उनका तीन भाई छोरा र एक छोरी गरी जम्मा चारै छोरा छोरीको विवाह सम्पन्न गर्नुका साथै एक छोरा बी एस सी शिक्षक अर्का भेटेनरी विभागमा मैईट (ए,आई) टेक्नीसियन दायित्वमा सेवा अघि बढाई रहेका छन्।</p>
@@ -139,6 +142,7 @@ export const articles = [
         id: "haribhakta-putali-rani",
         title: "कवि हरिभक्त कटुवाल र उनको 'पुतली रानी' बालगीत",
         excerpt: "हरिभक्त कटुवालद्वारा रचित ‘पुतली रानी’ बालगीतमा कविले पुतलीको सौन्दर्य, चञ्चलता र स्वतन्त्र स्वभावलाई अत्यन्त आकर्षक ढङ्गले चित्रण गरेका छन्।",
+        englishSummary: "An analysis of 'Putali Rani' (Queen Butterfly), a popular children's poem by renowned Nepali poet Haribhakta Katuwal. The article highlights how the poem beautifully captures the butterfly's vibrant nature while subtly teaching children about environmental conservation and the joy of freedom.",
         content: `
             <p><strong>कवि हरिभक्त कटुवाल र उनको 'पुतली रानी' बालगीत -</strong></p>
             <div style="margin-bottom: 24px; text-align: center;">
@@ -188,6 +192,7 @@ export const articles = [
         id: 1783872980140, // Static unique ID
         title: "भारतको पहिलो हाइड्रोजन रेल : स्वच्छ, दिगो र हरित भविष्यतर्फको ऐतिहासिक यात्रा",
         excerpt: "भारतले रेल यातायातको इतिहासमा नयाँ अध्याय सुरु गर्दै १७ जुलाई २०२६ मा आफ्नो पहिलो हाइड्रोजन इन्धनबाट सञ्चालित रेल सञ्चालनमा ल्याउने तयारी गरेको छ।",
+        englishSummary: "An informative article about India's first hydrogen-powered train, set to operate on the Jind-Sonipat route. It discusses the technology behind hydrogen fuel cells, the environmental benefits of zero-emission transport, and India's strides toward sustainable, green energy.",
         content: `
             <p>भारतले रेल यातायातको इतिहासमा नयाँ अध्याय सुरु गर्दै १७ जुलाई 2026मा आफ्नो पहिलो हाइड्रोजन इन्धनबाट सञ्चालित रेल सञ्चालनमा ल्याउने तयारी गरेको छ। हरियाणाको जिन्द सहर देखि–सोनीपत बीचको करिब ९० किलोमिटर रेलमार्गमा सञ्चालन हुने यो सेवा भारतको हरित विकास, आधुनिक प्रविधि र दिगो यातायाततर्फको महत्त्वपूर्ण कदम मानिएको छ। १० डिब्बा (कोच) भएको यस रेलले उक्त मार्गको यात्रा समय करिब आधा घटाउने छ।</p>
             <p>यस रेलको अधिकतम गति प्रतिघण्टा १२० किलोमिटर रहेको छ। यसमा इन्धनका रूपमा हाइड्रोजन प्रयोग गरिने भएकाले सञ्चालनका क्रममा कार्बन उत्सर्जन हुँदैन। हाइड्रोजन र अक्सिजनको रासायनिक प्रतिक्रियाबाट ऊर्जा उत्पादन हुने हुँदा यसबाट जलवाष्प (बाफ) मात्र उत्सर्जित हुन्छ।</p>
@@ -220,6 +225,7 @@ export const articles = [
         id: 'geeta-upadhyay',
         title: "श्रद्धाञ्जली: गीता उपाध्यायको स्मृतिमा",
         excerpt: "हामी सबैकी दिदी गीता उपाध्यायको स्मृतिमा विशेष श्रद्धाञ्जली लेख, जसले आफ्नो सम्पूर्ण जीवन शिक्षा र साहित्यमा समर्पित गरिन्।",
+        englishSummary: "A heartfelt tribute to Geeta Upadhyay, a pioneering figure in literature and education. Known affectionately as 'Didi', her lifelong dedication to bridging Assamese and Nepali cultures and her significant literary contributions are fondly remembered.",
         author: "Sahitya Hub",
         date: "July 24, 2026",
         readTime: "5 min read",

@@ -53,7 +53,7 @@ const Footer = () => {
                 gap: '24px',
                 marginBottom: '20px'
             }}>
-                {['About', 'Privacy', 'Contact'].map((item) => (
+                {['About', 'Privacy', 'Terms', 'Contact'].map((item) => (
                     <Link
                         key={item}
                         to={`/${item.toLowerCase()}`}

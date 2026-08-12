@@ -6,6 +6,7 @@ export const stories = [
         img: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&q=80', // Changed to children playing/outdoors theme
         readTime: '6 min read',
         audioDuration: '03:15',
+        englishSummary: "A thoughtful story titled 'Flowers Wilt Before Blooming in a Closed Room'. It addresses the intense academic pressure placed on children today and highlights the crucial role of play, freedom, and social interaction in a child's healthy psychological development.",
         content: `
             <p>मेरी साथी मन्जुको तेजपुरमा सरुवा भएको थियो र त्यो ठाउँ अनि त्यहाँका मानिसहरू, उनका लागि नयाँ थिए, त्यहीँको विद्यालयमा उनको छोरो पाँचौं कक्षामा भर्खरै भर्ना भएको थियो, संयोगवश आँफु बसेकै क्षेत्रमा त्यहाँ एउटी केटी पाँचौं कक्षामा पढ्दी रहिछन्। छेउछाउमा अरु केटाकेटी त्यस स्कुलमा पढ्ने कोही पनि थिएनन् । छोरालाई एक्लोपन महसुस नहोस भनेर एक दिन चिनजानको उदेश्यले छोरालाई लिएर उनीहरू त्यो बालकको घरतिर लागे। नयाँ ठाउँ छोरालाई एक्लोपन र उदासीनता नजाओस् भनेर परिचय गर्न घरको करिब पुगे। घरको अघिल्तिर उभिएर यताउती हेर्न लागे अनि घरको घण्टी बजाएँ ।</p>
 
@@ -61,6 +62,7 @@ export const stories = [
         img: 'https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=800&q=80', // Compassionate/Music/Book theme
         readTime: '8 min read',
         audioDuration: '05:45',
+        englishSummary: "An emotional essay titled 'A Little Love for Anindita'. It tells the poignant story of a young woman battling severe illness and appeals to the reader's compassion, urging them to find joy in helping those who are suffering.",
         content: `
             <p>'समग्र मानव जातिको लागि आफुलाई उत्सर्गीत गर्न नसके पनि - एकजना व्यक्तिलाई कल्याण गर्नु पनि आत्माको स्वास्थ्यका लागि धेरै राम्रो ' - जाग् हेमारश्वल्ड।</p>
             
@@ -126,6 +128,7 @@ export const stories = [
         img: '/homen.jpg',
         readTime: '12 min read',
         audioDuration: '09:00',
+        englishSummary: "A reflective story titled 'Source of Joy'. It explores the life of an aging man finding solace and meaning through literature and profound self-reflection during sleepless nights, ultimately seeking a deeper connection with the universe.",
         content: `
             <p>कहिले काँही प्रमोद चक्रवर्ती सारा रात निदाउँदैनन्; आज उनको भाग्य राम्रो, प्राय 3 बजे सम्म सुते । अनिद्रामा भोग्ने अन्य धेरै बुढ़ा मान्छेहरू जस्तै (गएको जुन महिनामा उनी 65 वर्ष पुगे) ओछ्यानमा छटपटाउँदै अथवा आफ्नो जड़त्वलाई अभिशाप दिँदै आफ्नो समय व्यतीत गरेका छैनन् । गेटे उनका प्रिय लेखक र आदर्शका व्यक्ति थिए । निद्रा नलागेका रातहरूमा ओछ्यानमा न- छटपटाई गेटेका पुस्तक पढ़्थे अथवा पछिल्ला दिनमा गरिने कामहरूको योजना बनाउँथे । उनी पुस्तकबाट वा कसैका जीवनबाट पाएका शिक्षा सकेसम्म आफ्नो जीवनमा उतार्ने प्रयास गर्थे । 'गेटे'को आदर्श अनुसरण गरेर हिजो आज निद्रा नलागेको बेलामा उनी पुस्तक पढ़्छन्, अथवा केही लेख्ने कोसिस गर्छन् ।</p>
             

@@ -9,6 +9,7 @@ import ReadingProgressBar from '../components/ReadingProgressBar';
 import ArticleShare from '../components/ArticleShare';
 import PremiumArticleShareCard from '../components/PremiumArticleShareCard'; // New Component
 import BackButton from '../components/BackButton';
+import EnglishSummaryCard from '../components/EnglishSummaryCard'; // AdSense Summary Component
 import { useEffect, useRef } from 'react';
 
 const ArticleDetail = () => {
@@ -32,6 +33,7 @@ const ArticleDetail = () => {
                     "@context": "https://schema.org",
                     "@type": "Article",
                     "headline": article.title,
+                    "description": article.englishSummary || article.excerpt,
                     "author": {
                         "@type": "Person",
                         "name": article.author,
@@ -122,7 +124,7 @@ const ArticleDetail = () => {
                     width: '100%',
                     borderRadius: '16px',
                     overflow: 'hidden',
-                    marginBottom: '32px',
+                    marginBottom: '16px',
                     boxShadow: 'var(--shadow-soft)'
                 }}>
                     <img
@@ -131,6 +133,8 @@ const ArticleDetail = () => {
                         style={{ width: '100%', height: 'auto', display: 'block' }}
                     />
                 </div>
+
+                <EnglishSummaryCard text={article.englishSummary} />
 
                 {/* Content Body */}
                 <div

@@ -20,6 +20,7 @@ const AllPoems = lazy(() => import('./pages/AllPoems'));
 const AllStories = lazy(() => import('./pages/AllStories'));
 const About = lazy(() => import('./pages/About'));
 const Privacy = lazy(() => import('./pages/Privacy'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const Articles = lazy(() => import('./pages/Articles'));
 const ArticleDetail = lazy(() => import('./pages/ArticleDetail'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -117,6 +118,7 @@ function App() {
                     <Route path="/shradhanjali/geeta-upadhyay" element={<ShradhanjaliGeetaUpadhyay />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/privacy" element={<Privacy />} />
+                    <Route path="/terms" element={<TermsOfService />} />
                     <Route path="/contact" element={<Contact />} />
                     
                     {/* [NEW] The Epic Hub for Zubeen Garg */}
