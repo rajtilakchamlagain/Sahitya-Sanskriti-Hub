@@ -1,10 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Heart, Music, GraduationCap, ChevronRight, BookOpen } from 'lucide-react';
+import { Sparkles, Heart, Music, GraduationCap, ChevronRight, BookOpen, Mic } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const ShradhanjaliHub = () => {
     const tributes = [
+        {
+            id: 'zubeen-garg',
+            name: 'वर्षदिन तिमी बि: जुबिन गर्ग',
+            role: 'भारतीय संगीत जगतका अमर तारा • पहिलो वार्षिक स्मृति',
+            image: '/zubeen_varshadin.jpg',
+            icon: <Mic size={24} />,
+            path: '/shradhanjali/zubeen-garg'
+        },
         {
             id: 'geeta-upadhyay',
             name: 'हामी सबैकी दिदी: गीता उपाध्याय',

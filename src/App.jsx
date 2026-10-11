@@ -33,6 +33,7 @@ const ShradhanjaliHub = lazy(() => import('./pages/ShradhanjaliHub')); // [NEW] 
 const ShradhanjaliYadumani = lazy(() => import('./pages/ShradhanjaliYadumani')); // [NEW] Tribute
 const ShradhanjaliDevSharma = lazy(() => import('./pages/ShradhanjaliDevSharma')); // [NEW] Tribute
 const ShradhanjaliGeetaUpadhyay = lazy(() => import('./pages/ShradhanjaliGeetaUpadhyay')); // [NEW] Tribute
+const ShradhanjaliZubeenGarg = lazy(() => import('./pages/ShradhanjaliZubeenGarg')); // [NEW] Tribute
 
 // Admin & Auth Pages
 const AdminGateway = lazy(() => import('./pages/AdminGateway'));
@@ -116,6 +117,7 @@ function App() {
                     <Route path="/shradhanjali/yadumani-sharma" element={<ShradhanjaliYadumani />} />
                     <Route path="/shradhanjali/dev-sharma-chapagai" element={<ShradhanjaliDevSharma />} />
                     <Route path="/shradhanjali/geeta-upadhyay" element={<ShradhanjaliGeetaUpadhyay />} />
+                    <Route path="/shradhanjali/zubeen-garg" element={<ShradhanjaliZubeenGarg />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/privacy" element={<Privacy />} />
                     <Route path="/terms" element={<TermsOfService />} />
