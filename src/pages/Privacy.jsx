@@ -28,7 +28,17 @@ const Privacy = () => {
         {
             icon: Server,
             title: "Cookies & Local Storage",
-            content: "We deeply respect your digital footprint. Instead of tracking cookies, we prioritize Local Storage on your personal device to seamlessly remember your \"Liked\" poems, reading progress, and UI preferences. This decentralized approach ensures your literary favorites stay with you securely, without necessitating a centralized cloud account. Clearing your browser cache will gracefully reset these preferences."
+            content: "We respect your digital footprint. We prioritize Local Storage on your personal device to remember your liked poems, reading progress, and theme preferences. Clearing your browser cache will reset these preferences."
+        },
+        {
+            icon: Cookie,
+            title: "Google AdSense & Third-Party Advertising",
+            content: "We partner with Google AdSense to serve relevant advertisements. Google, as a third-party vendor, uses cookies (including the DoubleClick DART cookie) to serve ads to our users based on their visits to our site and other sites on the internet.",
+            bullets: [
+                "Users may opt out of personalized advertising by visiting Google Ads Settings (www.google.com/settings/ads).",
+                "Third-party ad networks or vendors may also use cookies to measure ad effectiveness and personalize ad content.",
+                "You can choose to disable cookies through your individual browser options or via optout.aboutads.info."
+            ]
         },
         {
             icon: Lock,

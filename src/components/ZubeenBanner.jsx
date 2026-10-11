@@ -57,49 +57,49 @@ const ZubeenBanner = () => {
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                     <Star size={16} color="#D4AF37" />
-                    <span style={{ color: '#D4AF37', letterSpacing: '4px', fontSize: '13px', textTransform: 'uppercase', fontWeight: 600 }}>
-                        Premium Exclusive
+                    <span style={{ color: '#D4AF37', letterSpacing: '3px', fontSize: '13px', textTransform: 'uppercase', fontWeight: 600 }}>
+                        विशेष स्मृति आलेख
                     </span>
                 </div>
 
                 <h2 style={{
                     fontFamily: 'var(--font-heading)',
-                    fontSize: 'clamp(32px, 5vw, 42px)',
+                    fontSize: 'clamp(30px, 5vw, 40px)',
                     color: '#fff',
                     margin: '0 0 12px 0',
-                    lineHeight: '1.1',
+                    lineHeight: '1.2',
                     textShadow: '0 4px 12px rgba(0,0,0,0.5)'
                 }}>
-                    Life History:<br/>
-                    <span style={{color: '#D4AF37'}}>Zubeen Garg</span>
+                    युग पुरुष:<br/>
+                    <span style={{color: '#D4AF37'}}>जुबिन गर्ग (Zubeen Garg)</span>
                 </h2>
 
                 <p style={{
-                    color: 'rgba(255,255,255,0.85)',
+                    color: 'rgba(255,255,255,0.9)',
                     fontSize: '16px',
                     fontStyle: 'italic',
                     marginBottom: '24px',
-                    maxWidth: '400px',
-                    lineHeight: '1.5'
+                    maxWidth: '440px',
+                    lineHeight: '1.6'
                 }}>
                     "हजार युगका साक्षी, हृदय करुणाका सागर..."<br/>
-                    Witness the journey of a Yug Purush.
+                    जीवन यात्रा, सांगीतिक साधना र अमर धरोहर।
                 </p>
 
                 <div style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '12px',
-                    backgroundColor: 'rgba(212, 175, 55, 0.15)',
-                    border: '1px solid rgba(212, 175, 55, 0.3)',
+                    gap: '10px',
+                    backgroundColor: 'rgba(212, 175, 55, 0.2)',
+                    border: '1px solid rgba(212, 175, 55, 0.4)',
                     color: '#D4AF37',
-                    padding: '12px 24px',
-                    borderRadius: '30px',
+                    padding: '10px 22px',
+                    borderRadius: '24px',
                     width: 'fit-content',
                     fontWeight: 600,
                     backdropFilter: 'blur(4px)'
                 }}>
-                    Experience Now <ArrowRight size={18} />
+                    अध्ययन गर्नुहोस् <ArrowRight size={18} />
                 </div>
             </div>
             

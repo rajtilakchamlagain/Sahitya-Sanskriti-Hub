@@ -11,6 +11,7 @@ import ContentContext from '../components/ContentContext';
 import RelatedPoems from '../components/RelatedPoems';
 import BackButton from '../components/BackButton';
 import EnglishSummaryCard from '../components/EnglishSummaryCard';
+import AdSenseUnit from '../components/AdSenseUnit';
 
 const PoemDetail = () => {
     const { id } = useParams();
@@ -168,6 +169,9 @@ const PoemDetail = () => {
 
                     {/* Content Context */}
                     <ContentContext data={poem.about} />
+
+                    {/* Reading Bottom Ad Slot */}
+                    <AdSenseUnit />
 
                     {/* Comments */}
                     <CommentSection id={poem.id} collectionName="poems" />

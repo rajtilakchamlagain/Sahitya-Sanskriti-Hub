@@ -10,6 +10,7 @@ import ArticleShare from '../components/ArticleShare';
 import PremiumArticleShareCard from '../components/PremiumArticleShareCard'; // New Component
 import BackButton from '../components/BackButton';
 import EnglishSummaryCard from '../components/EnglishSummaryCard'; // AdSense Summary Component
+import AdSenseUnit from '../components/AdSenseUnit';
 import { useEffect, useRef } from 'react';
 
 const ArticleDetail = () => {
@@ -195,6 +196,9 @@ const ArticleDetail = () => {
                         }
                     </div>
                 </div>
+
+                {/* Article Bottom Ad Slot */}
+                <AdSenseUnit />
 
                 {/* Comment Board */}
                 <CommentSection id={article.id} collectionName="articles" />

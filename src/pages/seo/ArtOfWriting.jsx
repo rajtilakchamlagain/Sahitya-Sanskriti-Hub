@@ -3,7 +3,7 @@ import SEO from '../../components/SEO';
 import { Link } from 'react-router-dom';
 import ArticleShare from '../../components/ArticleShare';
 import StudyShareCard from '../../components/StudyShareCard';
-import AIProfessorWidget from '../../components/AIProfessorWidget';
+import AdSenseUnit from '../../components/AdSenseUnit';
 
 const ArtOfWriting = () => {
     const shareRef = useRef(null);
@@ -176,10 +176,7 @@ const ArtOfWriting = () => {
             </article>
         </div>
 
-        <AIProfessorWidget 
-            pageTitle="लेखन कला : पृष्ठभूमि" 
-            contextText="लेखन कलाको अवधारणा मानव सभ्यताको प्रारम्भसँगै विकसित भएको हो। पूर्वीय परम्परामा भरतमुनि र पाश्चात्यमा एरिस्टोटलले यसको विकास गरे। नेपाली साहित्यमा यो मौखिक परम्परा हुँदै लिखित रूपमा आयो।"
-        />
+        <AdSenseUnit />
         </div>
     );
 };

@@ -14,6 +14,7 @@ import SubscribeSection from '../components/SubscribeSection' // Added
 import ShradhanjaliBanner from '../components/ShradhanjaliBanner'
 import DiscoveryConsole from '../components/DiscoveryConsole'
 import ZubeenBanner from '../components/ZubeenBanner' // [NEW] Premium Section
+import AdSenseUnit from '../components/AdSenseUnit'
 
 const Home = () => {
     return (
@@ -162,6 +163,9 @@ const Home = () => {
                     <h3 style={{ fontSize: '18px', padding: '0 16px', marginBottom: '16px' }}>Video Lectures & Recitals</h3>
                     <VideoRow />
                 </div>
+
+                {/* Cultural Ad Slot */}
+                <AdSenseUnit style={{ maxWidth: '728px', padding: '0 16px' }} />
 
                 {/* Newsletter Subscription Pre-Footer */}
                 <SubscribeSection />
