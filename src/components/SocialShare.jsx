@@ -1,71 +1,84 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import html2canvas from 'html2canvas';
-import { Share2, Download, Check } from 'lucide-react';
+import { Share2, Check } from 'lucide-react';
 
-const SocialShare = ({ elementRef, title }) => {
+const SocialShare = ({ elementRef, title = "Sahitya Sanskriti Hub" }) => {
     const [isSharing, setIsSharing] = useState(false);
-    const [status, setStatus] = useState('idle'); // idle, capturing, success
+    const [status, setStatus] = useState('idle'); // idle, capturing, success, copied
 
     const handleShare = async () => {
-        if (!elementRef.current || isSharing) return;
+        if (isSharing) return;
         setIsSharing(true);
-        setStatus('capturing');
 
-        try {
-            // Capture the element
-            const canvas = await html2canvas(elementRef.current, {
-                scale: 3, // High Definition for sharing
-                backgroundColor: null, // Transparent to let card background show
-                logging: false,
-                useCORS: true
-            });
+        const currentUrl = window.location.href;
+        const shareData = {
+            title: title,
+            text: `Read "${title}" at Sahitya Sanskriti Hub`,
+            url: currentUrl
+        };
 
-            canvas.toBlob(async (blob) => {
-                if (!blob) throw new Error('Blob creation failed');
+        // 1. If elementRef is provided and has a DOM node, try generating the graphic card
+        if (elementRef && elementRef.current) {
+            setStatus('capturing');
+            try {
+                const canvas = await html2canvas(elementRef.current, {
+                    scale: 2,
+                    backgroundColor: null,
+                    logging: false,
+                    useCORS: true
+                });
 
-                const file = new File([blob], `${title.replace(/\s+/g, '_')}_Poem.png`, { type: 'image/png' });
-                const shareData = {
-                    title: `Read "${title}" at SahityaSanskritiHub`,
-                    text: `Check out this beautiful poem "${title}" by Dr. Tilak Sarmah.`,
-                    files: [file],
-                    url: window.location.href // Fallback link
-                };
-
-                // Use Web Share API if supported and can share files
-                if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-                    try {
-                        await navigator.share(shareData);
-                        setStatus('success');
-                    } catch (err) {
-                        if (err.name !== 'AbortError') {
-                            console.error('Share failed', err);
-                            downloadFallback(canvas);
-                        } else {
-                            setStatus('idle');
+                canvas.toBlob(async (blob) => {
+                    if (blob && navigator.share && navigator.canShare && navigator.canShare({ files: [new File([blob], 'share.png', { type: 'image/png' })] })) {
+                        const file = new File([blob], `${title.replace(/\s+/g, '_')}.png`, { type: 'image/png' });
+                        try {
+                            await navigator.share({ ...shareData, files: [file] });
+                            setStatus('success');
+                        } catch (err) {
+                            if (err.name !== 'AbortError') {
+                                fallbackShareOrCopy(shareData);
+                            }
                         }
+                    } else {
+                        fallbackShareOrCopy(shareData);
                     }
-                } else {
-                    // Fallback to simple download
-                    downloadFallback(canvas);
-                }
-
-                setTimeout(() => setStatus('idle'), 3000);
-                setIsSharing(false);
-            }, 'image/png');
-
-        } catch (error) {
-            console.error('Capture failed:', error);
-            setStatus('idle');
-            setIsSharing(false);
+                    setTimeout(() => setStatus('idle'), 2500);
+                    setIsSharing(false);
+                }, 'image/png');
+                return;
+            } catch (err) {
+                console.warn('Canvas capture fallback to link share:', err);
+            }
         }
+
+        // 2. Direct Web Share API or Clipboard Copy (Works everywhere without elementRef)
+        await fallbackShareOrCopy(shareData);
+        setTimeout(() => setStatus('idle'), 2500);
+        setIsSharing(false);
     };
 
-    const downloadFallback = (canvas) => {
-        const link = document.createElement('a');
-        link.download = `${title.replace(/\s+/g, '_')}_Poem.png`;
-        link.href = canvas.toDataURL();
-        link.click();
-        setStatus('success');
+    const fallbackShareOrCopy = async (data) => {
+        if (navigator.share) {
+            try {
+                await navigator.share(data);
+                setStatus('success');
+                return;
+            } catch (err) {
+                if (err.name === 'AbortError') {
+                    setStatus('idle');
+                    return;
+                }
+            }
+        }
+
+        // Final fallback: copy link to clipboard
+        try {
+            await navigator.clipboard.writeText(data.url);
+            setStatus('copied');
+        } catch (err) {
+            console.error('Clipboard copy failed:', err);
+            setStatus('idle');
+        }
     };
 
     return (
@@ -84,10 +97,12 @@ const SocialShare = ({ elementRef, title }) => {
                 cursor: isSharing ? 'wait' : 'pointer',
                 transition: 'all 0.3s ease'
             }}
+            title="Share this page"
+            aria-label="Share"
         >
-            {status === 'success' ? <Check size={20} /> : <Share2 size={20} />}
+            {status === 'success' || status === 'copied' ? <Check size={18} /> : <Share2 size={18} />}
             <span style={{ fontWeight: 600, fontSize: '14px' }}>
-                {status === 'capturing' ? 'Generating...' : status === 'success' ? 'Shared!' : 'Share'}
+                {status === 'capturing' ? 'कृपया प्रतीक्षा...' : status === 'copied' ? 'Link Copied!' : status === 'success' ? 'Shared!' : 'Share'}
             </span>
         </button>
     );
