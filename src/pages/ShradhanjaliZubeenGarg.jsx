@@ -4,6 +4,7 @@ import BackButton from '../components/BackButton';
 import SocialShare from '../components/SocialShare';
 import LikeButton from '../components/LikeButton';
 import CommentSection from '../components/CommentSection';
+import AdSenseUnit from '../components/AdSenseUnit';
 
 const ShradhanjaliZubeenGarg = () => {
     useEffect(() => {
@@ -209,6 +210,9 @@ const ShradhanjaliZubeenGarg = () => {
                         आत्मालाई शस्त्रले काट्न सक्दैन, अग्निले जलाउन सक्दैन,<br />
                         पानीले भिजाउन सक्दैन, हावाले सुकाउन सक्दैन।
                     </p>
+                    <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(140, 120, 83, 0.15)', fontSize: '14px', color: '#555', fontStyle: 'italic', textAlign: 'center', lineHeight: '1.6' }}>
+                        "A solemn commemorative tribute on the first death anniversary of Zubeen Garg (1972–2025). Celebrating the extraordinary musical journey, timeless voice, humanitarian philanthropy, and cultural legacy of an immortal soul."
+                    </div>
                 </div>
             </div>
 
@@ -326,6 +330,8 @@ const ShradhanjaliZubeenGarg = () => {
                         url={window.location.href}
                     />
                 </div>
+
+                <AdSenseUnit />
 
                 <CommentSection contentId="shradhanjali-zubeen-garg" />
             </div>
